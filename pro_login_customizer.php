@@ -33,12 +33,13 @@ define( 'PLC_PATH', plugin_dir_path( __FILE__ ) );
 function plc_activate() {
 
     $default_settings = [
-        'logo'             => '',
-        'primary_color'    => '#2563eb',
-        'hover_color'      => '#1d4ed8',
-        'text_color'       => '#0f172a',
-        'background_color' => '#f5f7fb',
-        'border_radius'    => '10',
+    'logo'             => PLC_URL . 'images/logo.png',
+    'bg_image'         => PLC_URL . 'images/BG.jpg',
+    'primary_color'    => '#2563eb',
+    'hover_color'      => '#1d4ed8',
+    'text_color'       => '#0f172a',
+    'background_color' => '#f5f7fb',
+    'border_radius'    => '10',
     ];
 
     if ( false === get_option( 'plc_settings' ) ) {
@@ -68,13 +69,14 @@ register_deactivation_hook( __FILE__, 'plc_deactivate' );
 function plc_get_settings() {
 
     $defaults = [
-        'logo'             => '',
-        'primary_color'    => '#2563eb',
-        'hover_color'      => '#1d4ed8',
-        'text_color'       => '#0f172a',
-        'background_color' => '#f5f7fb',
-        'border_radius'    => '10',
-    ];
+    'logo'             => PLC_URL . 'images/logo.png',
+    'bg_image'         => PLC_URL . 'images/BG.jpg',
+    'primary_color'    => '#2563eb',
+    'hover_color'      => '#1d4ed8',
+    'text_color'       => '#0f172a',
+    'background_color' => '#f5f7fb',
+    'border_radius'    => '10',
+];
 
     $settings = get_option( 'plc_settings', [] );
 
@@ -97,7 +99,7 @@ function plc_add_admin_menu() {
         'manage_options',
         'pro-login-customizer',
         'plc_login_page_content',
-        'dashicons-admin-customizer',
+        'dashicons-lock',
         25
     );
 }
@@ -141,6 +143,13 @@ function plc_sanitize_settings( $input ) {
      */
     if ( isset( $input['logo'] ) ) {
         $sanitized['logo'] = esc_url_raw( $input['logo'] );
+    }
+
+    /*
+     * Background Image
+     */
+    if ( isset( $input['bg_image'] ) ) {
+        $sanitized['bg_image'] = esc_url_raw( $input['bg_image'] );
     }
 
 
@@ -491,6 +500,48 @@ function plc_login_page_content() {
 
                     </tr>
 
+                    <!-- Background Image -->
+                    <tr>
+
+                        <th scope="row">
+
+                            <label for="plc_bg_image">
+
+                                <?php
+                                esc_html_e(
+                                    'Background Image URL',
+                                    'pl-customizer'
+                                );
+                                ?>
+
+                            </label>
+
+                        </th>
+
+                        <td>
+
+                            <input
+                                type="url"
+                                id="plc_bg_image"
+                                name="plc_settings[bg_image]"
+                                value="<?php echo esc_attr( $settings['bg_image'] ); ?>"
+                                class="regular-text"
+                                placeholder="https://example.com/bg-image.jpg"
+                            >
+
+                            <p class="description">
+                                <?php
+                                esc_html_e(
+                                    'Enter the URL of your login background image.',
+                                    'pl-customizer'
+                                );
+                                ?>
+                            </p>
+
+                        </td>
+
+                    </tr>
+
 
                 </tbody>
 
@@ -528,13 +579,32 @@ function plc_login_enqueue_style() {
      */
     $custom_css = "
         :root {
-            --plc-primary-color: {$settings['primary_color']};
-            --plc-hover-color: {$settings['hover_color']};
-            --plc-text-color: {$settings['text_color']};
-            --plc-background-color: {$settings['background_color']};
-            --plc-border-radius: {$settings['border_radius']}px;
+            --plc-primary: {$settings['primary_color']};
+            --plc-primary-hover: {$settings['hover_color']};
+            --plc-text: {$settings['text_color']};
+            --plc-radius: {$settings['border_radius']}px;
+            --plc-logo: url('{$settings['logo']}');
         }
+        body.login {
+            background-color: {$settings['background_color']};
+        } 
     ";
+    /*
+     * Add Background Image Only If Available
+     */
+    if ( ! empty( $settings['bg_image'] ) ) {
+
+        $custom_css .= "
+            body.login {
+                background-image: url('{$settings['bg_image']}');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+        ";
+    }
+
 
     wp_add_inline_style(
         'plc-login-style',
