@@ -1,5 +1,5 @@
 /* =========================================================
-   PRO LOGIN CUSTOMIZER - Hyper-Modern Glass Edition
+   PRO LOGIN CUSTOMIZER - Hyper-Modern Glass & Aurora Edition
    ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
@@ -12,21 +12,38 @@
     --plc-text: #0f172a;
     --plc-muted: #64748b;
     
+    --plc-bg-color: #030712;
+    --plc-aurora-1: #030712;
+    --plc-aurora-2: #1e1b4b;
+    --plc-aurora-3: #0284c7;
+    --plc-aurora-4: #4f46e5;
+    --plc-aurora-speed: 15s;
+    
     --plc-card-bg: rgba(255, 255, 255, 0.45);
     --plc-card-border: rgba(255, 255, 255, 0.65);
+    --plc-card-blur: 28px;
     
     --plc-input-bg: rgba(255, 255, 255, 0.6);
     --plc-input-border: rgba(203, 213, 225, 0.6);
     
-    --plc-radius-lg: 24px;
+    --plc-radius: 24px;
     --plc-radius-md: 14px;
+    
+    --plc-logo-width: 160px;
+    --plc-logo-height: 50px;
 }
 
-/* Page Reset & Dynamic Animated Background */
+/* Page Reset & Base Viewport */
 html, body.login {
     height: 100%;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
 body.login {
@@ -34,32 +51,30 @@ body.login {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     color: var(--plc-text);
-    background: #0f172a;
+    background-color: var(--plc-bg-color);
     overflow-x: hidden;
+    position: relative;
 }
 
-/* Aurora Waves */
-body.login {
-    background: #030712;
-}
-
-body.login::before {
+/* Animated Aurora Flow Background (Active when no image is set) */
+body.login.plc-aurora-active::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: 0;
     background: linear-gradient(
         125deg,
-        #030712 0%,
-        #1e1b4b 25%,
-        #0284c7 50%,
-        #4f46e5 75%,
-        #030712 100%
+        var(--plc-aurora-1) 0%,
+        var(--plc-aurora-2) 25%,
+        var(--plc-aurora-3) 50%,
+        var(--plc-aurora-4) 75%,
+        var(--plc-aurora-1) 100%
     );
     background-size: 400% 400%;
-    animation: plc-aurora-flow 15s ease infinite;
+    animation: plc-aurora-flow var(--plc-aurora-speed) ease infinite;
+    pointer-events: none;
 }
 
 @keyframes plc-aurora-flow {
@@ -68,38 +83,51 @@ body.login::before {
     100% { background-position: 0% 50%; }
 }
 
-/* Glassmorphism Frame Container */
+/* Background Image Mode (Overrides Aurora when image is present) */
+body.login.plc-has-bg-image {
+    background-image: var(--plc-bg-img);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body.login.plc-has-bg-image::before {
+    display: none !important;
+}
+
+/* Glassmorphism Form Container */
 body.login #login {
     position: relative;
     z-index: 2;
     width: 100%;
     max-width: 440px;
-    margin: 0 16px;
+    margin: 20px 16px;
     padding: 40px 36px;
     background: var(--plc-card-bg);
     border: 1px solid var(--plc-card-border);
-    border-radius: var(--plc-radius-lg);
+    border-radius: var(--plc-radius);
     box-shadow: 
         0 30px 60px -12px rgba(15, 23, 42, 0.25),
         0 18px 36px -18px rgba(15, 23, 42, 0.15),
         inset 0 1px 1px rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    backdrop-filter: blur(var(--plc-card-blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--plc-card-blur)) saturate(180%);
 }
 
 /* Header & Logo Styling */
 body.login h1 {
-    margin: 0 0 28px !important;
+    margin: 0 0 24px !important;
     padding: 0 !important;
     text-align: center;
 }
 
 body.login h1 a {
     display: block !important;
-    width: 160px !important;
-    height: 50px !important;
+    width: var(--plc-logo-width) !important;
+    height: var(--plc-logo-height) !important;
     margin: 0 auto 12px !important;
-    background-image: url("../images/logo.png") !important;
+    background-image: var(--plc-logo) !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
     background-size: contain !important;
@@ -111,14 +139,14 @@ body.login h1 a:hover {
     transform: scale(1.04);
 }
 
-body.login h1::after {
-    content: "Sign in to your account";
+.plc-custom-subtitle {
     display: block;
     margin-top: 6px;
     color: var(--plc-text);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: -0.02em;
+    text-align: center;
 }
 
 /* Form Structural Clean Up */
@@ -143,7 +171,8 @@ body.login #login label {
 /* Inputs */
 body.login #login form .input,
 body.login #login input[type="text"],
-body.login #login input[type="password"] {
+body.login #login input[type="password"],
+body.login #login input[type="email"] {
     display: block !important;
     width: 100% !important;
     height: 50px !important;
@@ -162,13 +191,14 @@ body.login #login input[type="password"] {
 
 body.login #login form .input:focus,
 body.login #login input[type="text"]:focus,
-body.login #login input[type="password"]:focus {
-    background: rgba(255, 255, 255, 0.9) !important;
+body.login #login input[type="password"]:focus,
+body.login #login input[type="email"]:focus {
+    background: rgba(255, 255, 255, 0.95) !important;
     border-color: var(--plc-primary) !important;
     box-shadow: 0 0 0 4px var(--plc-glow), 0 4px 12px rgba(0, 0, 0, 0.05) !important;
 }
 
-/* Password Eye Button Fix */
+/* Password Visibility Toggle */
 body.login #login .wp-pwd {
     position: relative !important;
 }
@@ -254,6 +284,7 @@ body.login #login .button-primary:active {
 /* Secondary Links */
 body.login #nav, body.login #backtoblog {
     margin-top: 16px !important;
+    padding: 0 !important;
     text-align: center !important;
 }
 
@@ -267,4 +298,31 @@ body.login #nav a, body.login #backtoblog a {
 
 body.login #nav a:hover, body.login #backtoblog a:hover {
     color: var(--plc-primary) !important;
+}
+
+/* WordPress Notice / Error Box */
+body.login #login_error,
+body.login .message,
+body.login .notice {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border-left: 4px solid var(--plc-primary) !important;
+    border-radius: var(--plc-radius-md) !important;
+    color: var(--plc-text) !important;
+    font-size: 13px !important;
+    padding: 12px 16px !important;
+    margin-bottom: 20px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+    backdrop-filter: blur(10px);
+}
+
+body.login #login_error {
+    border-left-color: #ef4444 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    body.login #login {
+        padding: 30px 20px;
+        margin: 15px 12px;
+    }
 }
