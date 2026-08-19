@@ -1,862 +1,270 @@
 /* =========================================================
-   PRO LOGIN CUSTOMIZER
-   Modern Glass Login Page
+   PRO LOGIN CUSTOMIZER - Hyper-Modern Glass Edition
    ========================================================= */
 
-
-/* =========================================================
-   ROOT VARIABLES
-   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-    --plc-primary: #2563eb;
-    --plc-primary-hover: #1d4ed8;
-
+    --plc-primary: #6366f1;
+    --plc-primary-hover: #4f46e5;
+    --plc-glow: rgba(99, 102, 241, 0.35);
+    
     --plc-text: #0f172a;
     --plc-muted: #64748b;
-
-    --plc-card-bg: rgba(255, 255, 255, 0.24);
-    --plc-card-border: rgba(255, 255, 255, 0.55);
-
-    --plc-input-bg: rgba(255, 255, 255, 0.58);
-    --plc-input-border: rgba(148, 163, 184, 0.35);
-
-    --plc-radius: 20px;
+    
+    --plc-card-bg: rgba(255, 255, 255, 0.45);
+    --plc-card-border: rgba(255, 255, 255, 0.65);
+    
+    --plc-input-bg: rgba(255, 255, 255, 0.6);
+    --plc-input-border: rgba(203, 213, 225, 0.6);
+    
+    --plc-radius-lg: 24px;
+    --plc-radius-md: 14px;
 }
 
-
-/* =========================================================
-   GLOBAL RESET
-   ========================================================= */
-
-html,
-body.login,
-body.login * {
-    box-sizing: border-box;
-}
-
-
-/* =========================================================
-   LOGIN PAGE
-   ========================================================= */
-
-html {
-    min-height: 100%;
+/* Page Reset & Dynamic Animated Background */
+html, body.login {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
-
-    margin: 0;
-    padding: 24px 16px;
-
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif;
-
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
     color: var(--plc-text);
-
-    background-image: url("../images/BG.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
+    background: #0f172a;
     overflow-x: hidden;
 }
 
-
-/* =========================================================
-   BACKGROUND OVERLAY
-   ========================================================= */
+/* Aurora Waves */
+body.login {
+    background: #030712;
+}
 
 body.login::before {
     content: "";
-
     position: fixed;
     inset: 0;
-
     z-index: 0;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(37, 99, 235, 0.15),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(6, 182, 212, 0.13),
-            transparent 32%
-        );
+    background: linear-gradient(
+        125deg,
+        #030712 0%,
+        #1e1b4b 25%,
+        #0284c7 50%,
+        #4f46e5 75%,
+        #030712 100%
+    );
+    background-size: 400% 400%;
+    animation: plc-aurora-flow 15s ease infinite;
 }
 
+@keyframes plc-aurora-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-/* =========================================================
-   LOGIN WRAPPER
-   ========================================================= */
-
+/* Glassmorphism Frame Container */
 body.login #login {
     position: relative;
-
     z-index: 2;
-
-    width: 420px;
-    max-width: calc(100% - 32px);
-
-    margin: 40px auto;
-
-    padding: 32px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.38),
-            rgba(255, 255, 255, 0.20)
-        );
-
+    width: 100%;
+    max-width: 440px;
+    margin: 0 16px;
+    padding: 40px 36px;
+    background: var(--plc-card-bg);
     border: 1px solid var(--plc-card-border);
-    border-radius: var(--plc-radius);
-
-    box-shadow:
-        0 25px 70px rgba(15, 23, 42, 0.18),
-        0 8px 25px rgba(15, 23, 42, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.65);
-
-    backdrop-filter:
-        blur(26px)
-        saturate(150%);
-
-    -webkit-backdrop-filter:
-        blur(26px)
-        saturate(150%);
-
-    overflow: hidden;
+    border-radius: var(--plc-radius-lg);
+    box-shadow: 
+        0 30px 60px -12px rgba(15, 23, 42, 0.25),
+        0 18px 36px -18px rgba(15, 23, 42, 0.15),
+        inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
 }
 
-
-/* =========================================================
-   CARD TOP HIGHLIGHT
-   ========================================================= */
-
-body.login #login::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 10%;
-
-    width: 80%;
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.95),
-            transparent
-        );
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   WORDPRESS LOGIN LOGO
-   ========================================================= */
-
+/* Header & Logo Styling */
 body.login h1 {
-    margin: 0 0 26px;
-    padding: 0;
-
+    margin: 0 0 28px !important;
+    padding: 0 !important;
     text-align: center;
 }
 
-
 body.login h1 a {
-    display: block;
-
-    width: 165px;
-    height: 56px;
-
-    margin: 0 auto 16px;
-    padding: 0;
-
-    background-image: url("../images/logo.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-
-    font-size: 0;
-    text-indent: -9999px;
-
-    box-shadow: none;
-
-    transition:
-        transform 0.2s ease,
-        opacity 0.2s ease;
+    display: block !important;
+    width: 160px !important;
+    height: 50px !important;
+    margin: 0 auto 12px !important;
+    background-image: url("../images/logo.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: contain !important;
+    text-indent: -9999px !important;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
-
 
 body.login h1 a:hover {
-    transform: translateY(-2px);
-
-    opacity: 0.92;
-
-    box-shadow: none;
+    transform: scale(1.04);
 }
-
-
-/* =========================================================
-   WELCOME TEXT
-   ========================================================= */
 
 body.login h1::after {
-    content: "Welcome back";
-
+    content: "Sign in to your account";
     display: block;
-
-    margin: 0;
-
+    margin-top: 6px;
     color: var(--plc-text);
-
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
-
-    line-height: 1.3;
-
-    letter-spacing: -0.4px;
+    letter-spacing: -0.02em;
 }
 
-
-/* =========================================================
-   LOGIN FORM
-   ========================================================= */
-
+/* Form Structural Clean Up */
 body.login #login form {
     margin: 0 !important;
     padding: 0 !important;
-
     background: transparent !important;
-
-    border: 0 !important;
-
+    border: none !important;
     box-shadow: none !important;
 }
 
-
-/* =========================================================
-   NOTICE / ERROR
-   ========================================================= */
-
-body.login #login .message,
-body.login #login #login_error {
-    margin: 0 0 20px;
-    padding: 12px 14px;
-
-    background: rgba(255, 255, 255, 0.34);
-
-    border: 1px solid rgba(255, 255, 255, 0.52);
-    border-left: 3px solid var(--plc-primary);
-
-    border-radius: 10px;
-
-    color: #475569;
-
-    font-size: 13px;
-    line-height: 1.5;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.35);
-}
-
-
-/* =========================================================
-   LABELS
-   ========================================================= */
-
+/* Labels */
 body.login #login label {
     display: block;
-
-    margin: 0 0 7px;
-    padding: 0;
-
+    margin-bottom: 8px;
     color: var(--plc-text);
-
     font-size: 13px;
     font-weight: 600;
-
-    line-height: 1.4;
+    letter-spacing: -0.01em;
 }
 
-
-/* =========================================================
-   ALL TEXT/PASSWORD INPUTS
-   ========================================================= */
-
+/* Inputs */
 body.login #login form .input,
 body.login #login input[type="text"],
 body.login #login input[type="password"] {
     display: block !important;
-
     width: 100% !important;
-    max-width: 100% !important;
-
     height: 50px !important;
-    min-height: 50px !important;
-
-    margin: 0 0 18px !important;
-    padding: 14px 16px !important;
-
-    box-sizing: border-box !important;
-
+    margin-bottom: 20px !important;
+    padding: 0 16px !important;
     background: var(--plc-input-bg) !important;
-
     border: 1px solid var(--plc-input-border) !important;
-    border-radius: 11px !important;
-
+    border-radius: var(--plc-radius-md) !important;
     color: var(--plc-text) !important;
-
     font-family: inherit !important;
     font-size: 14px !important;
-    font-weight: 400 !important;
-
-    line-height: normal !important;
-
     outline: none !important;
-
-    box-shadow:
-        inset 0 1px 2px rgba(15, 23, 42, 0.04) !important;
-
-    transition:
-        border-color 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+    transition: all 0.25s ease !important;
 }
-
-
-/* =========================================================
-   INPUT PLACEHOLDER
-   ========================================================= */
-
-body.login #login .input::placeholder {
-    color: #94a3b8;
-    opacity: 1;
-}
-
-
-/* =========================================================
-   INPUT HOVER
-   ========================================================= */
-
-body.login #login form .input:hover,
-body.login #login input[type="text"]:hover,
-body.login #login input[type="password"]:hover {
-    border-color: rgba(100, 116, 139, 0.45) !important;
-
-    background: rgba(255, 255, 255, 0.68) !important;
-}
-
-
-/* =========================================================
-   INPUT FOCUS
-   ========================================================= */
 
 body.login #login form .input:focus,
 body.login #login input[type="text"]:focus,
 body.login #login input[type="password"]:focus {
-    background: rgba(255, 255, 255, 0.80) !important;
-
+    background: rgba(255, 255, 255, 0.9) !important;
     border-color: var(--plc-primary) !important;
-
-    outline: none !important;
-
-    box-shadow:
-        0 0 0 3px rgba(37, 99, 235, 0.10),
-        0 4px 14px rgba(37, 99, 235, 0.08) !important;
+    box-shadow: 0 0 0 4px var(--plc-glow), 0 4px 12px rgba(0, 0, 0, 0.05) !important;
 }
 
-
-/* =========================================================
-   PASSWORD WRAPPER
-   ========================================================= */
-
+/* Password Eye Button Fix */
 body.login #login .wp-pwd {
     position: relative !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
 }
-
-
-/* =========================================================
-   PASSWORD INPUT
-   ========================================================= */
 
 body.login #login .wp-pwd .input {
-    width: 100% !important;
-
-    padding-right: 50px !important;
-
-    margin-bottom: 18px !important;
+    padding-right: 48px !important;
 }
-
-
-/* =========================================================
-   PASSWORD EYE BUTTON
-   ========================================================= */
 
 body.login #login .wp-pwd .wp-hide-pw {
     position: absolute !important;
-
-    top: 4px !important;
+    top: 0 !important;
     right: 4px !important;
-
+    height: 50px !important;
     width: 42px !important;
-    height: 42px !important;
-
-    min-width: 42px !important;
-    min-height: 42px !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     background: transparent !important;
-
-    border: 0 !important;
-    border-radius: 8px !important;
-
-    color: var(--plc-primary) !important;
-
+    border: none !important;
+    color: var(--plc-muted) !important;
+    cursor: pointer !important;
     box-shadow: none !important;
-
-    cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease !important;
 }
-
 
 body.login #login .wp-pwd .wp-hide-pw:hover {
-    background: rgba(37, 99, 235, 0.08) !important;
-
-    color: var(--plc-primary-hover) !important;
+    color: var(--plc-primary) !important;
 }
 
-
-/* =========================================================
-   REMEMBER ME
-   ========================================================= */
-
+/* Checkbox Modernization */
 body.login #login .forgetmenot {
     float: none !important;
-
-    margin: 0 0 20px !important;
-    padding: 0 !important;
+    margin-bottom: 24px !important;
 }
-
 
 body.login #login .forgetmenot label {
     display: flex !important;
-
-    align-items: center;
-
-    gap: 8px;
-
+    align-items: center !important;
+    gap: 10px;
     margin: 0 !important;
-    padding: 0 !important;
-
     color: var(--plc-muted);
-
     font-size: 13px !important;
-    font-weight: 400 !important;
-
-    line-height: 1.4;
+    font-weight: 500 !important;
+    cursor: pointer;
 }
-
-
-/* =========================================================
-   CHECKBOX
-   ========================================================= */
 
 body.login #login .forgetmenot input[type="checkbox"] {
-    flex: 0 0 auto;
-
-    width: 16px !important;
-    height: 16px !important;
-
-    min-width: 16px;
-    min-height: 16px;
-
+    width: 18px !important;
+    height: 18px !important;
     margin: 0 !important;
-
     accent-color: var(--plc-primary);
-
+    border-radius: 6px;
     cursor: pointer;
 }
 
-
-/* =========================================================
-   LOGIN BUTTON WRAPPER
-   ========================================================= */
-
-body.login #login .submit {
-    margin: 0 !important;
-    padding: 0 !important;
-
-    background: transparent !important;
-}
-
-
-/* =========================================================
-   LOGIN BUTTON
-   ========================================================= */
-
+/* Submit Button */
 body.login #login .button-primary {
     display: block !important;
-
     width: 100% !important;
     height: 50px !important;
-    min-height: 50px !important;
-
-    margin: 0 !important;
-    padding: 0 18px !important;
-
-    box-sizing: border-box !important;
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #3b82f6
-        ) !important;
-
-    border: 1px solid rgba(255, 255, 255, 0.20) !important;
-    border-radius: 11px !important;
-
+    background: linear-gradient(135deg, var(--plc-primary), var(--plc-primary-hover)) !important;
+    border: none !important;
+    border-radius: var(--plc-radius-md) !important;
     color: #ffffff !important;
-
     font-family: inherit !important;
-    font-size: 14px !important;
+    font-size: 15px !important;
     font-weight: 600 !important;
-
-    line-height: 48px !important;
-
-    text-align: center;
-
+    line-height: 50px !important;
     text-shadow: none !important;
-
     cursor: pointer;
-
-    box-shadow:
-        0 8px 20px rgba(37, 99, 235, 0.22) !important;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease !important;
+    box-shadow: 0 8px 20px var(--plc-glow) !important;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 
-
-/* =========================================================
-   BUTTON HOVER
-   ========================================================= */
-
-body.login #login .button-primary:hover,
-body.login #login .button-primary:focus {
-    background:
-        linear-gradient(
-            135deg,
-            #1d4ed8,
-            #2563eb
-        ) !important;
-
-    border-color: rgba(255, 255, 255, 0.25) !important;
-
-    color: #ffffff !important;
-
-    transform: translateY(-1px);
-
-    box-shadow:
-        0 12px 24px rgba(37, 99, 235, 0.28) !important;
-
-    outline: none !important;
+body.login #login .button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px var(--plc-glow) !important;
 }
-
-
-/* =========================================================
-   BUTTON ACTIVE
-   ========================================================= */
 
 body.login #login .button-primary:active {
     transform: translateY(0);
-
-    box-shadow:
-        0 5px 12px rgba(37, 99, 235, 0.18) !important;
 }
 
-
-/* =========================================================
-   LOST PASSWORD
-   ========================================================= */
-
-body.login #login #nav {
-    margin: 17px 0 0 !important;
-    padding: 0 !important;
-
-    text-align: center;
+/* Secondary Links */
+body.login #nav, body.login #backtoblog {
+    margin-top: 16px !important;
+    text-align: center !important;
 }
 
+body.login #nav a, body.login #backtoblog a {
+    color: var(--plc-muted) !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+}
 
-body.login #login #nav a {
+body.login #nav a:hover, body.login #backtoblog a:hover {
     color: var(--plc-primary) !important;
-
-    font-size: 13px;
-    font-weight: 500;
-
-    text-decoration: none;
-
-    transition: color 0.2s ease;
-}
-
-
-body.login #login #nav a:hover {
-    color: var(--plc-primary-hover) !important;
-
-    text-decoration: none;
-}
-
-
-/* =========================================================
-   BACK TO WEBSITE
-   ========================================================= */
-
-body.login #login #backtoblog {
-    margin: 10px 0 0 !important;
-    padding: 0 !important;
-
-    text-align: center;
-}
-
-
-body.login #login #backtoblog a {
-    color: var(--plc-muted) !important;
-
-    font-size: 13px;
-    font-weight: 500;
-
-    text-decoration: none;
-
-    transition: color 0.2s ease;
-}
-
-
-body.login #login #backtoblog a:hover {
-    color: var(--plc-text) !important;
-
-    text-decoration: none;
-}
-
-
-/* =========================================================
-   LANGUAGE SWITCHER
-   ========================================================= */
-
-body.login #login .language-switcher {
-    margin: 20px 0 0 !important;
-    padding: 18px 0 0 !important;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.40);
-
-    text-align: center;
-}
-
-
-body.login #login .language-switcher select {
-    min-height: 38px !important;
-
-    margin: 0 !important;
-    padding: 0 12px !important;
-
-    background: rgba(255, 255, 255, 0.38) !important;
-
-    border: 1px solid rgba(255, 255, 255, 0.55) !important;
-    border-radius: 9px !important;
-
-    color: var(--plc-muted) !important;
-
-    font-family: inherit;
-
-    font-size: 13px;
-
-    outline: none;
-
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   LANGUAGE SWITCHER FOCUS
-   ========================================================= */
-
-body.login #login .language-switcher select:focus {
-    border-color: var(--plc-primary) !important;
-
-    outline: none !important;
-
-    box-shadow:
-        0 0 0 3px rgba(37, 99, 235, 0.10) !important;
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-    body.login {
-        padding: 16px 12px;
-    }
-
-
-    body.login #login {
-        width: 100% !important;
-        max-width: 100% !important;
-
-        margin: 20px auto !important;
-
-        padding: 26px 20px 24px !important;
-
-        border-radius: 18px !important;
-    }
-
-
-    body.login h1 {
-        margin-bottom: 24px;
-    }
-
-
-    body.login h1 a {
-        width: 145px;
-        height: 50px;
-
-        margin-bottom: 14px;
-    }
-
-
-    body.login h1::after {
-        font-size: 21px;
-    }
-
-
-    body.login #login form .input,
-    body.login #login input[type="text"],
-    body.login #login input[type="password"] {
-        height: 49px !important;
-        min-height: 49px !important;
-
-        margin-bottom: 16px !important;
-    }
-
-
-    body.login #login .wp-pwd .wp-hide-pw {
-        top: 3px !important;
-    }
-
-
-    body.login #login .button-primary {
-        height: 49px !important;
-        min-height: 49px !important;
-
-        line-height: 47px !important;
-    }
-
-
-    body.login #login #nav {
-        margin-top: 15px !important;
-    }
-
-
-    body.login #login #backtoblog {
-        margin-top: 9px !important;
-    }
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 360px) {
-
-    body.login {
-        padding: 12px 10px;
-    }
-
-
-    body.login #login {
-        margin: 12px auto !important;
-
-        padding: 22px 17px 20px !important;
-
-        border-radius: 16px !important;
-    }
-
-
-    body.login h1 {
-        margin-bottom: 22px;
-    }
-
-
-    body.login h1 a {
-        width: 135px;
-        height: 48px;
-    }
-
-
-    body.login h1::after {
-        font-size: 20px;
-    }
-
-
-    body.login #login label {
-        font-size: 12.5px !important;
-    }
-
-
-    body.login #login form .input,
-    body.login #login input[type="text"],
-    body.login #login input[type="password"] {
-        height: 48px !important;
-        min-height: 48px !important;
-
-        padding-left: 13px !important;
-        padding-right: 13px !important;
-    }
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    body.login *,
-    body.login *::before,
-    body.login *::after {
-        transition: none !important;
-        animation: none !important;
-    }
 }
