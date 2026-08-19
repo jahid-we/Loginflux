@@ -141,12 +141,13 @@ body.login h1 a:hover {
 
 .plc-custom-subtitle {
     display: block;
-    margin-top: 6px;
+    margin: 8px 0 22px 0 !important;
     color: var(--plc-text);
     font-size: 18px;
     font-weight: 700;
     letter-spacing: -0.02em;
     text-align: center;
+    line-height: 1.4;
 }
 
 /* Form Structural Clean Up */
@@ -303,20 +304,33 @@ body.login #nav a:hover, body.login #backtoblog a:hover {
 /* WordPress Notice / Error Box */
 body.login #login_error,
 body.login .message,
-body.login .notice {
-    background: rgba(255, 255, 255, 0.85) !important;
+body.login .notice,
+body.login p.message,
+body.login .success {
+    background: rgba(255, 255, 255, 0.9) !important;
     border-left: 4px solid var(--plc-primary) !important;
     border-radius: var(--plc-radius-md) !important;
     color: var(--plc-text) !important;
-    font-size: 13px !important;
-    padding: 12px 16px !important;
-    margin-bottom: 20px !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
-    backdrop-filter: blur(10px);
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    padding: 16px 20px !important;
+    margin: 16px 0 24px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 body.login #login_error {
     border-left-color: #ef4444 !important;
+}
+
+body.login #login_error p,
+body.login .message p,
+body.login .notice p {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: inherit !important;
 }
 
 /* Responsive adjustments */
