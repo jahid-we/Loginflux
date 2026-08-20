@@ -3,7 +3,7 @@ Contributors: jahid-we
 Donate Link: https://buymeacoffee.com/jahid.hasan
 Author URI: https://github.com/jahid-we
 Plugin URI: https://wordpress.org/plugins/search/pro_login_customizer/
-Tags: login, custom login, login page, branding, aurora background, glassmorphism, customizer
+Tags: login, custom login, login page, aurora background, glassmorphism
 Requires at least: 6.0
 Tested up to: 7.1
 Stable tag: 1.0.0
@@ -11,7 +11,7 @@ Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Transform your WordPress login screen with fluid animated Aurora gradient backgrounds, modern glassmorphism cards, custom branding, and responsive styling.
+Transform your WordPress login page with animated Aurora backgrounds, glassmorphism cards, custom branding, colors, and responsive styling.
 
 == Description ==
 

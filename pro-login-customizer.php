@@ -29,18 +29,6 @@ define( 'PLC_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PLC_BASENAME', plugin_basename( __FILE__ ) );
 
 /**
- * Load Plugin Text Domain for Internationalization
- */
-function plc_load_textdomain() {
-    load_plugin_textdomain(
-        'pro-login-customizer',
-        false,
-        dirname( PLC_BASENAME ) . '/languages'
-    );
-}
-add_action( 'plugins_loaded', 'plc_load_textdomain' );
-
-/**
  * Get Default Plugin Settings
  *
  * @return array
