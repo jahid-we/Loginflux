@@ -1,8 +1,11 @@
 === Pro Login Customizer ===
 Contributors: jahid-we
+Donate Link: https://buymeacoffee.com/jahid.hasan
+Author URI: https://github.com/jahid-we
+Plugin URI: https://wordpress.org/plugins/search/pro_login_customizer/
 Tags: login, custom login, login page, branding, aurora background, glassmorphism, customizer
 Requires at least: 6.0
-Tested up to: 6.7
+Tested up to: 7.1
 Stable tag: 1.0.0
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -29,10 +32,14 @@ Featuring a built-in animated **Aurora Flow gradient engine** and ultra-sleek **
 
 == Installation ==
 
-1. Upload the plugin folder to the `/wp-content/plugins/pro-login-customizer` directory, or install via the WordPress Plugins menu.
+1. Upload the plugin folder to the `/wp-content/plugins/pro_login_customizer` directory, or install via the WordPress Plugins menu.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Go to **Login Page** in the WordPress admin sidebar to customize your branding, animated aurora background, and colors.
 4. Save your changes and preview your new login page!
+
+== Need Help? ==
+ * [Linkedin](linkedin.com/in/jahid-hasan-6891123a8)
+ * [About Author](https://github.com/jahid-we)
 
 == Frequently Asked Questions ==
 
@@ -46,7 +53,7 @@ Yes! Simply upload or paste a background image URL in the Background tab. The pl
 No. Pro Login Customizer only customizes the front-end presentation and styling of the login screen. It does not alter WordPress core login authentication hooks or password validation.
 
 = Is it translation ready? =
-Yes, the plugin follows WordPress internationalization standards and has the `pro-login-customizer` text domain.
+Yes, the plugin follows WordPress internationalization standards and has the `pro_login_customizer` text domain.
 
 == Screenshots ==
 
