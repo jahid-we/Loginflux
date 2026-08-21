@@ -170,9 +170,55 @@ function plc_sanitize_settings( $input ) {
     $sanitized['border_radius'] = isset( $input['border_radius'] ) ? absint( $input['border_radius'] ) : 24;
 
     // Custom CSS
-    $sanitized['custom_css']    = isset( $input['custom_css'] ) ? wp_strip_all_tags( $input['custom_css'] ) : '';
+    $sanitized['custom_css'] = isset( $input['custom_css'] ) ? plc_sanitize_custom_css( $input['custom_css'] ) : '';
 
     return $sanitized;
+}
+
+/**
+ * Determine whether CSS is safe to place inside an inline style element.
+ *
+ * @param string $css CSS to validate.
+ * @return bool Whether the CSS can be output safely.
+ */
+function plc_is_safe_custom_css( $css ) {
+    return is_string( $css ) && ! preg_match( '#</style\b#i', $css );
+}
+
+/**
+ * Sanitize custom CSS submitted through the settings form.
+ *
+ * Custom CSS is code rather than HTML, so HTML tag stripping would corrupt
+ * valid CSS. Only users with the unfiltered_html capability may save it.
+ *
+ * @param string $css Raw CSS.
+ * @return string Safe CSS, or an empty string when it is not permitted/valid.
+ */
+function plc_sanitize_custom_css( $css ) {
+    $css = is_string( $css ) ? wp_unslash( $css ) : '';
+    $css = wp_check_invalid_utf8( $css );
+
+    if ( ! current_user_can( 'unfiltered_html' ) ) {
+        add_settings_error(
+            'plc_settings',
+            'plc_custom_css_not_allowed',
+            __( 'You are not allowed to save custom CSS.', 'pro-login-customizer' )
+        );
+
+        return '';
+    }
+
+    if ( ! plc_is_safe_custom_css( $css ) ) {
+        add_settings_error(
+            'plc_settings',
+            'plc_invalid_custom_css',
+            __( 'Custom CSS cannot contain a closing style tag.', 'pro-login-customizer' )
+        );
+
+        return '';
+    }
+
+    return trim( $css );
 }
 
 /**
@@ -223,6 +269,8 @@ function plc_admin_page_content() {
     ?>
 
     <div class="wrap plc-admin-wrap">
+
+        <?php settings_errors( 'plc_settings' ); ?>
 
         <!-- Header Banner -->
         <div class="plc-header-banner">
@@ -741,8 +789,8 @@ function plc_login_enqueue_style() {
     }
 
     // Append user custom CSS
-    if ( ! empty( $settings['custom_css'] ) ) {
-        $custom_css .= "\n" . wp_strip_all_tags( $settings['custom_css'] );
+    if ( ! empty( $settings['custom_css'] ) && plc_is_safe_custom_css( $settings['custom_css'] ) ) {
+        $custom_css .= "\n" . $settings['custom_css'];
     }
 
     wp_add_inline_style( 'plc-login-style', $custom_css );
