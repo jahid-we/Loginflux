@@ -67,17 +67,8 @@ function plc_activate() {
         add_option( 'plc_settings', $defaults );
     }
 
-    flush_rewrite_rules();
 }
 register_activation_hook( __FILE__, 'plc_activate' );
-
-/**
- * Plugin Deactivation
- */
-function plc_deactivate() {
-    flush_rewrite_rules();
-}
-register_deactivation_hook( __FILE__, 'plc_deactivate' );
 
 /**
  * Get Plugin Settings merged with defaults
