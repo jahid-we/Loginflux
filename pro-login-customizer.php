@@ -133,6 +133,31 @@ function plc_register_settings() {
 add_action( 'admin_init', 'plc_register_settings' );
 
 /**
+ * Restore all plugin settings to their default values.
+ */
+function plc_reset_settings() {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_die( esc_html__( 'You are not allowed to reset these settings.', 'pro-login-customizer' ) );
+    }
+
+    check_admin_referer( 'plc_reset_settings', 'plc_reset_settings_nonce' );
+
+    update_option( 'plc_settings', plc_get_default_settings() );
+
+    $redirect_url = add_query_arg(
+        [
+            'page'               => 'pro-login-customizer',
+            'plc_settings_reset' => '1',
+        ],
+        admin_url( 'admin.php' )
+    );
+
+    wp_safe_redirect( $redirect_url );
+    exit;
+}
+add_action( 'admin_post_plc_reset_settings', 'plc_reset_settings' );
+
+/**
  * Sanitize Settings
  *
  * @param array $input Raw form input.
@@ -271,6 +296,11 @@ function plc_admin_page_content() {
     <div class="wrap plc-admin-wrap">
 
         <?php settings_errors( 'plc_settings' ); ?>
+        <?php if ( isset( $_GET['plc_settings_reset'] ) && '1' === $_GET['plc_settings_reset'] ) : ?>
+            <div class="notice notice-success is-dismissible">
+                <p><?php esc_html_e( 'Settings have been restored to their default values.', 'pro-login-customizer' ); ?></p>
+            </div>
+        <?php endif; ?>
 
         <!-- Header Banner -->
         <div class="plc-header-banner">
@@ -298,6 +328,7 @@ function plc_admin_page_content() {
             <div class="plc-main-col">
                 <form action="options.php" method="post" id="plc-settings-form">
                     <?php settings_fields( 'plc_settings_group' ); ?>
+                    <?php wp_nonce_field( 'plc_reset_settings', 'plc_reset_settings_nonce' ); ?>
 
                     <div class="plc-main-card">
                         <!-- Navigation Tabs -->
@@ -432,6 +463,7 @@ function plc_admin_page_content() {
                                 <div class="plc-section-header" style="margin-top: 20px;">
                                     <h3><?php esc_html_e( 'Aurora Animated Gradient Palette', 'pro-login-customizer' ); ?></h3>
                                     <p><?php esc_html_e( 'Customize the 4 harmonic color stops for the fluid background animation.', 'pro-login-customizer' ); ?></p>
+                                    <p class="plc-aurora-help-text"><?php esc_html_e( 'To use the animated Aurora gradient, leave the Background Image field empty. A background image takes precedence over the animation.', 'pro-login-customizer' ); ?></p>
                                 </div>
 
                                 <div class="plc-form-row">
@@ -606,9 +638,20 @@ function plc_admin_page_content() {
 
                         <!-- Submit Bar -->
                         <div class="plc-submit-bar">
-                            <?php submit_button( __( 'Save All Changes', 'pro-login-customizer' ), 'primary', 'submit', false ); ?>
-                            <a href="<?php echo esc_url( $login_url ); ?>" target="_blank" class="button button-secondary">
-                                <span class="dashicons dashicons-visibility" style="margin-top: 4px;"></span>
+                            <div class="plc-settings-actions">
+                                <?php submit_button( __( 'Save All Changes', 'pro-login-customizer' ), 'primary', 'submit', false ); ?>
+                                <button
+                                    type="submit"
+                                    name="action"
+                                    value="plc_reset_settings"
+                                    formaction="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>"
+                                    formmethod="post"
+                                    class="button plc-reset-settings-button"
+                                    onclick="return confirm('<?php echo esc_js( __( 'Restore every setting to its default value? This cannot be undone.', 'pro-login-customizer' ) ); ?>');"
+                                ><?php esc_html_e( 'Reset to Defaults', 'pro-login-customizer' ); ?></button>
+                            </div>
+                            <a href="<?php echo esc_url( $login_url ); ?>" target="_blank" class="button button-secondary plc-test-login-button">
+                                <span class="dashicons dashicons-visibility" aria-hidden="true"></span>
                                 <?php esc_html_e( 'Test Login Screen', 'pro-login-customizer' ); ?>
                             </a>
                         </div>

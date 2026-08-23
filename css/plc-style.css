@@ -199,6 +199,16 @@ body.login #login input[type="email"]:focus {
     box-shadow: 0 0 0 4px var(--plc-glow), 0 4px 12px rgba(0, 0, 0, 0.05) !important;
 }
 
+body.login #loginform > p,
+body.login #loginform > .user-pass-wrap {
+    padding: 0 4px;
+}
+body.login #loginform > p #wp-submit{
+    padding: 0px;
+    overflow: hidden;
+    border-radius: 14px !important;
+}
+
 /* Password Visibility Toggle */
 body.login #login .wp-pwd {
     position: relative !important;
@@ -340,3 +350,4 @@ body.login .notice p {
         margin: 15px 12px;
     }
 }
+

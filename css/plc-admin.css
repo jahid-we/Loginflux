@@ -151,6 +151,17 @@
     color: #4f46e5;
 }
 
+.plc-nav-tab:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.plc-nav-tab:focus-visible {
+    outline: 2px solid #4f46e5;
+    outline-offset: -4px;
+    border-radius: 4px;
+}
+
 .plc-nav-tab.active {
     color: #4f46e5;
     border-bottom-color: #4f46e5;
@@ -184,6 +195,12 @@
     margin: 0;
     color: #64748b;
     font-size: 13px;
+}
+
+.plc-section-header .plc-aurora-help-text {
+    margin-top: 6px;
+    color: #1e40af;
+    font-weight: 600;
 }
 
 /* Form Styling */
@@ -332,6 +349,12 @@
     justify-content: space-between;
 }
 
+.plc-settings-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .plc-submit-bar .button-primary {
     background: #4f46e5 !important;
     border-color: #4338ca !important;
@@ -347,6 +370,31 @@
 .plc-submit-bar .button-primary:hover {
     background: #4338ca !important;
     transform: translateY(-1px);
+}
+
+.plc-reset-settings-button {
+    border-color: #dc2626 !important;
+    color: #b91c1c !important;
+}
+
+.plc-reset-settings-button:hover {
+    border-color: #b91c1c !important;
+    background: #fef2f2 !important;
+    color: #991b1b !important;
+}
+
+.plc-test-login-button {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+}
+
+.plc-test-login-button .dashicons {
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    line-height: 20px;
 }
 
 /* Right Sidebar */
