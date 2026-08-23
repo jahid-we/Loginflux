@@ -335,27 +335,27 @@ function plc_admin_page_content() {
 
                     <div class="plc-main-card">
                         <!-- Navigation Tabs -->
-                        <div class="plc-nav-tabs">
-                            <a href="#branding" class="plc-nav-tab active" data-tab="branding">
+                        <div class="plc-nav-tabs" role="tablist" aria-label="<?php esc_attr_e( 'Login customizer sections', 'pro-login-customizer' ); ?>">
+                            <a href="#branding" class="plc-nav-tab active" id="plc-nav-branding" data-tab="branding" role="tab" aria-controls="plc-tab-branding" aria-selected="true" tabindex="0">
                                 <span class="dashicons dashicons-art"></span>
                                 <?php esc_html_e( 'Logo & Branding', 'pro-login-customizer' ); ?>
                             </a>
-                            <a href="#background" class="plc-nav-tab" data-tab="background">
+                            <a href="#background" class="plc-nav-tab" id="plc-nav-background" data-tab="background" role="tab" aria-controls="plc-tab-background" aria-selected="false" tabindex="-1">
                                 <span class="dashicons dashicons-format-image"></span>
                                 <?php esc_html_e( 'Background & Aurora', 'pro-login-customizer' ); ?>
                             </a>
-                            <a href="#card-colors" class="plc-nav-tab" data-tab="card-colors">
+                            <a href="#card-colors" class="plc-nav-tab" id="plc-nav-card-colors" data-tab="card-colors" role="tab" aria-controls="plc-tab-card-colors" aria-selected="false" tabindex="-1">
                                 <span class="dashicons dashicons-admin-appearance"></span>
                                 <?php esc_html_e( 'Form & Colors', 'pro-login-customizer' ); ?>
                             </a>
-                            <a href="#custom-css" class="plc-nav-tab" data-tab="custom-css">
+                            <a href="#custom-css" class="plc-nav-tab" id="plc-nav-custom-css" data-tab="custom-css" role="tab" aria-controls="plc-tab-custom-css" aria-selected="false" tabindex="-1">
                                 <span class="dashicons dashicons-editor-code"></span>
                                 <?php esc_html_e( 'Custom CSS', 'pro-login-customizer' ); ?>
                             </a>
                         </div>
 
                         <!-- Tab 1: Logo & Branding -->
-                        <div class="plc-tab-content active" id="plc-tab-branding">
+                        <div class="plc-tab-content active" id="plc-tab-branding" role="tabpanel" aria-labelledby="plc-nav-branding" aria-hidden="false" tabindex="0">
                             <div class="plc-section-header">
                                 <h3><?php esc_html_e( 'Logo & Header Settings', 'pro-login-customizer' ); ?></h3>
                                 <p><?php esc_html_e( 'Upload your custom brand logo and set dimensions.', 'pro-login-customizer' ); ?></p>
@@ -384,7 +384,7 @@ function plc_admin_page_content() {
                                 <p class="description"><?php esc_html_e( 'Recommended format: Transparent PNG or SVG.', 'pro-login-customizer' ); ?></p>
                             </div>
 
-                            <div class="plc-form-row" style="display: flex; gap: 20px; max-width: 500px;">
+                            <div class="plc-form-row plc-inline-fields">
                                 <div style="flex: 1;">
                                     <label for="plc_logo_width"><?php esc_html_e( 'Logo Width (px)', 'pro-login-customizer' ); ?></label>
                                     <input
@@ -423,7 +423,7 @@ function plc_admin_page_content() {
                         </div>
 
                         <!-- Tab 2: Background & Aurora Animation -->
-                        <div class="plc-tab-content" id="plc-tab-background">
+                        <div class="plc-tab-content" id="plc-tab-background" role="tabpanel" aria-labelledby="plc-nav-background" aria-hidden="true" tabindex="0">
                             <div class="plc-section-header">
                                 <h3><?php esc_html_e( 'Background & Aurora Flow Gradient', 'pro-login-customizer' ); ?></h3>
                                 <p><?php esc_html_e( 'Configure your login page background image or dynamic animated Aurora gradient.', 'pro-login-customizer' ); ?></p>
@@ -541,7 +541,7 @@ function plc_admin_page_content() {
                         </div>
 
                         <!-- Tab 3: Form & Colors -->
-                        <div class="plc-tab-content" id="plc-tab-card-colors">
+                        <div class="plc-tab-content" id="plc-tab-card-colors" role="tabpanel" aria-labelledby="plc-nav-card-colors" aria-hidden="true" tabindex="0">
                             <div class="plc-section-header">
                                 <h3><?php esc_html_e( 'Form Colors & Glass Styling', 'pro-login-customizer' ); ?></h3>
                                 <p><?php esc_html_e( 'Control button highlights, text colors, and glassmorphism container parameters.', 'pro-login-customizer' ); ?></p>
@@ -596,7 +596,7 @@ function plc_admin_page_content() {
                                 <p class="description"><?php esc_html_e( 'Supports CSS RGBA transparent values (e.g. rgba(255, 255, 255, 0.45) for frosted glass).', 'pro-login-customizer' ); ?></p>
                             </div>
 
-                            <div class="plc-form-row" style="display: flex; gap: 20px; max-width: 500px;">
+                            <div class="plc-form-row plc-inline-fields">
                                 <div style="flex: 1;">
                                     <label for="plc_card_blur"><?php esc_html_e( 'Backdrop Blur (px)', 'pro-login-customizer' ); ?></label>
                                     <input
@@ -623,7 +623,7 @@ function plc_admin_page_content() {
                         </div>
 
                         <!-- Tab 4: Custom CSS -->
-                        <div class="plc-tab-content" id="plc-tab-custom-css">
+                        <div class="plc-tab-content" id="plc-tab-custom-css" role="tabpanel" aria-labelledby="plc-nav-custom-css" aria-hidden="true" tabindex="0">
                             <div class="plc-section-header">
                                 <h3><?php esc_html_e( 'Custom CSS', 'pro-login-customizer' ); ?></h3>
                                 <p><?php esc_html_e( 'Add any additional custom CSS rules to fine-tune your login screen.', 'pro-login-customizer' ); ?></p>

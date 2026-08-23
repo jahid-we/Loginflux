@@ -14,26 +14,59 @@
         }
 
         // Settings Tabs Navigation
-        $('.plc-nav-tab').on('click', function(e) {
-            e.preventDefault();
-            var targetTab = $(this).data('tab');
+        function activateTab(tab) {
+            var targetTab = $(tab);
+            var targetId = targetTab.data('tab');
 
-            $('.plc-nav-tab').removeClass('active');
-            $(this).addClass('active');
+            $('.plc-nav-tab')
+                .removeClass('active')
+                .attr({ 'aria-selected': 'false', tabindex: '-1' });
+            targetTab
+                .addClass('active')
+                .attr({ 'aria-selected': 'true', tabindex: '0' });
 
-            $('.plc-tab-content').removeClass('active');
-            $('#plc-tab-' + targetTab).addClass('active');
+            $('.plc-tab-content')
+                .removeClass('active')
+                .attr('aria-hidden', 'true');
+            $('#plc-tab-' + targetId)
+                .addClass('active')
+                .attr('aria-hidden', 'false');
 
             if (window.localStorage) {
-                localStorage.setItem('plc_active_tab', targetTab);
+                localStorage.setItem('plc_active_tab', targetId);
             }
+        }
+
+        $('.plc-nav-tab').on('click', function(e) {
+            e.preventDefault();
+            activateTab(this);
+        }).on('keydown', function(e) {
+            var tabs = $('.plc-nav-tab');
+            var currentIndex = tabs.index(this);
+            var nextIndex;
+
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                nextIndex = (currentIndex + 1) % tabs.length;
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+            } else if (e.key === 'Home') {
+                nextIndex = 0;
+            } else if (e.key === 'End') {
+                nextIndex = tabs.length - 1;
+            } else {
+                return;
+            }
+
+            e.preventDefault();
+            tabs.eq(nextIndex).focus();
+            activateTab(tabs.eq(nextIndex));
         });
 
         // Restore active tab
         if (window.localStorage) {
             var activeTab = localStorage.getItem('plc_active_tab');
             if (activeTab && $('#plc-tab-' + activeTab).length) {
-                $('.plc-nav-tab[data-tab="' + activeTab + '"]').trigger('click');
+                activateTab($('.plc-nav-tab[data-tab="' + activeTab + '"]'));
             }
         }
 
