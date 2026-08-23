@@ -296,7 +296,10 @@ function plc_admin_page_content() {
     <div class="wrap plc-admin-wrap">
 
         <?php settings_errors( 'plc_settings' ); ?>
-        <?php if ( isset( $_GET['plc_settings_reset'] ) && '1' === $_GET['plc_settings_reset'] ) : ?>
+        <?php
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reading query parameter for flash notice display only.
+        if ( isset( $_GET['plc_settings_reset'] ) && '1' === sanitize_text_field( wp_unslash( $_GET['plc_settings_reset'] ) ) ) :
+            ?>
             <div class="notice notice-success is-dismissible">
                 <p><?php esc_html_e( 'Settings have been restored to their default values.', 'pro-login-customizer' ); ?></p>
             </div>
