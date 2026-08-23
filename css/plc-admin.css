@@ -1,43 +1,72 @@
 /* =========================================================
-   PRO LOGIN CUSTOMIZER - Admin Settings UI
+   PRO LOGIN CUSTOMIZER - Premium Admin Settings UI
    ========================================================= */
 
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
 .plc-admin-wrap {
-    max-width: 1240px;
-    margin: 20px 20px 0 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    width: auto;
+    max-width: 100%;
+    margin: 20px 20px 20px 0;
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1e293b;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.plc-admin-wrap *,
+.plc-admin-wrap *::before,
+.plc-admin-wrap *::after {
+    box-sizing: border-box;
 }
 
 /* Header Banner */
 .plc-header-banner {
+    position: relative;
+    overflow: hidden;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #312e81 100%);
+    background: linear-gradient(135deg, #090d16 0%, #0f172a 45%, #1e1b4b 100%);
     color: #ffffff;
-    padding: 24px 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.2);
-    margin-bottom: 25px;
+    padding: 28px 34px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px -6px rgba(15, 23, 42, 0.25), 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.plc-header-banner::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .plc-header-banner .plc-header-title {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
 }
 
 .plc-header-banner .plc-logo-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
-    background: rgba(99, 102, 241, 0.25);
-    border: 1px solid rgba(99, 102, 241, 0.4);
-    border-radius: 10px;
-    font-size: 22px;
-    color: #818cf8;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(79, 70, 229, 0.15));
+    border: 1px solid rgba(129, 140, 248, 0.4);
+    border-radius: 12px;
+    font-size: 24px;
+    color: #a5b4fc;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.25);
 }
 
 .plc-header-banner h1 {
@@ -45,60 +74,70 @@
     font-size: 22px;
     font-weight: 700;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.25;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    letter-spacing: -0.02em;
 }
 
 .plc-header-banner .plc-badge {
-    background: #4f46e5;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
     color: #ffffff;
     font-size: 11px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 6px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .plc-header-banner p {
-    margin: 4px 0 0;
+    margin: 6px 0 0;
     color: #94a3b8;
-    font-size: 13px;
+    font-size: 13.5px;
+    font-weight: 400;
 }
 
 .plc-header-actions {
     display: flex;
-    gap: 10px;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
 }
 
 .plc-btn-preview {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.22);
     color: #ffffff !important;
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 9px 18px;
+    border-radius: 10px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 13px;
-    transition: all 0.2s ease;
+    font-size: 13.5px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.25s ease;
 }
 
 .plc-btn-preview:hover {
     background: #ffffff;
     color: #0f172a !important;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.25);
 }
 
 /* Layout Grid */
 .plc-dashboard-grid {
     display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 25px;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 26px;
     align-items: start;
 }
 
@@ -112,43 +151,52 @@
 .plc-main-card {
     background: #ffffff;
     border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
     overflow: hidden;
 }
 
-/* Tab Navigation */
+/* Tab Navigation - Modern Segmented Control Style */
 .plc-nav-tabs {
     display: flex;
+    flex-wrap: wrap;
     background: #f8fafc;
     border-bottom: 1px solid #e2e8f0;
-    padding: 0 10px;
-    gap: 4px;
-    overflow-x: auto;
+    padding: 10px 14px;
+    gap: 8px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.plc-nav-tabs::-webkit-scrollbar {
+    display: none;
 }
 
 .plc-nav-tab {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 14px 18px;
+    padding: 10px 18px;
     color: #64748b;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 600;
-    border-bottom: 2px solid transparent;
+    border-radius: 10px;
+    border: 1px solid transparent;
     transition: all 0.2s ease;
     white-space: nowrap;
 }
 
 .plc-nav-tab .dashicons {
-    font-size: 17px;
-    width: 17px;
-    height: 17px;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    transition: color 0.2s ease;
 }
 
 .plc-nav-tab:hover {
     color: #4f46e5;
+    background: rgba(241, 245, 249, 0.8);
 }
 
 .plc-nav-tab:focus {
@@ -158,74 +206,98 @@
 
 .plc-nav-tab:focus-visible {
     outline: 2px solid #4f46e5;
-    outline-offset: -4px;
-    border-radius: 4px;
+    outline-offset: 2px;
 }
 
 .plc-nav-tab.active {
     color: #4f46e5;
-    border-bottom-color: #4f46e5;
     background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
+.plc-nav-tab.active .dashicons {
+    color: #4f46e5;
 }
 
 /* Tab Content */
 .plc-tab-content {
     display: none;
-    padding: 24px 30px;
+    padding: 28px 34px;
 }
 
 .plc-tab-content.active {
     display: block;
+    animation: plc-fade-in 0.25s ease both;
+}
+
+@keyframes plc-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .plc-section-header {
-    margin-bottom: 20px;
-    padding-bottom: 12px;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
     border-bottom: 1px solid #f1f5f9;
 }
 
 .plc-section-header h3 {
     margin: 0 0 4px;
-    font-size: 16px;
+    font-size: 16.5px;
     font-weight: 700;
     color: #0f172a;
+    letter-spacing: -0.01em;
 }
 
 .plc-section-header p {
     margin: 0;
     color: #64748b;
-    font-size: 13px;
+    font-size: 13.5px;
+    line-height: 1.45;
 }
 
 .plc-section-header .plc-aurora-help-text {
-    margin-top: 6px;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: #eff6ff;
+    border-left: 3px solid #3b82f6;
+    border-radius: 6px;
     color: #1e40af;
-    font-weight: 600;
+    font-size: 12.5px;
+    font-weight: 500;
 }
 
 /* Form Styling */
 .plc-form-row {
-    margin-bottom: 22px;
+    margin-bottom: 24px;
 }
 
 .plc-form-row > label {
     display: block;
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 600;
     color: #1e293b;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
 }
 
 .plc-form-row .description {
-    margin-top: 5px;
+    margin-top: 6px;
     color: #64748b;
-    font-size: 12px;
-    line-height: 1.4;
+    font-size: 12.5px;
+    line-height: 1.45;
 }
 
 .plc-input-group {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     align-items: center;
 }
 
@@ -236,24 +308,61 @@
 .plc-form-row textarea {
     width: 100%;
     max-width: 500px;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid #cbd5e1;
-    padding: 8px 12px;
-    font-size: 13px;
-    transition: border-color 0.2s;
+    background: #f8fafc;
+    padding: 9px 14px;
+    font-size: 13.5px;
+    color: #0f172a;
+    font-family: inherit;
+    transition: all 0.2s ease;
 }
 
 .plc-form-row textarea {
-    font-family: monospace;
-    font-size: 12px;
+    font-family: 'JetBrains Mono', Consolas, Monaco, monospace;
+    font-size: 12.5px;
+    line-height: 1.6;
+    background: #0f172a;
+    color: #f8fafc;
+    border-color: #334155;
 }
 
 .plc-input-group input:focus,
 .plc-form-row input:focus,
 .plc-form-row textarea:focus {
-    border-color: #4f46e5;
-    box-shadow: 0 0 0 1px #4f46e5;
+    background: #ffffff;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
     outline: none;
+}
+
+.plc-form-row textarea:focus {
+    background: #0f172a;
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.25);
+}
+
+/* Upload Button */
+.plc-upload-btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px !important;
+    height: auto !important;
+    border-radius: 8px !important;
+    border: 1px solid #cbd5e1 !important;
+    background: #ffffff !important;
+    color: #334155 !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    transition: all 0.2s ease !important;
+}
+
+.plc-upload-btn:hover {
+    background: #f1f5f9 !important;
+    border-color: #94a3b8 !important;
+    color: #0f172a !important;
+    transform: translateY(-1px);
 }
 
 /* Color Grid */
@@ -261,34 +370,41 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 16px;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .plc-color-item {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    padding: 12px 16px;
+    border-radius: 10px;
+    padding: 14px 18px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.plc-color-item:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .plc-color-item label {
     display: block;
-    font-size: 12px;
+    font-size: 12.5px;
     font-weight: 600;
     color: #334155;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 /* Image Previews */
 .plc-image-preview {
-    margin-top: 10px;
+    margin-top: 12px;
     position: relative;
     display: inline-block;
     max-width: 240px;
-    background: #f1f5f9;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    padding: 6px;
+    background: repeating-conic-gradient(#f1f5f9 0% 25%, #ffffff 0% 50%) 50% / 16px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .plc-image-preview img {
@@ -300,33 +416,40 @@
 
 .plc-image-preview .plc-remove-btn {
     position: absolute;
-    top: -8px;
-    right: -8px;
+    top: -9px;
+    right: -9px;
     background: #ef4444;
     color: #ffffff;
     border-radius: 50%;
-    width: 22px;
-    height: 22px;
-    font-size: 14px;
-    line-height: 22px;
+    width: 24px;
+    height: 24px;
+    font-size: 15px;
+    line-height: 24px;
     text-align: center;
-    border: none;
+    border: 2px solid #ffffff;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 6px rgba(239, 68, 68, 0.4);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.plc-image-preview .plc-remove-btn:hover {
+    background: #dc2626;
+    transform: scale(1.1);
 }
 
 /* Alerts / Notices */
 .plc-notice-box {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
+    gap: 12px;
     background: #eff6ff;
     border-left: 4px solid #3b82f6;
-    border-radius: 6px;
-    padding: 12px 16px;
-    margin-bottom: 20px;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
     color: #1e40af;
-    font-size: 13px;
+    font-size: 13.5px;
+    line-height: 1.45;
 }
 
 .plc-notice-box.warning {
@@ -337,107 +460,156 @@
 
 .plc-notice-box .dashicons {
     margin-top: 2px;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
 }
 
 /* Submit bar */
 .plc-submit-bar {
     background: #f8fafc;
     border-top: 1px solid #e2e8f0;
-    padding: 16px 30px;
+    padding: 18px 34px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
 }
 
 .plc-settings-actions {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .plc-submit-bar .button-primary {
-    background: #4f46e5 !important;
-    border-color: #4338ca !important;
+    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
     color: #ffffff !important;
     font-size: 14px !important;
     font-weight: 600 !important;
-    padding: 6px 24px !important;
-    border-radius: 6px !important;
-    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25) !important;
-    transition: all 0.2s ease !important;
+    padding: 8px 24px !important;
+    border-radius: 8px !important;
+    height: auto !important;
+    line-height: 1.4 !important;
+    box-shadow: 0 4px 14px -1px rgba(79, 70, 229, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 
 .plc-submit-bar .button-primary:hover {
-    background: #4338ca !important;
-    transform: translateY(-1px);
+    background: linear-gradient(135deg, #4338ca 0%, #3730a3 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -1px rgba(79, 70, 229, 0.5) !important;
+}
+
+.plc-submit-bar .button-primary:active {
+    transform: translateY(0);
 }
 
 .plc-reset-settings-button {
-    border-color: #dc2626 !important;
-    color: #b91c1c !important;
+    background: #fef2f2 !important;
+    border: 1px solid #fecaca !important;
+    color: #dc2626 !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    padding: 8px 18px !important;
+    border-radius: 8px !important;
+    height: auto !important;
+    line-height: 1.4 !important;
+    transition: all 0.2s ease !important;
 }
 
 .plc-reset-settings-button:hover {
-    border-color: #b91c1c !important;
-    background: #fef2f2 !important;
-    color: #991b1b !important;
+    border-color: #f87171 !important;
+    background: #fee2e2 !important;
+    color: #b91c1c !important;
+    transform: translateY(-1px);
 }
 
 .plc-test-login-button {
     display: inline-flex !important;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #334155 !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    padding: 8px 18px !important;
+    border-radius: 8px !important;
+    height: auto !important;
+    line-height: 1.4 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.2s ease !important;
+}
+
+.plc-test-login-button:hover {
+    background: #f8fafc !important;
+    border-color: #94a3b8 !important;
+    color: #0f172a !important;
+    transform: translateY(-1px);
 }
 
 .plc-test-login-button .dashicons {
-    flex: 0 0 20px;
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
-    line-height: 20px;
+    flex: 0 0 18px;
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    line-height: 18px;
+    color: #6366f1;
 }
 
 /* Right Sidebar */
 .plc-sidebar-col {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 22px;
 }
 
 .plc-side-widget {
     background: #ffffff;
     border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 .plc-side-widget h4 {
-    margin: 0 0 14px;
-    font-size: 14px;
+    margin: 0 0 16px;
+    font-size: 14.5px;
     font-weight: 700;
     color: #0f172a;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     border-bottom: 1px solid #f1f5f9;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
+    letter-spacing: -0.01em;
 }
 
 .plc-side-widget h4 .dashicons {
     color: #4f46e5;
+    background: #eef2ff;
+    padding: 4px;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .plc-author-card {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
+    gap: 14px;
+    margin-bottom: 16px;
 }
 
 .plc-author-avatar {
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: linear-gradient(135deg, #4f46e5, #06b6d4);
     color: #ffffff;
@@ -446,17 +618,19 @@
     justify-content: center;
     font-size: 20px;
     font-weight: 700;
+    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
+    border: 2px solid #ffffff;
 }
 
 .plc-author-info h5 {
-    margin: 0 0 2px;
-    font-size: 14px;
+    margin: 0 0 3px;
+    font-size: 14.5px;
     font-weight: 700;
     color: #0f172a;
 }
 
 .plc-author-info span {
-    font-size: 12px;
+    font-size: 12.5px;
     color: #64748b;
 }
 
@@ -482,8 +656,8 @@
     text-decoration: none;
     font-size: 13px;
     font-weight: 500;
-    padding: 8px 10px;
-    border-radius: 6px;
+    padding: 10px 12px;
+    border-radius: 8px;
     background: #f8fafc;
     border: 1px solid #f1f5f9;
     transition: all 0.2s ease;
@@ -493,20 +667,21 @@
     background: #eef2ff;
     color: #4f46e5;
     border-color: #c7d2fe;
+    transform: translateX(3px);
 }
 
 .plc-info-list {
     margin: 0;
     padding: 0;
     list-style: none;
-    font-size: 12px;
+    font-size: 13px;
     color: #64748b;
 }
 
 .plc-info-list li {
     display: flex;
     justify-content: space-between;
-    padding: 6px 0;
+    padding: 8px 0;
     border-bottom: 1px solid #f1f5f9;
 }
 
@@ -516,6 +691,7 @@
 
 .plc-info-list strong {
     color: #1e293b;
+    font-weight: 600;
 }
 
 .plc-star-rating {
