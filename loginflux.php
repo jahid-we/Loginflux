@@ -55,7 +55,6 @@ function jzlf_get_default_settings() {
         'card_bg_color'    => 'rgba(255, 255, 255, 0.45)',
         'card_blur'        => '28',
         'border_radius'    => '24',
-        'custom_css'       => '',
     ];
 }
 
@@ -105,35 +104,35 @@ function jzlf_get_settings() {
 }
 
 /**
- * Add Admin Menu
+ * Add Loginflux admin menu.
  */
 function jzlf_add_admin_menu() {
-    add_menu_page(
-        __( 'Loginflux', 'loginflux' ),
-        __( 'Loginflux', 'loginflux' ),
-        'manage_options',
-        'loginflux',
-        'jzlf_admin_page_content',
-        'dashicons-lock',
-        25
-    );
+	add_options_page(
+		__( 'Loginflux', 'loginflux' ),
+		__( 'Loginflux', 'loginflux' ),
+		'manage_options',
+		'loginflux',
+		'jzlf_admin_page_content'
+	);
 }
 add_action( 'admin_menu', 'jzlf_add_admin_menu' );
 
 /**
- * Add Plugin Action Links
+ * Add plugin action links.
  *
  * @param array $links Array of plugin action links.
  * @return array
  */
 function jzlf_action_links( $links ) {
-    $settings_link = sprintf(
-        '<a href="%s">%s</a>',
-        admin_url( 'admin.php?page=loginflux' ),
-        __( 'Settings', 'loginflux' )
-    );
-    array_unshift( $links, $settings_link );
-    return $links;
+	$settings_link = sprintf(
+		'<a href="%s">%s</a>',
+		esc_url( admin_url( 'options-general.php?page=loginflux' ) ),
+		esc_html__( 'Settings', 'loginflux' )
+	);
+
+	array_unshift( $links, $settings_link );
+
+	return $links;
 }
 add_filter( 'plugin_action_links_' . LOGINFLUX_BASENAME, 'jzlf_action_links' );
 
@@ -215,56 +214,7 @@ function jzlf_sanitize_settings( $input ) {
     $sanitized['card_blur']     = isset( $input['card_blur'] ) ? absint( $input['card_blur'] ) : 28;
     $sanitized['border_radius'] = isset( $input['border_radius'] ) ? absint( $input['border_radius'] ) : 24;
 
-    // Custom CSS
-    $sanitized['custom_css'] = isset( $input['custom_css'] ) ? loginflux_sanitize_custom_css( $input['custom_css'] ) : '';
-
     return $sanitized;
-}
-
-/**
- * Determine whether CSS is safe to place inside an inline style element.
- *
- * @param string $css CSS to validate.
- * @return bool Whether the CSS can be output safely.
- */
-function loginflux_is_safe_custom_css( $css ) {
-    return is_string( $css ) && ! preg_match( '#</style\b#i', $css );
-}
-
-/**
- * Sanitize custom CSS submitted through the settings form.
- *
- * Custom CSS is code rather than HTML, so HTML tag stripping would corrupt
- * valid CSS. Only users with the unfiltered_html capability may save it.
- *
- * @param string $css Raw CSS.
- * @return string Safe CSS, or an empty string when it is not permitted/valid.
- */
-function loginflux_sanitize_custom_css( $css ) {
-    $css = is_string( $css ) ? wp_unslash( $css ) : '';
-    $css = wp_check_invalid_utf8( $css );
-
-    if ( ! current_user_can( 'unfiltered_html' ) ) {
-        add_settings_error(
-            'loginflux_settings',
-            'loginflux_custom_css_not_allowed',
-            __( 'You are not allowed to save custom CSS.', 'loginflux' )
-        );
-
-        return '';
-    }
-
-    if ( ! loginflux_is_safe_custom_css( $css ) ) {
-        add_settings_error(
-            'loginflux_settings',
-            'loginflux_invalid_custom_css',
-            __( 'Custom CSS cannot contain a closing style tag.', 'loginflux' )
-        );
-
-        return '';
-    }
-
-    return trim( $css );
 }
 
 /**
@@ -273,7 +223,7 @@ function loginflux_sanitize_custom_css( $css ) {
  * @param string $hook_suffix Current admin page hook.
  */
 function jzlf_admin_enqueue_scripts( $hook_suffix ) {
-    if ( 'toplevel_page_loginflux' !== $hook_suffix ) {
+    if ( 'settings_page_loginflux' !== $hook_suffix ) {
         return;
     }
 
@@ -368,10 +318,6 @@ function jzlf_admin_page_content() {
                             <a href="#card-colors" class="loginflux-nav-tab" id="loginflux-nav-card-colors" data-tab="card-colors" role="tab" aria-controls="loginflux-tab-card-colors" aria-selected="false" tabindex="-1">
                                 <span class="dashicons dashicons-admin-appearance"></span>
                                 <?php esc_html_e( 'Form & Colors', 'loginflux' ); ?>
-                            </a>
-                            <a href="#custom-css" class="loginflux-nav-tab" id="loginflux-nav-custom-css" data-tab="custom-css" role="tab" aria-controls="loginflux-tab-custom-css" aria-selected="false" tabindex="-1">
-                                <span class="dashicons dashicons-editor-code"></span>
-                                <?php esc_html_e( 'Custom CSS', 'loginflux' ); ?>
                             </a>
                         </div>
 
@@ -643,23 +589,6 @@ function jzlf_admin_page_content() {
                             </div>
                         </div>
 
-                        <!-- Tab 4: Custom CSS -->
-                        <div class="loginflux-tab-content" id="loginflux-tab-custom-css" role="tabpanel" aria-labelledby="loginflux-nav-custom-css" aria-hidden="true" tabindex="0">
-                            <div class="loginflux-section-header">
-                                <h3><?php esc_html_e( 'Custom CSS', 'loginflux' ); ?></h3>
-                                <p><?php esc_html_e( 'Add any additional custom CSS rules to fine-tune your login screen.', 'loginflux' ); ?></p>
-                            </div>
-
-                            <div class="loginflux-form-row">
-                                <textarea
-                                    id="loginflux_custom_css"
-                                    name="loginflux_settings[custom_css]"
-                                    rows="10"
-                                    placeholder="/* Add custom CSS rules here */"
-                                ><?php echo esc_textarea( $settings['custom_css'] ); ?></textarea>
-                            </div>
-                        </div>
-
                         <!-- Submit Bar -->
                         <div class="loginflux-submit-bar">
                             <div class="loginflux-settings-actions">
@@ -825,7 +754,7 @@ function jzlf_login_enqueue_style() {
     $card_blur     = ! empty( $settings['card_blur'] ) ? absint( $settings['card_blur'] ) . 'px' : '28px';
     $border_radius = ! empty( $settings['border_radius'] ) ? absint( $settings['border_radius'] ) . 'px' : '24px';
 
-    $custom_css = "
+    $dynamic_css = "
         :root {
             --loginflux-primary: {$primary_color};
             --loginflux-primary-hover: {$hover_color};
@@ -848,19 +777,15 @@ function jzlf_login_enqueue_style() {
     // If background image is present, add variable
     if ( ! empty( $settings['bg_image'] ) ) {
         $bg_img_url = esc_url( $settings['bg_image'] );
-        $custom_css .= "
+        $dynamic_css .= "
             :root {
                 --loginflux-bg-img: url('{$bg_img_url}');
             }
         ";
     }
 
-    // Append user custom CSS
-    if ( ! empty( $settings['custom_css'] ) && loginflux_is_safe_custom_css( $settings['custom_css'] ) ) {
-        $custom_css .= "\n" . $settings['custom_css'];
-    }
 
-    wp_add_inline_style( 'loginflux-login-style', $custom_css );
+    wp_add_inline_style( 'loginflux-login-style', $dynamic_css );
 }
 add_action( 'login_enqueue_scripts', 'jzlf_login_enqueue_style' );
 

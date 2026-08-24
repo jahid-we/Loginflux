@@ -1,5 +1,5 @@
 === Loginflux ===
-Contributors: jahid-we
+Contributors: jahidzendforce
 Donate Link: https://buymeacoffee.com/jahid.hasan
 Author URI: https://github.com/jahid-we
 Plugin URI: https://wordpress.org/plugins/loginflux/
