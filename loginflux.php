@@ -82,7 +82,7 @@ function jzlf_redirect_after_activation() {
 
     delete_option( 'loginflux_activation_redirect' );
 
-    wp_safe_redirect( admin_url( 'admin.php?page=loginflux' ) );
+    wp_safe_redirect( admin_url( 'options-general.php?page=loginflux' ) );
     exit;
 }
 add_action( 'admin_init', 'jzlf_redirect_after_activation' );
