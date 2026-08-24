@@ -2,7 +2,7 @@
 /**
  * Fired when the plugin is uninstalled.
  *
- * @package Pro_Login_Customizer
+ * @package Loginflux
  */
 
 // If uninstall not called from WordPress, then exit.
@@ -10,23 +10,23 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-// Delete settings for the current site.
-delete_option( 'plc_settings' );
+// Delete options for the current site.
+delete_option( 'loginflux_settings' );
+delete_option( 'loginflux_activation_redirect' );
 
-// For multisite, delete settings from all sites.
+// For multisite, delete options from all sites.
 if ( is_multisite() ) {
-
-	$sites = get_sites(
+	$loginflux_sites = get_sites(
 		array(
 			'number' => 0,
 		)
 	);
 
-	foreach ( $sites as $site ) {
+	foreach ( $loginflux_sites as $loginflux_site ) {
+		switch_to_blog( $loginflux_site->blog_id );
 
-		switch_to_blog( $site->blog_id );
-
-		delete_option( 'plc_settings' );
+		delete_option( 'loginflux_settings' );
+		delete_option( 'loginflux_activation_redirect' );
 
 		restore_current_blog();
 	}

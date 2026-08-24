@@ -1,10 +1,10 @@
 /* =========================================================
-   PRO LOGIN CUSTOMIZER - Premium Admin Settings UI
+   LOGINFLUX - Premium Admin Settings UI
    ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
-.plc-admin-wrap {
+.loginflux-admin-wrap {
     width: auto;
     max-width: 100%;
     margin: 20px 20px 20px 0;
@@ -12,31 +12,38 @@
     color: #1e293b;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    --loginflux-ink: #172033;
+    --loginflux-muted: #64748b;
+    --loginflux-line: #e5eaf1;
+    --loginflux-surface: #ffffff;
+    --loginflux-subtle: #f8fafc;
+    --loginflux-accent: #4f46e5;
 }
 
-.plc-admin-wrap *,
-.plc-admin-wrap *::before,
-.plc-admin-wrap *::after {
+.loginflux-admin-wrap *,
+.loginflux-admin-wrap *::before,
+.loginflux-admin-wrap *::after {
     box-sizing: border-box;
 }
 
 /* Header Banner */
-.plc-header-banner {
+.loginflux-header-banner {
     position: relative;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(135deg, #090d16 0%, #0f172a 45%, #1e1b4b 100%);
+    background: linear-gradient(120deg, #111827 0%, #172554 100%);
     color: #ffffff;
-    padding: 28px 34px;
-    border-radius: 16px;
-    box-shadow: 0 12px 30px -6px rgba(15, 23, 42, 0.25), 0 4px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 26px;
+    padding: 24px 28px;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px -14px rgba(15, 23, 42, 0.55), 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 22px;
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.plc-header-banner::after {
+.loginflux-header-banner::after {
     content: "";
     position: absolute;
     top: -50%;
@@ -47,7 +54,7 @@
     pointer-events: none;
 }
 
-.plc-header-banner .plc-header-title {
+.loginflux-header-banner .loginflux-header-title {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -55,7 +62,7 @@
     z-index: 1;
 }
 
-.plc-header-banner .plc-logo-icon {
+.loginflux-header-banner .loginflux-logo-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -69,7 +76,7 @@
     box-shadow: 0 4px 14px rgba(99, 102, 241, 0.25);
 }
 
-.plc-header-banner h1 {
+.loginflux-header-banner h1 {
     color: #ffffff;
     font-size: 22px;
     font-weight: 700;
@@ -81,7 +88,7 @@
     letter-spacing: -0.02em;
 }
 
-.plc-header-banner .plc-badge {
+.loginflux-header-banner .loginflux-badge {
     background: linear-gradient(135deg, #6366f1, #4f46e5);
     color: #ffffff;
     font-size: 11px;
@@ -94,21 +101,21 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.plc-header-banner p {
+.loginflux-header-banner p {
     margin: 6px 0 0;
     color: #94a3b8;
     font-size: 13.5px;
     font-weight: 400;
 }
 
-.plc-header-actions {
+.loginflux-header-actions {
     display: flex;
     gap: 12px;
     position: relative;
     z-index: 1;
 }
 
-.plc-btn-preview {
+.loginflux-btn-preview {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -126,7 +133,7 @@
     transition: all 0.25s ease;
 }
 
-.plc-btn-preview:hover {
+.loginflux-btn-preview:hover {
     background: #ffffff;
     color: #0f172a !important;
     transform: translateY(-2px);
@@ -134,104 +141,104 @@
 }
 
 /* Layout Grid */
-.plc-dashboard-grid {
+.loginflux-dashboard-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 340px;
-    gap: 26px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 22px;
     align-items: start;
 }
 
 @media (max-width: 960px) {
-    .plc-dashboard-grid {
+    .loginflux-dashboard-grid {
         grid-template-columns: 1fr;
     }
 }
 
 /* Left Content / Card */
-.plc-main-card {
+.loginflux-main-card {
     background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+    border: 1px solid var(--loginflux-line);
+    border-radius: 14px;
+    box-shadow: 0 12px 28px -24px rgba(15, 23, 42, 0.38), 0 1px 3px rgba(0, 0, 0, 0.02);
     overflow: hidden;
 }
 
 /* Tab Navigation - Modern Segmented Control Style */
-.plc-nav-tabs {
+.loginflux-nav-tabs {
     display: flex;
     flex-wrap: wrap;
-    background: #f8fafc;
-    border-bottom: 1px solid #e2e8f0;
-    padding: 10px 14px;
-    gap: 8px;
+    background: var(--loginflux-subtle);
+    border-bottom: 1px solid var(--loginflux-line);
+    padding: 8px;
+    gap: 4px;
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
 
-.plc-nav-tabs::-webkit-scrollbar {
+.loginflux-nav-tabs::-webkit-scrollbar {
     display: none;
 }
 
-.plc-nav-tab {
+.loginflux-nav-tab {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 18px;
-    color: #64748b;
+    padding: 11px 12px;
+    color: var(--loginflux-muted);
     text-decoration: none;
     font-size: 13.5px;
     font-weight: 600;
-    border-radius: 10px;
+    border-radius: 8px;
     border: 1px solid transparent;
     transition: all 0.2s ease;
     white-space: nowrap;
 }
 
-.plc-nav-tab .dashicons {
+.loginflux-nav-tab .dashicons {
     font-size: 18px;
     width: 18px;
     height: 18px;
     transition: color 0.2s ease;
 }
 
-.plc-nav-tab:hover {
-    color: #4f46e5;
-    background: rgba(241, 245, 249, 0.8);
+.loginflux-nav-tab:hover {
+    color: var(--loginflux-accent);
+    background: #eef2ff;
 }
 
-.plc-nav-tab:focus {
+.loginflux-nav-tab:focus {
     outline: none;
     box-shadow: none;
 }
 
-.plc-nav-tab:focus-visible {
-    outline: 2px solid #4f46e5;
+.loginflux-nav-tab:focus-visible {
+    outline: 2px solid var(--loginflux-accent);
     outline-offset: 2px;
 }
 
-.plc-nav-tab.active {
-    color: #4f46e5;
+.loginflux-nav-tab.active {
+    color: var(--loginflux-accent);
     background: #ffffff;
-    border-color: #e2e8f0;
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+    border-color: #dfe3f8;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
 }
 
-.plc-nav-tab.active .dashicons {
-    color: #4f46e5;
+.loginflux-nav-tab.active .dashicons {
+    color: var(--loginflux-accent);
 }
 
 /* Tab Content */
-.plc-tab-content {
+.loginflux-tab-content {
     display: none;
-    padding: 28px 34px;
+    padding: 32px 36px;
 }
 
-.plc-tab-content.active {
+.loginflux-tab-content.active {
     display: block;
-    animation: plc-fade-in 0.25s ease both;
+    animation: loginflux-fade-in 0.25s ease both;
 }
 
-@keyframes plc-fade-in {
+@keyframes loginflux-fade-in {
     from {
         opacity: 0;
         transform: translateY(4px);
@@ -242,28 +249,28 @@
     }
 }
 
-.plc-section-header {
-    margin-bottom: 22px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid #f1f5f9;
+.loginflux-section-header {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--loginflux-line);
 }
 
-.plc-section-header h3 {
+.loginflux-section-header h3 {
     margin: 0 0 4px;
     font-size: 16.5px;
     font-weight: 700;
-    color: #0f172a;
+    color: var(--loginflux-ink);
     letter-spacing: -0.01em;
 }
 
-.plc-section-header p {
+.loginflux-section-header p {
     margin: 0;
-    color: #64748b;
+    color: var(--loginflux-muted);
     font-size: 13.5px;
     line-height: 1.45;
 }
 
-.plc-section-header .plc-aurora-help-text {
+.loginflux-section-header .loginflux-aurora-help-text {
     margin-top: 8px;
     padding: 8px 12px;
     background: #eff6ff;
@@ -275,50 +282,50 @@
 }
 
 /* Form Styling */
-.plc-form-row {
-    margin-bottom: 24px;
+.loginflux-form-row {
+    margin-bottom: 28px;
 }
 
-.plc-form-row > label {
+.loginflux-form-row > label {
     display: block;
     font-size: 13.5px;
     font-weight: 600;
-    color: #1e293b;
+    color: var(--loginflux-ink);
     margin-bottom: 8px;
     letter-spacing: -0.01em;
 }
 
-.plc-form-row .description {
+.loginflux-form-row .description {
     margin-top: 6px;
-    color: #64748b;
+    color: var(--loginflux-muted);
     font-size: 12.5px;
     line-height: 1.45;
 }
 
-.plc-input-group {
+.loginflux-input-group {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-.plc-input-group input[type="url"],
-.plc-input-group input[type="text"],
-.plc-form-row input[type="text"],
-.plc-form-row input[type="number"],
-.plc-form-row textarea {
+.loginflux-input-group input[type="url"],
+.loginflux-input-group input[type="text"],
+.loginflux-form-row input[type="text"],
+.loginflux-form-row input[type="number"],
+.loginflux-form-row textarea {
     width: 100%;
     max-width: 500px;
     border-radius: 8px;
     border: 1px solid #cbd5e1;
-    background: #f8fafc;
-    padding: 9px 14px;
+    background: #ffffff;
+    padding: 10px 14px;
     font-size: 13.5px;
     color: #0f172a;
     font-family: inherit;
     transition: all 0.2s ease;
 }
 
-.plc-form-row textarea {
+.loginflux-form-row textarea {
     font-family: 'JetBrains Mono', Consolas, Monaco, monospace;
     font-size: 12.5px;
     line-height: 1.6;
@@ -327,23 +334,23 @@
     border-color: #334155;
 }
 
-.plc-input-group input:focus,
-.plc-form-row input:focus,
-.plc-form-row textarea:focus {
+.loginflux-input-group input:focus,
+.loginflux-form-row input:focus,
+.loginflux-form-row textarea:focus {
     background: #ffffff;
-    border-color: #6366f1;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
+    border-color: var(--loginflux-accent);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.14);
     outline: none;
 }
 
-.plc-form-row textarea:focus {
+.loginflux-form-row textarea:focus {
     background: #0f172a;
     border-color: #818cf8;
     box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.25);
 }
 
 /* Upload Button */
-.plc-upload-btn {
+.loginflux-upload-btn {
     display: inline-flex !important;
     align-items: center;
     gap: 6px;
@@ -358,7 +365,7 @@
     transition: all 0.2s ease !important;
 }
 
-.plc-upload-btn:hover {
+.loginflux-upload-btn:hover {
     background: #f1f5f9 !important;
     border-color: #94a3b8 !important;
     color: #0f172a !important;
@@ -366,27 +373,27 @@
 }
 
 /* Color Grid */
-.plc-color-grid {
+.loginflux-color-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
+    gap: 12px;
     margin-bottom: 18px;
 }
 
-.plc-color-item {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 14px 18px;
+.loginflux-color-item {
+    background: var(--loginflux-subtle);
+    border: 1px solid var(--loginflux-line);
+    border-radius: 8px;
+    padding: 16px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.plc-color-item:hover {
+.loginflux-color-item:hover {
     border-color: #cbd5e1;
     box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
-.plc-color-item label {
+.loginflux-color-item label {
     display: block;
     font-size: 12.5px;
     font-weight: 600;
@@ -395,7 +402,7 @@
 }
 
 /* Image Previews */
-.plc-image-preview {
+.loginflux-image-preview {
     margin-top: 12px;
     position: relative;
     display: inline-block;
@@ -407,14 +414,14 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.plc-image-preview img {
+.loginflux-image-preview img {
     max-width: 100%;
     max-height: 120px;
     display: block;
     border-radius: 6px;
 }
 
-.plc-image-preview .plc-remove-btn {
+.loginflux-image-preview .loginflux-remove-btn {
     position: absolute;
     top: -9px;
     right: -9px;
@@ -432,13 +439,13 @@
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.plc-image-preview .plc-remove-btn:hover {
+.loginflux-image-preview .loginflux-remove-btn:hover {
     background: #dc2626;
     transform: scale(1.1);
 }
 
 /* Alerts / Notices */
-.plc-notice-box {
+.loginflux-notice-box {
     display: flex;
     align-items: flex-start;
     gap: 12px;
@@ -452,13 +459,13 @@
     line-height: 1.45;
 }
 
-.plc-notice-box.warning {
+.loginflux-notice-box.warning {
     background: #fffbeb;
     border-left-color: #f59e0b;
     color: #92400e;
 }
 
-.plc-notice-box .dashicons {
+.loginflux-notice-box .dashicons {
     margin-top: 2px;
     font-size: 20px;
     width: 20px;
@@ -466,23 +473,26 @@
 }
 
 /* Submit bar */
-.plc-submit-bar {
-    background: #f8fafc;
-    border-top: 1px solid #e2e8f0;
-    padding: 18px 34px;
+.loginflux-submit-bar {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.96);
+    border-top: 1px solid var(--loginflux-line);
+    padding: 16px 36px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
 }
 
-.plc-settings-actions {
+.loginflux-settings-actions {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.plc-submit-bar .button-primary {
+.loginflux-submit-bar .button-primary {
     background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     color: #ffffff !important;
@@ -496,17 +506,17 @@
     transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 
-.plc-submit-bar .button-primary:hover {
+.loginflux-submit-bar .button-primary:hover {
     background: linear-gradient(135deg, #4338ca 0%, #3730a3 100%) !important;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px -1px rgba(79, 70, 229, 0.5) !important;
 }
 
-.plc-submit-bar .button-primary:active {
+.loginflux-submit-bar .button-primary:active {
     transform: translateY(0);
 }
 
-.plc-reset-settings-button {
+.loginflux-reset-settings-button {
     background: #fef2f2 !important;
     border: 1px solid #fecaca !important;
     color: #dc2626 !important;
@@ -519,14 +529,14 @@
     transition: all 0.2s ease !important;
 }
 
-.plc-reset-settings-button:hover {
+.loginflux-reset-settings-button:hover {
     border-color: #f87171 !important;
     background: #fee2e2 !important;
     color: #b91c1c !important;
     transform: translateY(-1px);
 }
 
-.plc-test-login-button {
+.loginflux-test-login-button {
     display: inline-flex !important;
     align-items: center;
     gap: 8px;
@@ -543,14 +553,14 @@
     transition: all 0.2s ease !important;
 }
 
-.plc-test-login-button:hover {
+.loginflux-test-login-button:hover {
     background: #f8fafc !important;
     border-color: #94a3b8 !important;
     color: #0f172a !important;
     transform: translateY(-1px);
 }
 
-.plc-test-login-button .dashicons {
+.loginflux-test-login-button .dashicons {
     flex: 0 0 18px;
     width: 18px;
     height: 18px;
@@ -560,21 +570,28 @@
 }
 
 /* Right Sidebar */
-.plc-sidebar-col {
+.loginflux-sidebar-col {
     display: flex;
     flex-direction: column;
     gap: 22px;
 }
 
-.plc-side-widget {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 22px;
-    box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+@media (min-width: 961px) {
+    .loginflux-sidebar-col {
+        position: sticky;
+        top: 40px;
+    }
 }
 
-.plc-side-widget h4 {
+.loginflux-side-widget {
+    background: #ffffff;
+    border: 1px solid var(--loginflux-line);
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 12px 28px -24px rgba(15, 23, 42, 0.38), 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.loginflux-side-widget h4 {
     margin: 0 0 16px;
     font-size: 14.5px;
     font-weight: 700;
@@ -587,7 +604,7 @@
     letter-spacing: -0.01em;
 }
 
-.plc-side-widget h4 .dashicons {
+.loginflux-side-widget h4 .dashicons {
     color: #4f46e5;
     background: #eef2ff;
     padding: 4px;
@@ -600,14 +617,14 @@
     justify-content: center;
 }
 
-.plc-author-card {
+.loginflux-author-card {
     display: flex;
     align-items: center;
     gap: 14px;
     margin-bottom: 16px;
 }
 
-.plc-author-avatar {
+.loginflux-author-avatar {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -622,33 +639,33 @@
     border: 2px solid #ffffff;
 }
 
-.plc-author-info h5 {
+.loginflux-author-info h5 {
     margin: 0 0 3px;
     font-size: 14.5px;
     font-weight: 700;
     color: #0f172a;
 }
 
-.plc-author-info span {
+.loginflux-author-info span {
     font-size: 12.5px;
     color: #64748b;
 }
 
-.plc-side-links {
+.loginflux-side-links {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.plc-side-links li {
+.loginflux-side-links li {
     margin-bottom: 10px;
 }
 
-.plc-side-links li:last-child {
+.loginflux-side-links li:last-child {
     margin-bottom: 0;
 }
 
-.plc-side-links a {
+.loginflux-side-links a {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -663,14 +680,14 @@
     transition: all 0.2s ease;
 }
 
-.plc-side-links a:hover {
+.loginflux-side-links a:hover {
     background: #eef2ff;
     color: #4f46e5;
     border-color: #c7d2fe;
     transform: translateX(3px);
 }
 
-.plc-info-list {
+.loginflux-info-list {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -678,176 +695,53 @@
     color: #64748b;
 }
 
-.plc-info-list li {
+.loginflux-info-list li {
     display: flex;
     justify-content: space-between;
     padding: 8px 0;
     border-bottom: 1px solid #f1f5f9;
 }
 
-.plc-info-list li:last-child {
+.loginflux-info-list li:last-child {
     border-bottom: none;
 }
 
-.plc-info-list strong {
+.loginflux-info-list strong {
     color: #1e293b;
     font-weight: 600;
 }
 
-.plc-star-rating {
+.loginflux-star-rating {
     color: #f59e0b;
     font-size: 14px;
     margin-top: 4px;
 }
 
-/* Refined settings workspace */
-.plc-admin-wrap {
-    --plc-ink: #172033;
-    --plc-muted: #64748b;
-    --plc-line: #e5eaf1;
-    --plc-surface: #ffffff;
-    --plc-subtle: #f8fafc;
-    --plc-accent: #4f46e5;
-}
-
-.plc-header-banner {
-    background: linear-gradient(120deg, #111827 0%, #172554 100%);
-    padding: 24px 28px;
-    border-radius: 14px;
-    box-shadow: 0 10px 24px -14px rgba(15, 23, 42, 0.55);
-    margin-bottom: 22px;
-}
-
-.plc-dashboard-grid {
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 22px;
-}
-
-.plc-main-card,
-.plc-side-widget {
-    border-color: var(--plc-line);
-    box-shadow: 0 12px 28px -24px rgba(15, 23, 42, 0.38);
-}
-
-.plc-main-card {
-    border-radius: 14px;
-}
-
-.plc-nav-tabs {
-    background: var(--plc-subtle);
-    border-bottom-color: var(--plc-line);
-    padding: 8px;
-    gap: 4px;
-}
-
-.plc-nav-tab {
-    padding: 11px 12px;
-    color: var(--plc-muted);
-    border-radius: 8px;
-}
-
-.plc-nav-tab:hover {
-    color: var(--plc-accent);
-    background: #eef2ff;
-}
-
-.plc-nav-tab.active {
-    color: var(--plc-accent);
-    border-color: #dfe3f8;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
-}
-
-.plc-tab-content {
-    padding: 32px 36px;
-}
-
-.plc-section-header {
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom-color: var(--plc-line);
-}
-
-.plc-section-header h3,
-.plc-form-row > label {
-    color: var(--plc-ink);
-}
-
-.plc-section-header p,
-.plc-form-row .description {
-    color: var(--plc-muted);
-}
-
-.plc-form-row {
-    margin-bottom: 28px;
-}
-
-.plc-inline-fields {
+/* Inline fields layout */
+.loginflux-inline-fields {
     display: flex;
     gap: 16px;
     max-width: 500px;
 }
 
-.plc-inline-fields > div {
+.loginflux-inline-fields > div {
     flex: 1 1 0;
 }
 
-.plc-input-group input[type="url"],
-.plc-input-group input[type="text"],
-.plc-form-row input[type="text"],
-.plc-form-row input[type="number"] {
-    background: #ffffff;
-    padding: 10px 12px;
-}
-
-.plc-input-group input:focus,
-.plc-form-row input:focus,
-.plc-form-row textarea:focus {
-    border-color: var(--plc-accent);
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.14);
-}
-
-.plc-color-grid {
-    gap: 12px;
-}
-
-.plc-color-item {
-    background: var(--plc-subtle);
-    border-color: var(--plc-line);
-    border-radius: 8px;
-    padding: 16px;
-}
-
-.plc-submit-bar {
-    position: sticky;
-    bottom: 0;
-    z-index: 2;
-    background: rgba(255, 255, 255, 0.96);
-    border-top-color: var(--plc-line);
-    padding: 16px 36px;
-}
-
-@media (min-width: 961px) {
-    .plc-sidebar-col {
-        position: sticky;
-        top: 40px;
-    }
+/* Aurora settings group */
+.loginflux-aurora-settings-group {
+    /* Grouping container for animated flow gradient controls */
 }
 
 @media (max-width: 700px) {
-    .plc-tab-content,
-    .plc-submit-bar {
+    .loginflux-tab-content,
+    .loginflux-submit-bar {
         padding-inline: 20px;
     }
 
-    .plc-inline-fields,
-    .plc-submit-bar {
+    .loginflux-inline-fields,
+    .loginflux-submit-bar {
         flex-direction: column;
         align-items: stretch;
-    }
-}
-
-@media (max-width: 960px) {
-    .plc-dashboard-grid {
-        grid-template-columns: 1fr;
     }
 }

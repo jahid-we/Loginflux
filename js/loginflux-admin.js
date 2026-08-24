@@ -1,7 +1,7 @@
 /**
- * Pro Login Customizer - Admin JavaScript
+ * Loginflux - Admin JavaScript
  *
- * @package Pro_Login_Customizer
+ * @package Loginflux
  */
 
 (function($) {
@@ -10,7 +10,7 @@
     $(document).ready(function() {
         // Initialize WP Color Picker
         if ($.fn.wpColorPicker) {
-            $('.plc-color-picker').wpColorPicker();
+            $('.loginflux-color-picker').wpColorPicker();
         }
 
         // Settings Tabs Navigation
@@ -18,30 +18,30 @@
             var targetTab = $(tab);
             var targetId = targetTab.data('tab');
 
-            $('.plc-nav-tab')
+            $('.loginflux-nav-tab')
                 .removeClass('active')
                 .attr({ 'aria-selected': 'false', tabindex: '-1' });
             targetTab
                 .addClass('active')
                 .attr({ 'aria-selected': 'true', tabindex: '0' });
 
-            $('.plc-tab-content')
+            $('.loginflux-tab-content')
                 .removeClass('active')
                 .attr('aria-hidden', 'true');
-            $('#plc-tab-' + targetId)
+            $('#loginflux-tab-' + targetId)
                 .addClass('active')
                 .attr('aria-hidden', 'false');
 
             if (window.localStorage) {
-                localStorage.setItem('plc_active_tab', targetId);
+                localStorage.setItem('loginflux_active_tab', targetId);
             }
         }
 
-        $('.plc-nav-tab').on('click', function(e) {
+        $(document).on('click', '.loginflux-nav-tab', function(e) {
             e.preventDefault();
             activateTab(this);
-        }).on('keydown', function(e) {
-            var tabs = $('.plc-nav-tab');
+        }).on('keydown', '.loginflux-nav-tab', function(e) {
+            var tabs = $('.loginflux-nav-tab');
             var currentIndex = tabs.index(this);
             var nextIndex;
 
@@ -64,14 +64,17 @@
 
         // Restore active tab
         if (window.localStorage) {
-            var activeTab = localStorage.getItem('plc_active_tab');
-            if (activeTab && $('#plc-tab-' + activeTab).length) {
-                activateTab($('.plc-nav-tab[data-tab="' + activeTab + '"]'));
+            var activeTab = localStorage.getItem('loginflux_active_tab');
+            if (activeTab) {
+                var matchingTab = $('.loginflux-nav-tab[data-tab="' + activeTab + '"]');
+                if (matchingTab.length) {
+                    activateTab(matchingTab.first());
+                }
             }
         }
 
         // WP Media Uploader Handler
-        $('.plc-upload-btn').on('click', function(e) {
+        $(document).on('click', '.loginflux-upload-btn', function(e) {
             e.preventDefault();
 
             var button = $(this);
@@ -93,7 +96,7 @@
                 targetInput.val(attachment.url).trigger('change');
 
                 if (targetPreview.length) {
-                    targetPreview.html('<img src="' + attachment.url + '" alt="Preview" /><button type="button" class="plc-remove-btn dashicons dashicons-no-alt" title="Remove image"></button>').show();
+                    targetPreview.html('<img src="' + attachment.url + '" alt="Preview" /><button type="button" class="loginflux-remove-btn dashicons dashicons-no-alt" title="Remove image"></button>').show();
                 }
             });
 
@@ -102,9 +105,9 @@
         });
 
         // Remove image button
-        $(document).on('click', '.plc-remove-btn', function(e) {
+        $(document).on('click', '.loginflux-remove-btn', function(e) {
             e.preventDefault();
-            var previewContainer = $(this).closest('.plc-image-preview');
+            var previewContainer = $(this).closest('.loginflux-image-preview');
             var targetInputId = previewContainer.data('input');
             $('#' + targetInputId).val('').trigger('change');
             previewContainer.html('').hide();
@@ -112,15 +115,16 @@
 
         // Background Type Conditional Notice
         function handleBgImageNotice() {
-            var bgImageVal = $('#plc_bg_image').val().trim();
+            var bgImageVal = $('#loginflux_bg_image').val() || '';
+            bgImageVal = bgImageVal.trim();
             if (bgImageVal !== '') {
-                $('.plc-bg-image-notice').slideDown(200);
+                $('.loginflux-bg-image-notice').slideDown(200);
             } else {
-                $('.plc-bg-image-notice').slideUp(200);
+                $('.loginflux-bg-image-notice').slideUp(200);
             }
         }
 
-        $('#plc_bg_image').on('input change', handleBgImageNotice);
+        $(document).on('input change', '#loginflux_bg_image', handleBgImageNotice);
         handleBgImageNotice();
     });
 

@@ -1,0 +1,317 @@
+# Copyright (C) 2026 Jahid Hasan
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Loginflux 1.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/loginflux\n"
+"Last-Translator: Jahid Hasan <jahid@example.com>\n"
+"Language-Team: English <en@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-08-24T00:00:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI\n"
+"X-Domain: loginflux\n"
+
+#. Plugin Name of the plugin
+msgid "Loginflux"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/jahid-we/Loginflux"
+msgstr ""
+
+#. Description of the plugin
+msgid "Transform your login page with animated visual effects, dynamic backgrounds, glassmorphism, custom branding, and modern color controls."
+msgstr ""
+
+#. Author of the plugin
+msgid "Jahid Hasan"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://github.com/jahid-we"
+msgstr ""
+
+#: loginflux.php:50
+#: loginflux.php:418
+msgid "Sign in to your account"
+msgstr ""
+
+#: loginflux.php:127
+msgid "Login Page"
+msgstr ""
+
+#: loginflux.php:143
+msgid "Settings"
+msgstr ""
+
+#: loginflux.php:171
+msgid "You are not allowed to reset these settings."
+msgstr ""
+
+#: loginflux.php:243
+msgid "You are not allowed to save custom CSS."
+msgstr ""
+
+#: loginflux.php:253
+msgid "Custom CSS cannot contain a closing style tag."
+msgstr ""
+
+#: loginflux.php:306
+msgid "Settings have been restored to their default values."
+msgstr ""
+
+#: loginflux.php:319
+msgid "Transform your login page with animated visual effects, dynamic backgrounds, and custom styling."
+msgstr ""
+
+#: loginflux.php:325
+msgid "Preview Login Screen"
+msgstr ""
+
+#: loginflux.php:337
+msgid "Loginflux customizer sections"
+msgstr ""
+
+#: loginflux.php:340
+msgid "Logo & Branding"
+msgstr ""
+
+#: loginflux.php:344
+msgid "Background & Effects"
+msgstr ""
+
+#: loginflux.php:348
+msgid "Form & Colors"
+msgstr ""
+
+#: loginflux.php:352
+msgid "Custom CSS"
+msgstr ""
+
+#: loginflux.php:358
+msgid "Logo & Header Settings"
+msgstr ""
+
+#: loginflux.php:359
+msgid "Upload your custom brand logo and set dimensions."
+msgstr ""
+
+#: loginflux.php:363
+msgid "Logo Image"
+msgstr ""
+
+#: loginflux.php:373
+msgid "Upload Logo"
+msgstr ""
+
+#: loginflux.php:378
+#: loginflux.php:437
+msgid "Remove image"
+msgstr ""
+
+#: loginflux.php:381
+msgid "Recommended format: Transparent PNG or SVG."
+msgstr ""
+
+#: loginflux.php:385
+msgid "Logo Width (px)"
+msgstr ""
+
+#: loginflux.php:396
+msgid "Logo Height (px)"
+msgstr ""
+
+#: loginflux.php:408
+msgid "Form Subtitle Text"
+msgstr ""
+
+#: loginflux.php:417
+msgid "Heading displayed right below your logo. Leave blank to hide."
+msgstr ""
+
+#: loginflux.php:422
+msgid "Background & Dynamic Visual Animation"
+msgstr ""
+
+#: loginflux.php:423
+msgid "Configure your login page background image or animated visual effects."
+msgstr ""
+
+#: loginflux.php:427
+msgid "Background Image"
+msgstr ""
+
+#: loginflux.php:437
+msgid "Upload Image"
+msgstr ""
+
+#: loginflux.php:443
+msgid "If a background image is provided, it will take precedence. If left empty, the animated visual gradient below will be used."
+msgstr ""
+
+#: loginflux.php:448
+msgid "Background Image Active:"
+msgstr ""
+
+#: loginflux.php:449
+msgid "A background image is currently set. The animated gradient will remain dormant until the background image URL is cleared."
+msgstr ""
+
+#: loginflux.php:455
+msgid "Animated Flow Gradient Palette"
+msgstr ""
+
+#: loginflux.php:456
+msgid "Customize the harmonic color stops for the fluid animated background."
+msgstr ""
+
+#: loginflux.php:457
+msgid "To use the animated gradient flow, leave the Background Image field empty. A background image takes precedence over the animation."
+msgstr ""
+
+#: loginflux.php:467
+msgid "Enable Animated Flow Gradient"
+msgstr ""
+
+#: loginflux.php:473
+msgid "Base / Stop 1 Color"
+msgstr ""
+
+#: loginflux.php:483
+msgid "Gradient Stop 2"
+msgstr ""
+
+#: loginflux.php:493
+msgid "Gradient Stop 3"
+msgstr ""
+
+#: loginflux.php:503
+msgid "Gradient Stop 4"
+msgstr ""
+
+#: loginflux.php:514
+msgid "Animation Cycle Duration (seconds)"
+msgstr ""
+
+#: loginflux.php:524
+msgid "Duration of one full continuous animation cycle (default: 15s). Lower numbers make it faster."
+msgstr ""
+
+#: loginflux.php:530
+msgid "Form Colors & Glass Styling"
+msgstr ""
+
+#: loginflux.php:531
+msgid "Control button highlights, text colors, and glassmorphism container parameters."
+msgstr ""
+
+#: loginflux.php:536
+msgid "Primary Button / Accent"
+msgstr ""
+
+#: loginflux.php:546
+msgid "Button Hover Color"
+msgstr ""
+
+#: loginflux.php:556
+msgid "Form Text Color"
+msgstr ""
+
+#: loginflux.php:567
+msgid "Glassmorphism Card Settings"
+msgstr ""
+
+#: loginflux.php:571
+msgid "Card Background (RGBA / HEX)"
+msgstr ""
+
+#: loginflux.php:580
+msgid "Supports CSS RGBA transparent values (e.g. rgba(255, 255, 255, 0.45) for frosted glass)."
+msgstr ""
+
+#: loginflux.php:584
+msgid "Backdrop Blur (px)"
+msgstr ""
+
+#: loginflux.php:595
+msgid "Border Radius (px)"
+msgstr ""
+
+#: loginflux.php:609
+msgid "Add any additional custom CSS rules to fine-tune your login screen."
+msgstr ""
+
+#: loginflux.php:623
+msgid "Save All Changes"
+msgstr ""
+
+#: loginflux.php:630
+msgid "Restore every setting to its default value? This cannot be undone."
+msgstr ""
+
+#: loginflux.php:631
+msgid "Reset to Defaults"
+msgstr ""
+
+#: loginflux.php:635
+msgid "Test Login Screen"
+msgstr ""
+
+#: loginflux.php:646
+msgid "Plugin Information"
+msgstr ""
+
+#: loginflux.php:650
+msgid "Plugin Version:"
+msgstr ""
+
+#: loginflux.php:654
+msgid "Status:"
+msgstr ""
+
+#: loginflux.php:655
+msgid "Active & Ready"
+msgstr ""
+
+#: loginflux.php:658
+msgid "WordPress Core:"
+msgstr ""
+
+#: loginflux.php:662
+msgid "PHP Version:"
+msgstr ""
+
+#: loginflux.php:671
+msgid "Plugin Author"
+msgstr ""
+
+#: loginflux.php:682
+msgid "Author GitHub Profile"
+msgstr ""
+
+#: loginflux.php:688
+msgid "Star on GitHub"
+msgstr ""
+
+#: loginflux.php:694
+msgid "Rate 5 Stars"
+msgstr ""
+
+#: loginflux.php:700
+msgid "Support & Feedback"
+msgstr ""
+
+#: loginflux.php:710
+msgid "Quick Preview"
+msgstr ""
+
+#: loginflux.php:713
+msgid "Want to see your changes live? Open your login page in a private/incognito tab or preview now."
+msgstr ""
+
+#: loginflux.php:716
+msgid "Open Login Page"
+msgstr ""
