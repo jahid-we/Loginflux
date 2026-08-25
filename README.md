@@ -1,8 +1,10 @@
 # Loginflux
 
-> Transform your login page with animated visual effects, dynamic backgrounds, glassmorphism, custom branding, and modern color controls.
+> Transform your WordPress login page with animated visual effects, dynamic backgrounds, glassmorphism, custom branding, and modern color controls.
 
----
+[![WordPress Plugin](https://img.shields.io/badge/WordPress-Loginflux-blue?logo=wordpress)](https://wordpress.org/plugins/loginflux/)
+
+**🔗 [View Loginflux on WordPress.org](https://wordpress.org/plugins/loginflux/)**
 
 ## ✨ Features
 
