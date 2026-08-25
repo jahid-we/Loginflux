@@ -13,7 +13,6 @@
 - **Brand Customization**: Custom logo upload, dimensions (width & height), and subtitle text.
 - **WordPress Color Pickers**: Real-time hex color pickers for primary accents, hover states, text, and gradient stops.
 - **Modern Admin Dashboard**: Clean 2-column dashboard with tabbed navigation and author sidebar details.
-- **Custom CSS Box**: Built-in CSS editor for additional customizations.
 - **WordPress.org Ready**: Strict security escaping, sanitization, nonce protection, and internationalization (`loginflux`).
 
 ---

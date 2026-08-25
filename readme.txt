@@ -17,55 +17,62 @@ Transform your login page with animated visual effects, dynamic backgrounds, gla
 
 **Loginflux** is a lightweight, modern plugin that transforms the default WordPress login page into a state-of-the-art visual experience.
 
-Featuring built-in animated visual effect engines—including dynamic **Fluid Flow gradients**—and an ultra-sleek **Glassmorphism container**, you can effortlessly match the login experience with your brand identity directly from an intuitive, tabbed WordPress admin dashboard.
+Featuring built-in animated visual effects—including dynamic **Fluid Flow gradients**—and an ultra-sleek **Glassmorphism container**, you can effortlessly match the login experience with your brand identity directly from an intuitive, tabbed WordPress admin dashboard.
 
 ### 🌟 Key Features
+
 * **Dynamic Animated Flow Backgrounds:** Mesmerizing animated multi-stop gradient flow with customizable colors and cycle duration.
 * **Smart Background Fallback:** Automatically switches between your uploaded custom background image and fluid animated visual gradients.
-* **WordPress Media Library Integration:** Seamlessly upload or choose logos and background wallpapers via the native WordPress Media Uploader.
+* **WordPress Media Library Integration:** Seamlessly upload or choose logos and background images using the native WordPress Media Uploader.
 * **Ultra-Modern Glassmorphism UI:** Frosted glass effect with configurable backdrop blur, card background opacity, and border radius.
-* **Branding & Logo Controls:** Customize logo image, dimensions (width & height), and custom subtitle heading.
-* **Live Color Customizer:** Built-in WordPress Color Pickers for primary button colors, hover states, text colors, and gradient palette stops.
-* **Custom CSS Editor:** Integrated custom CSS textarea for advanced custom overrides.
-* **Clean & Lightweight:** Zero bloat, no external JavaScript runtime dependencies on the login screen, optimized for performance and security.
-* **Translation Ready:** Fully internationalized and compatible with WordPress translation standards (`loginflux` text domain).
+* **Branding & Logo Controls:** Customize your logo image, logo dimensions, and subtitle text.
+* **Live Color Customizer:** Use the built-in WordPress Color Picker to customize primary button colors, hover states, text colors, and gradient palette stops.
+* **Clean & Lightweight:** Designed to keep the login screen fast and avoid unnecessary external JavaScript dependencies.
+* **Translation Ready:** Fully internationalized and compatible with WordPress translation standards using the `loginflux` text domain.
 
 == Installation ==
 
-1. Upload the plugin folder to the `/wp-content/plugins/loginflux` directory, or install via the WordPress Plugins menu.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Go to **Login Page** in the WordPress admin sidebar to customize your branding, animated backgrounds, and colors.
-4. Save your changes and preview your new login page!
+1. Upload the plugin folder to the `/wp-content/plugins/loginflux` directory, or install it through the WordPress Plugins menu.
+2. Activate Loginflux through the **Plugins** menu in WordPress.
+3. Go to **Settings → Loginflux** to customize your branding, animated backgrounds, and colors.
+4. Save your changes and preview your new login page.
 
 == Need Help? ==
- * [Linkedin](https://linkedin.com/in/jahid-hasan-6891123a8)
- * [About Author](https://github.com/jahid-we)
+
+* [LinkedIn](https://linkedin.com/in/jahid-hasan-6891123a)
+* [About Author](https://github.com/jahid-we)
 
 == Frequently Asked Questions ==
 
 = How do the animated background gradients work? =
-When no background image is set, Loginflux renders dynamic CSS animated gradient flow backgrounds using customizable color stops. You can adjust the colors and animation speed in the plugin settings.
+
+When no background image is set, Loginflux renders a dynamic CSS animated gradient flow background using customizable color stops. You can adjust the gradient colors and animation speed from the Loginflux settings.
 
 = Can I use my own background wallpaper instead? =
-Yes! Simply upload or paste a background image URL in the Background tab. The plugin will automatically prioritize your background image.
+
+Yes! Upload or select a background image from the WordPress Media Library in the Background & Effects settings. When a background image is set, it takes priority over the animated gradient background.
 
 = Does this plugin affect login security or authentication? =
-No. Loginflux only customizes the front-end presentation and styling of the login screen. It does not alter WordPress core login authentication hooks or password validation.
+
+No. Loginflux only customizes the visual presentation and styling of the WordPress login screen. It does not modify WordPress authentication, password validation, or login security functionality.
 
 = Is it translation ready? =
-Yes, the plugin follows WordPress internationalization standards and uses the `loginflux` text domain.
+
+Yes. Loginflux follows WordPress internationalization standards and uses the `loginflux` text domain.
 
 == Screenshots ==
 
-1. Modern tabbed settings dashboard with live preview button and sidebar info.
-2. Animated fluid gradient and glassmorphism login form.
+1. Modern tabbed settings dashboard with live login preview and plugin information sidebar.
+2. Animated fluid gradient background with a modern glassmorphism login form.
 
 == Changelog ==
 
 = 1.1.0 =
-* Initial Release as Loginflux.
-* Added animated Flow gradient background engine with customizable color stops.
+* Initial release as Loginflux.
+* Added animated Fluid Flow gradient background with customizable color stops.
 * Added native WordPress Media Uploader for logo and background images.
-* Added WordPress Color Pickers for live theme styling.
-* Added 2-column admin dashboard with author details and quick login preview.
-* Added custom logo width/height and custom subtitle text support.
+* Added WordPress Color Picker controls for login page styling.
+* Added modern two-column admin dashboard with plugin information and login preview.
+* Added custom logo width and height controls.
+* Added custom subtitle text support.
+* Added glassmorphism card background, blur, and border-radius controls.
