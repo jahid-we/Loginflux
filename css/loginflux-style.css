@@ -137,6 +137,8 @@ body.login h1 {
     margin: 0 0 20px !important;
     padding: 0 !important;
     text-align: center;
+    border-radius: 20px !important;
+    overflow: hidden !important;
 }
 
 body.login h1 a {
