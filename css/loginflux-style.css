@@ -50,6 +50,84 @@ html, body.login {
     box-sizing: inherit;
 }
 
+/* Animation 1 */
+/* body.login {
+    background-color: #090d16;
+}
+
+body.login::before {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: 0;
+    background: 
+        radial-gradient(circle at 30% 30%, #3b82f6 0%, transparent 45%),
+        radial-gradient(circle at 70% 70%, #ec4899 0%, transparent 45%);
+    opacity: 0.5;
+    filter: blur(90px);
+    animation: plc-pulse-spin 12s ease-in-out infinite alternate;
+} */
+
+/* Linear Tech Grid */
+/* body.login::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+@keyframes plc-pulse-spin {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    100% {
+        transform: rotate(180deg) scale(1.2);
+    }
+} */
+
+
+/* Aimaton 2 */
+/* body.login {
+    background-color: #0b0f19;
+}
+
+body.login::before {
+    content: "";
+    position: fixed;
+    inset: -20%;
+    z-index: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, #06b6d4 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, #8b5cf6 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, #f43f5e 0%, transparent 45%);
+    filter: blur(100px);
+    opacity: 0.55;
+    animation: plc-glow-bounce 10s ease-in-out infinite alternate;
+}
+
+
+body.login::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.25;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+@keyframes plc-glow-bounce {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-30px, 20px) scale(1.1); }
+} */
+
+
+/* Aimaton 3 */
 body.login {
     display: flex;
     justify-content: center;
@@ -86,6 +164,37 @@ body.login.loginflux-aurora-active::before {
     50%  { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
+/* Animation 4 */
+/* body.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    color: var(--plc-text);
+    background: #0f172a;
+    overflow-x: hidden;
+} */
+
+/* Animated Ambient Gradient Mesh Background */
+/* body.login::before {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: 0;
+    background: radial-gradient(circle at 20% 20%, #818cf8 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, #c084fc 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #38bdf8 0%, transparent 50%);
+    opacity: 0.6;
+    filter: blur(80px);
+    animation: plc-ambient-spin 20s infinite linear;
+}
+
+@keyframes plc-ambient-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} */
 
 /* Background Image Mode (Overrides Gradient when image is present) */
 body.login.loginflux-has-bg-image {
