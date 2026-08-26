@@ -126,6 +126,57 @@
 
         $(document).on('input change', '#loginflux_bg_image', handleBgImageNotice);
         handleBgImageNotice();
+
+        // Animation Style Selector & Panel Switcher
+        function handleAnimSelector() {
+            var selectedType = $('input[name="loginflux_settings[animation_type]"]:checked').val() || '3';
+
+            // Highlight active card
+            $('.loginflux-anim-card').each(function() {
+                var radio = $(this).find('.loginflux-anim-radio');
+                if (radio.is(':checked')) {
+                    $(this).addClass('active');
+                } else {
+                    $(this).removeClass('active');
+                }
+            });
+
+            // Switch settings panels
+            $('.loginflux-anim-panel').each(function() {
+                var panelType = $(this).data('anim-panel');
+                if (String(panelType) === String(selectedType)) {
+                    $(this).stop(true, true).slideDown(250);
+                } else {
+                    $(this).stop(true, true).slideUp(200);
+                }
+            });
+        }
+
+        $(document).on('change', '.loginflux-anim-radio', handleAnimSelector);
+        $(document).on('click', '.loginflux-anim-card', function(e) {
+            if (!$(e.target).is('input[type="radio"]')) {
+                $(this).find('.loginflux-anim-radio').prop('checked', true).trigger('change');
+            }
+        });
+
+        // Animation Master Enable Toggle
+        function handleAnimMasterToggle() {
+            var isEnabled = $('#loginflux_animation_enable').is(':checked');
+            if (isEnabled) {
+                $('.loginflux-anim-selector-grid, .loginflux-anim-panel').css({
+                    'opacity': '1',
+                    'pointer-events': 'auto'
+                });
+            } else {
+                $('.loginflux-anim-selector-grid, .loginflux-anim-panel').css({
+                    'opacity': '0.55',
+                    'pointer-events': 'none'
+                });
+            }
+        }
+
+        $(document).on('change', '#loginflux_animation_enable', handleAnimMasterToggle);
+        handleAnimMasterToggle();
     });
 
 })(jQuery);

@@ -6,7 +6,7 @@ Plugin URI: https://wordpress.org/plugins/loginflux/
 Tags: login, custom login, login page, animated background, aurora background
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,12 +21,12 @@ Featuring built-in animated visual effects—including dynamic **Fluid Flow grad
 
 ### 🌟 Key Features
 
-* **Dynamic Animated Flow Backgrounds:** Mesmerizing animated multi-stop gradient flow with customizable colors and cycle duration.
+* **4 Modern Animated Background Engines:** Choose between Animation 1 (Pulse Orb & Cyber Grid), Animation 2 (Nebula Glow & Noise), Animation 3 (Aurora Gradient Flow), and Animation 4 (Ambient Mesh Spin) with full color and speed controls.
 * **Smart Background Fallback:** Automatically switches between your uploaded custom background image and fluid animated visual gradients.
 * **WordPress Media Library Integration:** Seamlessly upload or choose logos and background images using the native WordPress Media Uploader.
 * **Ultra-Modern Glassmorphism UI:** Frosted glass effect with configurable backdrop blur, card background opacity, and border radius.
 * **Branding & Logo Controls:** Customize your logo image, logo dimensions, and subtitle text.
-* **Live Color Customizer:** Use the built-in WordPress Color Picker to customize primary button colors, hover states, text colors, and gradient palette stops.
+* **Live Color Customizer:** Use the built-in WordPress Color Picker to customize primary button colors, hover states, text colors, and all animation palettes.
 * **Clean & Lightweight:** Designed to keep the login screen fast and avoid unnecessary external JavaScript dependencies.
 * **Translation Ready:** Fully internationalized and compatible with WordPress translation standards using the `loginflux` text domain.
 
@@ -66,6 +66,13 @@ Yes. Loginflux follows WordPress internationalization standards and uses the `lo
 2. Animated fluid gradient background with a modern glassmorphism login form.
 
 == Changelog ==
+
+= 1.2.0 =
+* Added 4 selectable animation engines: Animation 1 (Pulse Orb & Tech Grid), Animation 2 (Nebula Glow & Noise), Animation 3 (Aurora Gradient Flow), and Animation 4 (Ambient Mesh Spin).
+* Added interactive visual card switcher for animation styles in the admin dashboard.
+* Added dedicated color palette pickers and speed controls for each individual animation style.
+* Added cyber tech grid and noise texture overlay toggles.
+* Enhanced login screen CSS rendering and dynamic CSS custom properties.
 
 = 1.1.0 =
 * Initial release as Loginflux.

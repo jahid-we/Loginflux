@@ -3,7 +3,7 @@
  * Plugin Name:       Loginflux
  * Plugin URI:        https://github.com/jahid-we/Loginflux
  * Description:       Transform your login page with animated visual effects, dynamic backgrounds, glassmorphism, custom branding, and modern color controls.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Jahid Hasan
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Plugin Constants
  */
-define( 'LOGINFLUX_VERSION', '1.1.0' );
+define( 'LOGINFLUX_VERSION', '1.2.0' );
 define( 'LOGINFLUX_URL', plugin_dir_url( __FILE__ ) );
 define( 'LOGINFLUX_PATH', plugin_dir_path( __FILE__ ) );
 define( 'LOGINFLUX_BASENAME', plugin_basename( __FILE__ ) );
@@ -42,13 +42,43 @@ function jzlf_get_default_settings() {
         'logo_height'      => '50',
         'form_subtitle'    => __( 'Sign in to your account', 'loginflux' ),
         'bg_image'         => '',
-        'bg_color'         => '#030712',
+
+        // Animation Master Controls
+        'animation_enable' => '1',
         'aurora_enable'    => '1',
+        'animation_type'   => '3',
+
+        // Animation 1: Pulse Orb & Cyber Grid
+        'anim1_bg'         => '#090d16',
+        'anim1_color_1'    => '#3b82f6',
+        'anim1_color_2'    => '#ec4899',
+        'anim1_speed'      => '12',
+        'anim1_grid'       => '1',
+
+        // Animation 2: Nebula Glow & Noise Overlay
+        'anim2_bg'         => '#0b0f19',
+        'anim2_color_1'    => '#06b6d4',
+        'anim2_color_2'    => '#8b5cf6',
+        'anim2_color_3'    => '#f43f5e',
+        'anim2_speed'      => '10',
+        'anim2_noise'      => '1',
+
+        // Animation 3: Aurora Gradient Flow
+        'bg_color'         => '#030712',
         'aurora_color_1'   => '#030712',
         'aurora_color_2'   => '#1e1b4b',
         'aurora_color_3'   => '#0284c7',
         'aurora_color_4'   => '#4f46e5',
         'aurora_speed'     => '15',
+
+        // Animation 4: Ambient Mesh Spin
+        'anim4_bg'         => '#0f172a',
+        'anim4_color_1'    => '#818cf8',
+        'anim4_color_2'    => '#c084fc',
+        'anim4_color_3'    => '#38bdf8',
+        'anim4_speed'      => '20',
+
+        // Theme Colors & Styling
         'primary_color'    => '#6366f1',
         'hover_color'      => '#4f46e5',
         'text_color'       => '#0f172a',
@@ -197,22 +227,54 @@ function jzlf_sanitize_settings( $input ) {
     $sanitized['form_subtitle'] = isset( $input['form_subtitle'] ) ? sanitize_text_field( $input['form_subtitle'] ) : '';
 
     // Background & Visual Effects
-    $sanitized['bg_image']       = isset( $input['bg_image'] ) ? esc_url_raw( $input['bg_image'] ) : '';
-    $sanitized['bg_color']       = isset( $input['bg_color'] ) ? sanitize_hex_color( $input['bg_color'] ) : '#030712';
-    $sanitized['aurora_enable']  = ! empty( $input['aurora_enable'] ) ? '1' : '0';
-    $sanitized['aurora_color_1'] = isset( $input['aurora_color_1'] ) ? sanitize_hex_color( $input['aurora_color_1'] ) : '#030712';
-    $sanitized['aurora_color_2'] = isset( $input['aurora_color_2'] ) ? sanitize_hex_color( $input['aurora_color_2'] ) : '#1e1b4b';
-    $sanitized['aurora_color_3'] = isset( $input['aurora_color_3'] ) ? sanitize_hex_color( $input['aurora_color_3'] ) : '#0284c7';
-    $sanitized['aurora_color_4'] = isset( $input['aurora_color_4'] ) ? sanitize_hex_color( $input['aurora_color_4'] ) : '#4f46e5';
-    $sanitized['aurora_speed']   = isset( $input['aurora_speed'] ) ? absint( $input['aurora_speed'] ) : 15;
+    $sanitized['bg_image']         = isset( $input['bg_image'] ) ? esc_url_raw( $input['bg_image'] ) : '';
+
+    // Animation Master Enable
+    $anim_enabled                  = ! empty( $input['animation_enable'] ) || ! empty( $input['aurora_enable'] );
+    $sanitized['animation_enable'] = $anim_enabled ? '1' : '0';
+    $sanitized['aurora_enable']    = $sanitized['animation_enable']; // backward compatibility
+
+    // Animation Style Selection
+    $valid_anim_types              = [ '1', '2', '3', '4' ];
+    $sanitized['animation_type']   = ( isset( $input['animation_type'] ) && in_array( (string) $input['animation_type'], $valid_anim_types, true ) ) ? (string) $input['animation_type'] : '3';
+
+    // Animation 1 (Pulse Orb & Cyber Grid)
+    $sanitized['anim1_bg']         = isset( $input['anim1_bg'] ) ? sanitize_hex_color( $input['anim1_bg'] ) : '#090d16';
+    $sanitized['anim1_color_1']    = isset( $input['anim1_color_1'] ) ? sanitize_hex_color( $input['anim1_color_1'] ) : '#3b82f6';
+    $sanitized['anim1_color_2']    = isset( $input['anim1_color_2'] ) ? sanitize_hex_color( $input['anim1_color_2'] ) : '#ec4899';
+    $sanitized['anim1_speed']      = isset( $input['anim1_speed'] ) ? absint( $input['anim1_speed'] ) : 12;
+    $sanitized['anim1_grid']       = ! empty( $input['anim1_grid'] ) ? '1' : '0';
+
+    // Animation 2 (Nebula Glow & Noise)
+    $sanitized['anim2_bg']         = isset( $input['anim2_bg'] ) ? sanitize_hex_color( $input['anim2_bg'] ) : '#0b0f19';
+    $sanitized['anim2_color_1']    = isset( $input['anim2_color_1'] ) ? sanitize_hex_color( $input['anim2_color_1'] ) : '#06b6d4';
+    $sanitized['anim2_color_2']    = isset( $input['anim2_color_2'] ) ? sanitize_hex_color( $input['anim2_color_2'] ) : '#8b5cf6';
+    $sanitized['anim2_color_3']    = isset( $input['anim2_color_3'] ) ? sanitize_hex_color( $input['anim2_color_3'] ) : '#f43f5e';
+    $sanitized['anim2_speed']      = isset( $input['anim2_speed'] ) ? absint( $input['anim2_speed'] ) : 10;
+    $sanitized['anim2_noise']      = ! empty( $input['anim2_noise'] ) ? '1' : '0';
+
+    // Animation 3 (Aurora Gradient Flow)
+    $sanitized['bg_color']         = isset( $input['bg_color'] ) ? sanitize_hex_color( $input['bg_color'] ) : '#030712';
+    $sanitized['aurora_color_1']   = isset( $input['aurora_color_1'] ) ? sanitize_hex_color( $input['aurora_color_1'] ) : '#030712';
+    $sanitized['aurora_color_2']   = isset( $input['aurora_color_2'] ) ? sanitize_hex_color( $input['aurora_color_2'] ) : '#1e1b4b';
+    $sanitized['aurora_color_3']   = isset( $input['aurora_color_3'] ) ? sanitize_hex_color( $input['aurora_color_3'] ) : '#0284c7';
+    $sanitized['aurora_color_4']   = isset( $input['aurora_color_4'] ) ? sanitize_hex_color( $input['aurora_color_4'] ) : '#4f46e5';
+    $sanitized['aurora_speed']     = isset( $input['aurora_speed'] ) ? absint( $input['aurora_speed'] ) : 15;
+
+    // Animation 4 (Ambient Mesh Spin)
+    $sanitized['anim4_bg']         = isset( $input['anim4_bg'] ) ? sanitize_hex_color( $input['anim4_bg'] ) : '#0f172a';
+    $sanitized['anim4_color_1']    = isset( $input['anim4_color_1'] ) ? sanitize_hex_color( $input['anim4_color_1'] ) : '#818cf8';
+    $sanitized['anim4_color_2']    = isset( $input['anim4_color_2'] ) ? sanitize_hex_color( $input['anim4_color_2'] ) : '#c084fc';
+    $sanitized['anim4_color_3']    = isset( $input['anim4_color_3'] ) ? sanitize_hex_color( $input['anim4_color_3'] ) : '#38bdf8';
+    $sanitized['anim4_speed']      = isset( $input['anim4_speed'] ) ? absint( $input['anim4_speed'] ) : 20;
 
     // Theme Colors & Styling
-    $sanitized['primary_color'] = isset( $input['primary_color'] ) ? sanitize_hex_color( $input['primary_color'] ) : '#6366f1';
-    $sanitized['hover_color']   = isset( $input['hover_color'] ) ? sanitize_hex_color( $input['hover_color'] ) : '#4f46e5';
-    $sanitized['text_color']    = isset( $input['text_color'] ) ? sanitize_hex_color( $input['text_color'] ) : '#0f172a';
-    $sanitized['card_bg_color'] = isset( $input['card_bg_color'] ) ? sanitize_text_field( $input['card_bg_color'] ) : 'rgba(255, 255, 255, 0.45)';
-    $sanitized['card_blur']     = isset( $input['card_blur'] ) ? absint( $input['card_blur'] ) : 28;
-    $sanitized['border_radius'] = isset( $input['border_radius'] ) ? absint( $input['border_radius'] ) : 24;
+    $sanitized['primary_color']    = isset( $input['primary_color'] ) ? sanitize_hex_color( $input['primary_color'] ) : '#6366f1';
+    $sanitized['hover_color']      = isset( $input['hover_color'] ) ? sanitize_hex_color( $input['hover_color'] ) : '#4f46e5';
+    $sanitized['text_color']       = isset( $input['text_color'] ) ? sanitize_hex_color( $input['text_color'] ) : '#0f172a';
+    $sanitized['card_bg_color']    = isset( $input['card_bg_color'] ) ? sanitize_text_field( $input['card_bg_color'] ) : 'rgba(255, 255, 255, 0.45)';
+    $sanitized['card_blur']        = isset( $input['card_blur'] ) ? absint( $input['card_blur'] ) : 28;
+    $sanitized['border_radius']    = isset( $input['border_radius'] ) ? absint( $input['border_radius'] ) : 24;
 
     return $sanitized;
 }
@@ -393,7 +455,7 @@ function jzlf_admin_page_content() {
                         <div class="loginflux-tab-content" id="loginflux-tab-background" role="tabpanel" aria-labelledby="loginflux-nav-background" aria-hidden="true" tabindex="0">
                             <div class="loginflux-section-header">
                                 <h3><?php esc_html_e( 'Background & Dynamic Visual Animation', 'loginflux' ); ?></h3>
-                                <p><?php esc_html_e( 'Configure your login page background image or animated visual effects.', 'loginflux' ); ?></p>
+                                <p><?php esc_html_e( 'Configure your login page background image or choose from 4 modern animated visual effects.', 'loginflux' ); ?></p>
                             </div>
 
                             <!-- Background Image Option -->
@@ -417,93 +479,417 @@ function jzlf_admin_page_content() {
                                         <button type="button" class="loginflux-remove-btn dashicons dashicons-no-alt" title="<?php esc_attr_e( 'Remove image', 'loginflux' ); ?>"></button>
                                     <?php endif; ?>
                                 </div>
-                                <p class="description"><?php esc_html_e( 'If a background image is provided, it will take precedence. If left empty, the animated visual gradient below will be used.', 'loginflux' ); ?></p>
+                                <p class="description"><?php esc_html_e( 'If a background image is provided, it takes precedence over animations. If left empty, your chosen animation style will be displayed.', 'loginflux' ); ?></p>
                             </div>
 
                             <div class="loginflux-notice-box loginflux-bg-image-notice" <?php echo empty( $settings['bg_image'] ) ? 'style="display:none;"' : ''; ?>>
                                 <span class="dashicons dashicons-info"></span>
                                 <div>
                                     <strong><?php esc_html_e( 'Background Image Active:', 'loginflux' ); ?></strong>
-                                    <?php esc_html_e( 'A background image is currently set. The animated gradient will remain dormant until the background image URL is cleared.', 'loginflux' ); ?>
+                                    <?php esc_html_e( 'A background image is currently set. The selected visual animation will remain dormant until the background image URL is removed.', 'loginflux' ); ?>
                                 </div>
                             </div>
 
-                            <!-- Animated Flow Configuration -->
-                            <div class="loginflux-aurora-settings-group">
-                                <div class="loginflux-section-header" style="margin-top: 20px;">
-                                    <h3><?php esc_html_e( 'Animated Flow Gradient Palette', 'loginflux' ); ?></h3>
-                                    <p><?php esc_html_e( 'Customize the harmonic color stops for the fluid animated background.', 'loginflux' ); ?></p>
-                                    <p class="loginflux-aurora-help-text"><?php esc_html_e( 'To use the animated gradient flow, leave the Background Image field empty. A background image takes precedence over the animation.', 'loginflux' ); ?></p>
+                            <!-- Animated Visual Effect Configuration -->
+                            <div class="loginflux-anim-settings-group">
+                                <div class="loginflux-section-header" style="margin-top: 24px;">
+                                    <h3><?php esc_html_e( 'Visual Animation Engine', 'loginflux' ); ?></h3>
+                                    <p><?php esc_html_e( 'Select which animation to run on your login screen and fine-tune its colors and speed.', 'loginflux' ); ?></p>
                                 </div>
 
                                 <div class="loginflux-form-row">
-                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    <label class="loginflux-switch-label" style="display: inline-flex; align-items: center; gap: 10px; cursor: pointer;">
                                         <input
                                             type="checkbox"
-                                            name="loginflux_settings[aurora_enable]"
+                                            id="loginflux_animation_enable"
+                                            name="loginflux_settings[animation_enable]"
                                             value="1"
-                                            <?php checked( $settings['aurora_enable'], '1' ); ?>
+                                            <?php checked( $settings['animation_enable'], '1' ); ?>
                                         >
-                                        <strong><?php esc_html_e( 'Enable Animated Flow Gradient', 'loginflux' ); ?></strong>
+                                        <strong><?php esc_html_e( 'Activate Background Animation', 'loginflux' ); ?></strong>
                                     </label>
+                                    <p class="description"><?php esc_html_e( 'Toggle to activate or deactivate animated visuals when no background image is active.', 'loginflux' ); ?></p>
                                 </div>
 
-                                <div class="loginflux-color-grid">
-                                    <div class="loginflux-color-item">
-                                        <label for="loginflux_bg_color"><?php esc_html_e( 'Base / Stop 1 Color', 'loginflux' ); ?></label>
-                                        <input
-                                            type="text"
-                                            class="loginflux-color-picker"
-                                            id="loginflux_bg_color"
-                                            name="loginflux_settings[bg_color]"
-                                            value="<?php echo esc_attr( $settings['bg_color'] ); ?>"
-                                        >
-                                    </div>
-                                    <div class="loginflux-color-item">
-                                        <label for="loginflux_aurora_2"><?php esc_html_e( 'Gradient Stop 2', 'loginflux' ); ?></label>
-                                        <input
-                                            type="text"
-                                            class="loginflux-color-picker"
-                                            id="loginflux_aurora_2"
-                                            name="loginflux_settings[aurora_color_2]"
-                                            value="<?php echo esc_attr( $settings['aurora_color_2'] ); ?>"
-                                        >
-                                    </div>
-                                    <div class="loginflux-color-item">
-                                        <label for="loginflux_aurora_3"><?php esc_html_e( 'Gradient Stop 3', 'loginflux' ); ?></label>
-                                        <input
-                                            type="text"
-                                            class="loginflux-color-picker"
-                                            id="loginflux_aurora_3"
-                                            name="loginflux_settings[aurora_color_3]"
-                                            value="<?php echo esc_attr( $settings['aurora_color_3'] ); ?>"
-                                        >
-                                    </div>
-                                    <div class="loginflux-color-item">
-                                        <label for="loginflux_aurora_4"><?php esc_html_e( 'Gradient Stop 4', 'loginflux' ); ?></label>
-                                        <input
-                                            type="text"
-                                            class="loginflux-color-picker"
-                                            id="loginflux_aurora_4"
-                                            name="loginflux_settings[aurora_color_4]"
-                                            value="<?php echo esc_attr( $settings['aurora_color_4'] ); ?>"
-                                        >
-                                    </div>
-                                </div>
-
+                                <!-- Animation Style Selector Cards -->
                                 <div class="loginflux-form-row">
-                                    <label for="loginflux_aurora_speed"><?php esc_html_e( 'Animation Cycle Duration (seconds)', 'loginflux' ); ?></label>
-                                    <input
-                                        type="number"
-                                        id="loginflux_aurora_speed"
-                                        name="loginflux_settings[aurora_speed]"
-                                        value="<?php echo esc_attr( $settings['aurora_speed'] ); ?>"
-                                        min="3"
-                                        max="60"
-                                        style="max-width: 150px;"
-                                    >
-                                    <p class="description"><?php esc_html_e( 'Duration of one full continuous animation cycle (default: 15s). Lower numbers make it faster.', 'loginflux' ); ?></p>
+                                    <label><strong><?php esc_html_e( 'Select Animation Style', 'loginflux' ); ?></strong></label>
+                                    <div class="loginflux-anim-selector-grid">
+
+                                        <!-- Option 1: Pulse Orb & Cyber Grid -->
+                                        <label class="loginflux-anim-card <?php echo ( '1' === (string) $settings['animation_type'] ) ? 'active' : ''; ?>">
+                                            <input
+                                                type="radio"
+                                                name="loginflux_settings[animation_type]"
+                                                value="1"
+                                                class="loginflux-anim-radio"
+                                                <?php checked( $settings['animation_type'], '1' ); ?>
+                                            >
+                                            <div class="loginflux-anim-card-header">
+                                                <span class="loginflux-anim-badge">Animation 1</span>
+                                                <span class="loginflux-anim-card-radio-mark dashicons dashicons-yes"></span>
+                                            </div>
+                                            <div class="loginflux-anim-preview-banner anim-1-preview">
+                                                <div class="anim-preview-orb anim-orb-1"></div>
+                                                <div class="anim-preview-orb anim-orb-2"></div>
+                                                <div class="anim-preview-grid"></div>
+                                            </div>
+                                            <div class="loginflux-anim-card-body">
+                                                <h4><?php esc_html_e( 'Pulse Orb & Tech Grid', 'loginflux' ); ?></h4>
+                                                <p><?php esc_html_e( 'Dual rotating glowing orbs with a linear cyberpunk tech grid.', 'loginflux' ); ?></p>
+                                            </div>
+                                        </label>
+
+                                        <!-- Option 2: Nebula Glow & Noise -->
+                                        <label class="loginflux-anim-card <?php echo ( '2' === (string) $settings['animation_type'] ) ? 'active' : ''; ?>">
+                                            <input
+                                                type="radio"
+                                                name="loginflux_settings[animation_type]"
+                                                value="2"
+                                                class="loginflux-anim-radio"
+                                                <?php checked( $settings['animation_type'], '2' ); ?>
+                                            >
+                                            <div class="loginflux-anim-card-header">
+                                                <span class="loginflux-anim-badge">Animation 2</span>
+                                                <span class="loginflux-anim-card-radio-mark dashicons dashicons-yes"></span>
+                                            </div>
+                                            <div class="loginflux-anim-preview-banner anim-2-preview">
+                                                <div class="anim-preview-nebula anim-nebula-1"></div>
+                                                <div class="anim-preview-nebula anim-nebula-2"></div>
+                                                <div class="anim-preview-nebula anim-nebula-3"></div>
+                                                <div class="anim-preview-noise"></div>
+                                            </div>
+                                            <div class="loginflux-anim-card-body">
+                                                <h4><?php esc_html_e( 'Nebula Glow & Noise', 'loginflux' ); ?></h4>
+                                                <p><?php esc_html_e( 'Tri-color pulsing ambient nebula with organic noise filter.', 'loginflux' ); ?></p>
+                                            </div>
+                                        </label>
+
+                                        <!-- Option 3: Aurora Gradient Flow -->
+                                        <label class="loginflux-anim-card <?php echo ( '3' === (string) $settings['animation_type'] ) ? 'active' : ''; ?>">
+                                            <input
+                                                type="radio"
+                                                name="loginflux_settings[animation_type]"
+                                                value="3"
+                                                class="loginflux-anim-radio"
+                                                <?php checked( $settings['animation_type'], '3' ); ?>
+                                            >
+                                            <div class="loginflux-anim-card-header">
+                                                <span class="loginflux-anim-badge">Animation 3</span>
+                                                <span class="loginflux-anim-card-radio-mark dashicons dashicons-yes"></span>
+                                            </div>
+                                            <div class="loginflux-anim-preview-banner anim-3-preview">
+                                                <div class="anim-preview-aurora"></div>
+                                            </div>
+                                            <div class="loginflux-anim-card-body">
+                                                <h4><?php esc_html_e( 'Aurora Flow Wave', 'loginflux' ); ?></h4>
+                                                <p><?php esc_html_e( 'Hypnotic 4-color dynamic shifting Aurora fluid flow.', 'loginflux' ); ?></p>
+                                            </div>
+                                        </label>
+
+                                        <!-- Option 4: Ambient Mesh Spin -->
+                                        <label class="loginflux-anim-card <?php echo ( '4' === (string) $settings['animation_type'] ) ? 'active' : ''; ?>">
+                                            <input
+                                                type="radio"
+                                                name="loginflux_settings[animation_type]"
+                                                value="4"
+                                                class="loginflux-anim-radio"
+                                                <?php checked( $settings['animation_type'], '4' ); ?>
+                                            >
+                                            <div class="loginflux-anim-card-header">
+                                                <span class="loginflux-anim-badge">Animation 4</span>
+                                                <span class="loginflux-anim-card-radio-mark dashicons dashicons-yes"></span>
+                                            </div>
+                                            <div class="loginflux-anim-preview-banner anim-4-preview">
+                                                <div class="anim-preview-mesh-wrap">
+                                                    <div class="anim-mesh-blob blob-1"></div>
+                                                    <div class="anim-mesh-blob blob-2"></div>
+                                                    <div class="anim-mesh-blob blob-3"></div>
+                                                </div>
+                                            </div>
+                                            <div class="loginflux-anim-card-body">
+                                                <h4><?php esc_html_e( 'Ambient Mesh Spin', 'loginflux' ); ?></h4>
+                                                <p><?php esc_html_e( 'Continuous 360-degree rotating 3-point ambient gradient mesh.', 'loginflux' ); ?></p>
+                                            </div>
+                                        </label>
+
+                                    </div>
                                 </div>
+
+                                <!-- Panel 1: Animation 1 Controls -->
+                                <div class="loginflux-anim-panel" data-anim-panel="1" style="<?php echo ( '1' === (string) $settings['animation_type'] ) ? '' : 'display: none;'; ?>">
+                                    <div class="loginflux-section-header">
+                                        <h3><?php esc_html_e( 'Animation 1: Pulse Orb & Cyber Grid Settings', 'loginflux' ); ?></h3>
+                                        <p><?php esc_html_e( 'Customize the glowing orb colors, background tone, and rotation speed.', 'loginflux' ); ?></p>
+                                    </div>
+
+                                    <div class="loginflux-color-grid">
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim1_bg"><?php esc_html_e( 'Base Background Color', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim1_bg"
+                                                name="loginflux_settings[anim1_bg]"
+                                                value="<?php echo esc_attr( $settings['anim1_bg'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim1_color_1"><?php esc_html_e( 'Glowing Orb 1 (Top-Left)', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim1_color_1"
+                                                name="loginflux_settings[anim1_color_1]"
+                                                value="<?php echo esc_attr( $settings['anim1_color_1'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim1_color_2"><?php esc_html_e( 'Glowing Orb 2 (Bottom-Right)', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim1_color_2"
+                                                name="loginflux_settings[anim1_color_2]"
+                                                value="<?php echo esc_attr( $settings['anim1_color_2'] ); ?>"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="loginflux-form-row loginflux-inline-fields">
+                                        <div style="flex: 1;">
+                                            <label for="loginflux_anim1_speed"><?php esc_html_e( 'Pulse & Spin Duration (seconds)', 'loginflux' ); ?></label>
+                                            <input
+                                                type="number"
+                                                id="loginflux_anim1_speed"
+                                                name="loginflux_settings[anim1_speed]"
+                                                value="<?php echo esc_attr( $settings['anim1_speed'] ); ?>"
+                                                min="3"
+                                                max="60"
+                                            >
+                                            <p class="description"><?php esc_html_e( 'Default: 12s. Lower is faster.', 'loginflux' ); ?></p>
+                                        </div>
+                                        <div style="flex: 1; display: flex; align-items: flex-end; padding-bottom: 22px;">
+                                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                                <input
+                                                    type="checkbox"
+                                                    name="loginflux_settings[anim1_grid]"
+                                                    value="1"
+                                                    <?php checked( $settings['anim1_grid'], '1' ); ?>
+                                                >
+                                                <span><?php esc_html_e( 'Show Tech Grid Overlay', 'loginflux' ); ?></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Panel 2: Animation 2 Controls -->
+                                <div class="loginflux-anim-panel" data-anim-panel="2" style="<?php echo ( '2' === (string) $settings['animation_type'] ) ? '' : 'display: none;'; ?>">
+                                    <div class="loginflux-section-header">
+                                        <h3><?php esc_html_e( 'Animation 2: Nebula Glow & Noise Settings', 'loginflux' ); ?></h3>
+                                        <p><?php esc_html_e( 'Control the 3 nebula cloud stops and subtle noise layer.', 'loginflux' ); ?></p>
+                                    </div>
+
+                                    <div class="loginflux-color-grid">
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim2_bg"><?php esc_html_e( 'Base Background Color', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim2_bg"
+                                                name="loginflux_settings[anim2_bg]"
+                                                value="<?php echo esc_attr( $settings['anim2_bg'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim2_color_1"><?php esc_html_e( 'Nebula Color 1', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim2_color_1"
+                                                name="loginflux_settings[anim2_color_1]"
+                                                value="<?php echo esc_attr( $settings['anim2_color_1'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim2_color_2"><?php esc_html_e( 'Nebula Color 2', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim2_color_2"
+                                                name="loginflux_settings[anim2_color_2]"
+                                                value="<?php echo esc_attr( $settings['anim2_color_2'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim2_color_3"><?php esc_html_e( 'Nebula Color 3', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim2_color_3"
+                                                name="loginflux_settings[anim2_color_3]"
+                                                value="<?php echo esc_attr( $settings['anim2_color_3'] ); ?>"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="loginflux-form-row loginflux-inline-fields">
+                                        <div style="flex: 1;">
+                                            <label for="loginflux_anim2_speed"><?php esc_html_e( 'Nebula Bounce Duration (seconds)', 'loginflux' ); ?></label>
+                                            <input
+                                                type="number"
+                                                id="loginflux_anim2_speed"
+                                                name="loginflux_settings[anim2_speed]"
+                                                value="<?php echo esc_attr( $settings['anim2_speed'] ); ?>"
+                                                min="3"
+                                                max="60"
+                                            >
+                                            <p class="description"><?php esc_html_e( 'Default: 10s. Lower is faster.', 'loginflux' ); ?></p>
+                                        </div>
+                                        <div style="flex: 1; display: flex; align-items: flex-end; padding-bottom: 22px;">
+                                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                                <input
+                                                    type="checkbox"
+                                                    name="loginflux_settings[anim2_noise]"
+                                                    value="1"
+                                                    <?php checked( $settings['anim2_noise'], '1' ); ?>
+                                                >
+                                                <span><?php esc_html_e( 'Enable Noise Texture Overlay', 'loginflux' ); ?></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Panel 3: Animation 3 Controls -->
+                                <div class="loginflux-anim-panel" data-anim-panel="3" style="<?php echo ( '3' === (string) $settings['animation_type'] ) ? '' : 'display: none;'; ?>">
+                                    <div class="loginflux-section-header">
+                                        <h3><?php esc_html_e( 'Animation 3: Aurora Flow Gradient Palette', 'loginflux' ); ?></h3>
+                                        <p><?php esc_html_e( 'Customize the 4 harmonic color stops for the fluid animated gradient wave.', 'loginflux' ); ?></p>
+                                    </div>
+
+                                    <div class="loginflux-color-grid">
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_bg_color"><?php esc_html_e( 'Base / Stop 1 Color', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_bg_color"
+                                                name="loginflux_settings[bg_color]"
+                                                value="<?php echo esc_attr( $settings['bg_color'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_aurora_2"><?php esc_html_e( 'Gradient Stop 2', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_aurora_2"
+                                                name="loginflux_settings[aurora_color_2]"
+                                                value="<?php echo esc_attr( $settings['aurora_color_2'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_aurora_3"><?php esc_html_e( 'Gradient Stop 3', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_aurora_3"
+                                                name="loginflux_settings[aurora_color_3]"
+                                                value="<?php echo esc_attr( $settings['aurora_color_3'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_aurora_4"><?php esc_html_e( 'Gradient Stop 4', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_aurora_4"
+                                                name="loginflux_settings[aurora_color_4]"
+                                                value="<?php echo esc_attr( $settings['aurora_color_4'] ); ?>"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="loginflux-form-row">
+                                        <label for="loginflux_aurora_speed"><?php esc_html_e( 'Animation Cycle Duration (seconds)', 'loginflux' ); ?></label>
+                                        <input
+                                            type="number"
+                                            id="loginflux_aurora_speed"
+                                            name="loginflux_settings[aurora_speed]"
+                                            value="<?php echo esc_attr( $settings['aurora_speed'] ); ?>"
+                                            min="3"
+                                            max="60"
+                                            style="max-width: 150px;"
+                                        >
+                                        <p class="description"><?php esc_html_e( 'Duration of one continuous gradient cycle (default: 15s). Lower numbers make it faster.', 'loginflux' ); ?></p>
+                                    </div>
+                                </div>
+
+                                <!-- Panel 4: Animation 4 Controls -->
+                                <div class="loginflux-anim-panel" data-anim-panel="4" style="<?php echo ( '4' === (string) $settings['animation_type'] ) ? '' : 'display: none;'; ?>">
+                                    <div class="loginflux-section-header">
+                                        <h3><?php esc_html_e( 'Animation 4: Ambient Mesh Spin Settings', 'loginflux' ); ?></h3>
+                                        <p><?php esc_html_e( 'Configure the 3 radial color points and the rotation cycle.', 'loginflux' ); ?></p>
+                                    </div>
+
+                                    <div class="loginflux-color-grid">
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim4_bg"><?php esc_html_e( 'Base Background Color', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim4_bg"
+                                                name="loginflux_settings[anim4_bg]"
+                                                value="<?php echo esc_attr( $settings['anim4_bg'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim4_color_1"><?php esc_html_e( 'Mesh Color 1 (Top-Left)', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim4_color_1"
+                                                name="loginflux_settings[anim4_color_1]"
+                                                value="<?php echo esc_attr( $settings['anim4_color_1'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim4_color_2"><?php esc_html_e( 'Mesh Color 2 (Bottom-Right)', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim4_color_2"
+                                                name="loginflux_settings[anim4_color_2]"
+                                                value="<?php echo esc_attr( $settings['anim4_color_2'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim4_color_3"><?php esc_html_e( 'Mesh Color 3 (Center)', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim4_color_3"
+                                                name="loginflux_settings[anim4_color_3]"
+                                                value="<?php echo esc_attr( $settings['anim4_color_3'] ); ?>"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="loginflux-form-row">
+                                        <label for="loginflux_anim4_speed"><?php esc_html_e( 'Full Rotation Spin Duration (seconds)', 'loginflux' ); ?></label>
+                                        <input
+                                            type="number"
+                                            id="loginflux_anim4_speed"
+                                            name="loginflux_settings[anim4_speed]"
+                                            value="<?php echo esc_attr( $settings['anim4_speed'] ); ?>"
+                                            min="3"
+                                            max="60"
+                                            style="max-width: 150px;"
+                                        >
+                                        <p class="description"><?php esc_html_e( 'Default: 20s. Duration of a complete 360-degree rotation.', 'loginflux' ); ?></p>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
@@ -716,8 +1102,30 @@ function jzlf_login_body_class( $classes ) {
 
     if ( ! empty( $settings['bg_image'] ) ) {
         $classes[] = 'loginflux-has-bg-image';
-    } elseif ( ! empty( $settings['aurora_enable'] ) && '1' === $settings['aurora_enable'] ) {
-        $classes[] = 'loginflux-aurora-active';
+    } elseif ( ! empty( $settings['animation_enable'] ) && '1' === (string) $settings['animation_enable'] ) {
+        $anim_type = ! empty( $settings['animation_type'] ) ? (string) $settings['animation_type'] : '3';
+        switch ( $anim_type ) {
+            case '1':
+                $classes[] = 'loginflux-anim-1-active';
+                if ( empty( $settings['anim1_grid'] ) || '1' !== (string) $settings['anim1_grid'] ) {
+                    $classes[] = 'loginflux-grid-disabled';
+                }
+                break;
+            case '2':
+                $classes[] = 'loginflux-anim-2-active';
+                if ( empty( $settings['anim2_noise'] ) || '1' !== (string) $settings['anim2_noise'] ) {
+                    $classes[] = 'loginflux-noise-disabled';
+                }
+                break;
+            case '4':
+                $classes[] = 'loginflux-anim-4-active';
+                break;
+            case '3':
+            default:
+                $classes[] = 'loginflux-anim-3-active';
+                $classes[] = 'loginflux-aurora-active';
+                break;
+        }
     }
 
     return $classes;
@@ -737,40 +1145,80 @@ function jzlf_login_enqueue_style() {
         LOGINFLUX_VERSION
     );
 
-    // Calculate dynamic values
+    // Calculate dynamic branding & form values
     $logo_url      = ! empty( $settings['logo'] ) ? esc_url( $settings['logo'] ) : LOGINFLUX_URL . 'images/logo.png';
     $logo_width    = ! empty( $settings['logo_width'] ) ? absint( $settings['logo_width'] ) . 'px' : '160px';
     $logo_height   = ! empty( $settings['logo_height'] ) ? absint( $settings['logo_height'] ) . 'px' : '50px';
     $primary_color = ! empty( $settings['primary_color'] ) ? sanitize_hex_color( $settings['primary_color'] ) : '#6366f1';
     $hover_color   = ! empty( $settings['hover_color'] ) ? sanitize_hex_color( $settings['hover_color'] ) : '#4f46e5';
     $text_color    = ! empty( $settings['text_color'] ) ? sanitize_hex_color( $settings['text_color'] ) : '#0f172a';
+    $card_bg       = ! empty( $settings['card_bg_color'] ) ? esc_attr( $settings['card_bg_color'] ) : 'rgba(255, 255, 255, 0.45)';
+    $card_blur     = ! empty( $settings['card_blur'] ) ? absint( $settings['card_blur'] ) . 'px' : '28px';
+    $border_radius = ! empty( $settings['border_radius'] ) ? absint( $settings['border_radius'] ) . 'px' : '24px';
+
+    // Animation 1 (Pulse Orb & Cyber Grid)
+    $anim1_bg      = ! empty( $settings['anim1_bg'] ) ? sanitize_hex_color( $settings['anim1_bg'] ) : '#090d16';
+    $anim1_color1  = ! empty( $settings['anim1_color_1'] ) ? sanitize_hex_color( $settings['anim1_color_1'] ) : '#3b82f6';
+    $anim1_color2  = ! empty( $settings['anim1_color_2'] ) ? sanitize_hex_color( $settings['anim1_color_2'] ) : '#ec4899';
+    $anim1_speed   = ! empty( $settings['anim1_speed'] ) ? absint( $settings['anim1_speed'] ) . 's' : '12s';
+
+    // Animation 2 (Nebula Glow & Noise)
+    $anim2_bg      = ! empty( $settings['anim2_bg'] ) ? sanitize_hex_color( $settings['anim2_bg'] ) : '#0b0f19';
+    $anim2_color1  = ! empty( $settings['anim2_color_1'] ) ? sanitize_hex_color( $settings['anim2_color_1'] ) : '#06b6d4';
+    $anim2_color2  = ! empty( $settings['anim2_color_2'] ) ? sanitize_hex_color( $settings['anim2_color_2'] ) : '#8b5cf6';
+    $anim2_color3  = ! empty( $settings['anim2_color_3'] ) ? sanitize_hex_color( $settings['anim2_color_3'] ) : '#f43f5e';
+    $anim2_speed   = ! empty( $settings['anim2_speed'] ) ? absint( $settings['anim2_speed'] ) . 's' : '10s';
+
+    // Animation 3 (Aurora Gradient Flow)
     $bg_color      = ! empty( $settings['bg_color'] ) ? sanitize_hex_color( $settings['bg_color'] ) : '#030712';
     $aurora_1      = ! empty( $settings['aurora_color_1'] ) ? sanitize_hex_color( $settings['aurora_color_1'] ) : $bg_color;
     $aurora_2      = ! empty( $settings['aurora_color_2'] ) ? sanitize_hex_color( $settings['aurora_color_2'] ) : '#1e1b4b';
     $aurora_3      = ! empty( $settings['aurora_color_3'] ) ? sanitize_hex_color( $settings['aurora_color_3'] ) : '#0284c7';
     $aurora_4      = ! empty( $settings['aurora_color_4'] ) ? sanitize_hex_color( $settings['aurora_color_4'] ) : '#4f46e5';
     $aurora_speed  = ! empty( $settings['aurora_speed'] ) ? absint( $settings['aurora_speed'] ) . 's' : '15s';
-    $card_bg       = ! empty( $settings['card_bg_color'] ) ? esc_attr( $settings['card_bg_color'] ) : 'rgba(255, 255, 255, 0.45)';
-    $card_blur     = ! empty( $settings['card_blur'] ) ? absint( $settings['card_blur'] ) . 'px' : '28px';
-    $border_radius = ! empty( $settings['border_radius'] ) ? absint( $settings['border_radius'] ) . 'px' : '24px';
+
+    // Animation 4 (Ambient Mesh Spin)
+    $anim4_bg      = ! empty( $settings['anim4_bg'] ) ? sanitize_hex_color( $settings['anim4_bg'] ) : '#0f172a';
+    $anim4_color1  = ! empty( $settings['anim4_color_1'] ) ? sanitize_hex_color( $settings['anim4_color_1'] ) : '#818cf8';
+    $anim4_color2  = ! empty( $settings['anim4_color_2'] ) ? sanitize_hex_color( $settings['anim4_color_2'] ) : '#c084fc';
+    $anim4_color3  = ! empty( $settings['anim4_color_3'] ) ? sanitize_hex_color( $settings['anim4_color_3'] ) : '#38bdf8';
+    $anim4_speed   = ! empty( $settings['anim4_speed'] ) ? absint( $settings['anim4_speed'] ) . 's' : '20s';
 
     $dynamic_css = "
         :root {
             --loginflux-primary: {$primary_color};
             --loginflux-primary-hover: {$hover_color};
             --loginflux-text: {$text_color};
-            --loginflux-bg-color: {$bg_color};
-            --loginflux-aurora-1: {$aurora_1};
-            --loginflux-aurora-2: {$aurora_2};
-            --loginflux-aurora-3: {$aurora_3};
-            --loginflux-aurora-4: {$aurora_4};
-            --loginflux-aurora-speed: {$aurora_speed};
             --loginflux-card-bg: {$card_bg};
             --loginflux-card-blur: {$card_blur};
             --loginflux-radius: {$border_radius};
             --loginflux-logo: url('{$logo_url}');
             --loginflux-logo-width: {$logo_width};
             --loginflux-logo-height: {$logo_height};
+
+            --loginflux-anim1-bg: {$anim1_bg};
+            --loginflux-anim1-color1: {$anim1_color1};
+            --loginflux-anim1-color2: {$anim1_color2};
+            --loginflux-anim1-speed: {$anim1_speed};
+
+            --loginflux-anim2-bg: {$anim2_bg};
+            --loginflux-anim2-color1: {$anim2_color1};
+            --loginflux-anim2-color2: {$anim2_color2};
+            --loginflux-anim2-color3: {$anim2_color3};
+            --loginflux-anim2-speed: {$anim2_speed};
+
+            --loginflux-bg-color: {$bg_color};
+            --loginflux-aurora-1: {$aurora_1};
+            --loginflux-aurora-2: {$aurora_2};
+            --loginflux-aurora-3: {$aurora_3};
+            --loginflux-aurora-4: {$aurora_4};
+            --loginflux-aurora-speed: {$aurora_speed};
+
+            --loginflux-anim4-bg: {$anim4_bg};
+            --loginflux-anim4-color1: {$anim4_color1};
+            --loginflux-anim4-color2: {$anim4_color2};
+            --loginflux-anim4-color3: {$anim4_color3};
+            --loginflux-anim4-speed: {$anim4_speed};
         }
     ";
 
@@ -783,7 +1231,6 @@ function jzlf_login_enqueue_style() {
             }
         ";
     }
-
 
     wp_add_inline_style( 'loginflux-login-style', $dynamic_css );
 }

@@ -13,11 +13,33 @@
     --loginflux-muted: #64748b;
 
     --loginflux-bg-color: #030712;
+
+    /* Animation 1 (Pulse Orb & Cyber Grid) */
+    --loginflux-anim1-bg: #090d16;
+    --loginflux-anim1-color1: #3b82f6;
+    --loginflux-anim1-color2: #ec4899;
+    --loginflux-anim1-speed: 12s;
+
+    /* Animation 2 (Nebula Glow & Noise) */
+    --loginflux-anim2-bg: #0b0f19;
+    --loginflux-anim2-color1: #06b6d4;
+    --loginflux-anim2-color2: #8b5cf6;
+    --loginflux-anim2-color3: #f43f5e;
+    --loginflux-anim2-speed: 10s;
+
+    /* Animation 3 (Aurora Gradient Flow) */
     --loginflux-aurora-1: #030712;
     --loginflux-aurora-2: #1e1b4b;
     --loginflux-aurora-3: #0284c7;
     --loginflux-aurora-4: #4f46e5;
     --loginflux-aurora-speed: 15s;
+
+    /* Animation 4 (Ambient Mesh Spin) */
+    --loginflux-anim4-bg: #0f172a;
+    --loginflux-anim4-color1: #818cf8;
+    --loginflux-anim4-color2: #c084fc;
+    --loginflux-anim4-color3: #38bdf8;
+    --loginflux-anim4-speed: 20s;
 
     --loginflux-card-bg: rgba(255, 255, 255, 0.55);
     --loginflux-card-border: rgba(255, 255, 255, 0.65);
@@ -50,84 +72,6 @@ html, body.login {
     box-sizing: inherit;
 }
 
-/* Animation 1 */
-/* body.login {
-    background-color: #090d16;
-}
-
-body.login::before {
-    content: "";
-    position: fixed;
-    inset: -50%;
-    z-index: 0;
-    background: 
-        radial-gradient(circle at 30% 30%, #3b82f6 0%, transparent 45%),
-        radial-gradient(circle at 70% 70%, #ec4899 0%, transparent 45%);
-    opacity: 0.5;
-    filter: blur(90px);
-    animation: plc-pulse-spin 12s ease-in-out infinite alternate;
-} */
-
-/* Linear Tech Grid */
-/* body.login::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-}
-
-@keyframes plc-pulse-spin {
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-    100% {
-        transform: rotate(180deg) scale(1.2);
-    }
-} */
-
-
-/* Aimaton 2 */
-/* body.login {
-    background-color: #0b0f19;
-}
-
-body.login::before {
-    content: "";
-    position: fixed;
-    inset: -20%;
-    z-index: 0;
-    background: 
-        radial-gradient(circle at 20% 80%, #06b6d4 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, #8b5cf6 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, #f43f5e 0%, transparent 45%);
-    filter: blur(100px);
-    opacity: 0.55;
-    animation: plc-glow-bounce 10s ease-in-out infinite alternate;
-}
-
-
-body.login::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    opacity: 0.25;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-@keyframes plc-glow-bounce {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(-30px, 20px) scale(1.1); }
-} */
-
-
-/* Aimaton 3 */
 body.login {
     display: flex;
     justify-content: center;
@@ -140,7 +84,94 @@ body.login {
     position: relative;
 }
 
-/* Animated Visual Gradient Flow Background (Active when no image is set) */
+/* =========================================================
+   ANIMATION 1: Pulse Orb & Cyber Grid
+   ========================================================= */
+body.login.loginflux-anim-1-active {
+    background-color: var(--loginflux-anim1-bg);
+}
+
+body.login.loginflux-anim-1-active::before {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: 0;
+    background: 
+        radial-gradient(circle at 30% 30%, var(--loginflux-anim1-color1) 0%, transparent 45%),
+        radial-gradient(circle at 70% 70%, var(--loginflux-anim1-color2) 0%, transparent 45%);
+    opacity: 0.55;
+    filter: blur(90px);
+    animation: loginflux-pulse-spin var(--loginflux-anim1-speed) ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+body.login.loginflux-anim-1-active:not(.loginflux-grid-disabled)::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+@keyframes loginflux-pulse-spin {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    100% {
+        transform: rotate(180deg) scale(1.2);
+    }
+}
+
+/* =========================================================
+   ANIMATION 2: Nebula Glow & Noise Overlay
+   ========================================================= */
+body.login.loginflux-anim-2-active {
+    background-color: var(--loginflux-anim2-bg);
+}
+
+body.login.loginflux-anim-2-active::before {
+    content: "";
+    position: fixed;
+    inset: -20%;
+    z-index: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, var(--loginflux-anim2-color1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, var(--loginflux-anim2-color2) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, var(--loginflux-anim2-color3) 0%, transparent 45%);
+    filter: blur(100px);
+    opacity: 0.55;
+    animation: loginflux-glow-bounce var(--loginflux-anim2-speed) ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+body.login.loginflux-anim-2-active:not(.loginflux-noise-disabled)::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.25;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+@keyframes loginflux-glow-bounce {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-30px, 20px) scale(1.1); }
+}
+
+/* =========================================================
+   ANIMATION 3: Fluid Aurora Gradient Flow
+   ========================================================= */
+body.login.loginflux-anim-3-active,
+body.login.loginflux-aurora-active {
+    background-color: var(--loginflux-bg-color);
+}
+
+body.login.loginflux-anim-3-active::before,
 body.login.loginflux-aurora-active::before {
     content: "";
     position: fixed;
@@ -165,38 +196,34 @@ body.login.loginflux-aurora-active::before {
     100% { background-position: 0% 50%; }
 }
 
-/* Animation 4 */
-/* body.login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-    color: var(--plc-text);
-    background: #0f172a;
-    overflow-x: hidden;
-} */
+/* =========================================================
+   ANIMATION 4: Ambient Mesh Spin
+   ========================================================= */
+body.login.loginflux-anim-4-active {
+    background-color: var(--loginflux-anim4-bg);
+}
 
-/* Animated Ambient Gradient Mesh Background */
-/* body.login::before {
+body.login.loginflux-anim-4-active::before {
     content: "";
     position: fixed;
     inset: -50%;
     z-index: 0;
-    background: radial-gradient(circle at 20% 20%, #818cf8 0%, transparent 40%),
-                radial-gradient(circle at 80% 80%, #c084fc 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, #38bdf8 0%, transparent 50%);
+    background: 
+        radial-gradient(circle at 20% 20%, var(--loginflux-anim4-color1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, var(--loginflux-anim4-color2) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, var(--loginflux-anim4-color3) 0%, transparent 50%);
     opacity: 0.6;
     filter: blur(80px);
-    animation: plc-ambient-spin 20s infinite linear;
+    animation: loginflux-ambient-spin var(--loginflux-anim4-speed) infinite linear;
+    pointer-events: none;
 }
 
-@keyframes plc-ambient-spin {
+@keyframes loginflux-ambient-spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-} */
+}
 
-/* Background Image Mode (Overrides Gradient when image is present) */
+/* Background Image Mode (Overrides Animations when image is present) */
 body.login.loginflux-has-bg-image {
     background-image: var(--loginflux-bg-img);
     background-size: cover;
@@ -205,7 +232,8 @@ body.login.loginflux-has-bg-image {
     background-attachment: fixed;
 }
 
-body.login.loginflux-has-bg-image::before {
+body.login.loginflux-has-bg-image::before,
+body.login.loginflux-has-bg-image::after {
     display: none !important;
 }
 
