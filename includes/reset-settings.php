@@ -25,11 +25,23 @@ function jzlf_reset_settings() {
             'page'                     => 'loginflux',
             'loginflux_settings_reset' => '1',
         ],
-        admin_url( 'admin.php' )
+        admin_url( 'options-general.php' )
     );
 
     wp_safe_redirect( $redirect_url );
     exit;
 }
 add_action( 'admin_post_jzlf_reset_settings', 'jzlf_reset_settings' );
+
+/**
+ * Register query args to be removed from the URL by WordPress after display.
+ *
+ * @param array $args Removable query arguments.
+ * @return array
+ */
+function jzlf_removable_query_args( $args ) {
+    $args[] = 'loginflux_settings_reset';
+    return $args;
+}
+add_filter( 'removable_query_args', 'jzlf_removable_query_args' );
 

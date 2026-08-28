@@ -8,6 +8,16 @@
     'use strict';
 
     $(document).ready(function() {
+        // Clean up reset query parameter from address bar so reloading doesn't re-trigger notification
+        if (window.history && window.history.replaceState && window.location.search.indexOf('loginflux_settings_reset') !== -1) {
+            var cleanUrl = window.location.href
+                .replace(/([?&])loginflux_settings_reset=[^&]+(&|$)/, function(match, p1, p2) {
+                    return p2 === '&' ? p1 : '';
+                })
+                .replace(/[?&]$/, '');
+            window.history.replaceState(null, '', cleanUrl);
+        }
+
         // Initialize WP Color Picker
         if ($.fn.wpColorPicker) {
             $('.loginflux-color-picker').wpColorPicker();
