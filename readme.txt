@@ -6,7 +6,7 @@ Plugin URI: https://wordpress.org/plugins/loginflux/
 Tags: login, custom login, login page, animated background, aurora background
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -66,6 +66,11 @@ Yes. Loginflux follows WordPress internationalization standards and uses the `lo
 2. Animated fluid gradient background with a modern glassmorphism login form.
 
 == Changelog ==
+
+= 1.2.1 =
+* Fixed admin reset flash notice persistence on page reload and URL state cleanup.
+* Fixed plugin activation redirect hook path.
+* Refactored codebase architecture into clean modular components for improved performance and maintainability.
 
 = 1.2.0 =
 * Added 4 selectable animation engines: Animation 1 (Pulse Orb & Tech Grid), Animation 2 (Nebula Glow & Noise), Animation 3 (Aurora Gradient Flow), and Animation 4 (Ambient Mesh Spin).
