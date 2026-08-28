@@ -436,13 +436,17 @@
     width: 24px;
     height: 24px;
     font-size: 15px;
-    line-height: 24px;
-    text-align: center;
     border: 2px solid #ffffff;
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(239, 68, 68, 0.4);
     transition: transform 0.2s ease, background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
 }
+
 
 .loginflux-image-preview .loginflux-remove-btn:hover {
     background: #dc2626;
