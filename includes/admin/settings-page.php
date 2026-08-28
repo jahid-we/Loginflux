@@ -729,7 +729,72 @@ function jzlf_admin_page_content() {
                         <?php esc_html_e( 'Plugin Author', 'loginflux' ); ?>
                     </h4>
                     <div class="loginflux-author-card">
-                        <div class="loginflux-author-avatar">JH</div>
+                        <div class="loginflux-author-avatar">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Jahid Hasan Avatar">
+                                <defs>
+                                    <linearGradient id="lf_av_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#4f46e5" />
+                                        <stop offset="100%" stop-color="#06b6d4" />
+                                    </linearGradient>
+                                    <linearGradient id="lf_av_hoodie" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#1e1b4b" />
+                                        <stop offset="100%" stop-color="#312e81" />
+                                    </linearGradient>
+                                    <clipPath id="lf_av_clip">
+                                        <circle cx="32" cy="32" r="32" />
+                                    </clipPath>
+                                </defs>
+                                <g clip-path="url(#lf_av_clip)">
+                                    <!-- Background -->
+                                    <rect width="64" height="64" fill="url(#lf_av_bg)" />
+                                    <!-- Soft glow circle behind avatar -->
+                                    <circle cx="32" cy="28" r="22" fill="#ffffff" fill-opacity="0.16" />
+                                    <!-- Body / Hoodie -->
+                                    <path d="M12 64 C12 49, 20 44, 32 44 C44 44, 52 49, 52 64 Z" fill="url(#lf_av_hoodie)" />
+                                    <!-- Collar / Inner Shirt -->
+                                    <path d="M26 44 L32 52 L38 44 Z" fill="#4338ca" />
+                                    <path d="M28 44 L32 49 L36 44 Z" fill="#ffd4b2" />
+                                    <!-- Hoodie drawstrings -->
+                                    <path d="M28 50 L27 57" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" />
+                                    <path d="M36 50 L37 57" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" />
+                                    <!-- Neck -->
+                                    <rect x="28" y="38" width="8" height="7" rx="2" fill="#f6b88b" />
+                                    <!-- Ears -->
+                                    <circle cx="20" cy="31" r="3" fill="#f6b88b" />
+                                    <circle cx="44" cy="31" r="3" fill="#f6b88b" />
+                                    <!-- Head / Face -->
+                                    <rect x="22" y="19" width="20" height="22" rx="9" fill="#ffd4b2" />
+                                    <!-- Hair Back & Volume -->
+                                    <path d="M21 24 C20 16 26 12 32 12 C39 12 44 16 43 24 C41 20 37 17 32 17 C26 17 22 20 21 24 Z" fill="#1e130c" />
+                                    <!-- Modern Swoop / Front Hair -->
+                                    <path d="M21 21 C22 14 29 11 37 12 C43 12.8 44 17 43 21 C40 17.5 35 17 32 17.5 C27 18.2 24 19.5 21 21 Z" fill="#2c1a0e" />
+                                    <path d="M21 22 C22 20 24 18 28 17 C24 19 22 22 21 25 Z" fill="#1e130c" />
+                                    <!-- Glasses -->
+                                    <rect x="23" y="25" width="7.5" height="6" rx="2" fill="#ffffff" fill-opacity="0.1" stroke="#0f172a" stroke-width="1.5" />
+                                    <rect x="33.5" y="25" width="7.5" height="6" rx="2" fill="#ffffff" fill-opacity="0.1" stroke="#0f172a" stroke-width="1.5" />
+                                    <path d="M30.5 28 L33.5 28" stroke="#0f172a" stroke-width="1.5" />
+                                    <path d="M21.5 27 L23 27" stroke="#0f172a" stroke-width="1.3" />
+                                    <path d="M41 27 L42.5 27" stroke="#0f172a" stroke-width="1.3" />
+                                    <!-- Eyes -->
+                                    <circle cx="26.8" cy="28" r="1.3" fill="#0f172a" />
+                                    <circle cx="37.2" cy="28" r="1.3" fill="#0f172a" />
+                                    <circle cx="27.3" cy="27.5" r="0.5" fill="#ffffff" />
+                                    <circle cx="37.7" cy="27.5" r="0.5" fill="#ffffff" />
+                                    <!-- Eyebrows -->
+                                    <path d="M24 23 C25.5 22 28 22.5 29 23.5" stroke="#1e130c" stroke-width="1.3" stroke-linecap="round" fill="none" />
+                                    <path d="M35 23.5 C36 22.5 38.5 22 40 23" stroke="#1e130c" stroke-width="1.3" stroke-linecap="round" fill="none" />
+                                    <!-- Friendly Smile -->
+                                    <path d="M29 35 Q32 38 35 35" stroke="#ba4a00" stroke-width="1.4" stroke-linecap="round" fill="none" />
+                                    <!-- Rosy Cheeks -->
+                                    <ellipse cx="24" cy="32" rx="1.6" ry="1" fill="#e74c3c" fill-opacity="0.25" />
+                                    <ellipse cx="40" cy="32" rx="1.6" ry="1" fill="#e74c3c" fill-opacity="0.25" />
+                                    <!-- Code symbol badge on hoodie -->
+                                    <path d="M29 56 L27 58 L29 60" stroke="#38bdf8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                                    <path d="M35 56 L37 58 L35 60" stroke="#38bdf8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                                    <path d="M33 55 L31 61" stroke="#38bdf8" stroke-width="1.1" stroke-linecap="round" />
+                                </g>
+                            </svg>
+                        </div>
                         <div class="loginflux-author-info">
                             <h5>Jahid Hasan</h5>
                             <span>WordPress & Web Developer</span>
@@ -743,7 +808,7 @@ function jzlf_admin_page_content() {
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/jahid-we/Loginflux" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/jahid-we/loginflux" target="_blank" rel="noopener noreferrer">
                                 <span><span class="dashicons dashicons-star-filled" style="margin-right: 4px; color: #f59e0b;"></span> <?php esc_html_e( 'Star on GitHub', 'loginflux' ); ?></span>
                                 <span class="dashicons dashicons-external"></span>
                             </a>
