@@ -272,7 +272,7 @@ body.login #login {
 /* Header & Logo Styling */
 body.login h1 {
     margin: 0 0 20px !important;
-    padding: 0 !important;
+    padding: 10px !important;
     text-align: center;
     border-radius: 20px !important;
     overflow: hidden !important;
