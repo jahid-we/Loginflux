@@ -6,7 +6,7 @@ Plugin URI: https://wordpress.org/plugins/loginflux/
 Tags: login, custom login, login page, animated background, aurora background
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,7 +21,7 @@ Featuring built-in animated visual effects—including dynamic **Fluid Flow grad
 
 ### 🌟 Key Features
 
-* **4 Modern Animated Background Engines:** Choose between Animation 1 (Pulse Orb & Cyber Grid), Animation 2 (Nebula Glow & Noise), Animation 3 (Aurora Gradient Flow), and Animation 4 (Ambient Mesh Spin) with full color and speed controls.
+* **8 Modern Animated Background Engines:** Choose between Animation 1 (Pulse Orb & Cyber Grid), Animation 2 (Nebula Glow & Noise), Animation 3 (Aurora Gradient Flow), Animation 4 (Ambient Mesh Spin), Animation 5 (Cosmic Starfield & Stardust), Animation 6 (Holographic Prism & Cyber Waves), Animation 7 (Retro Synthwave & Neon Horizon), and Animation 8 (Liquid Morphing Blobs) with full color and speed controls.
 * **Smart Background Fallback:** Automatically switches between your uploaded custom background image and fluid animated visual gradients.
 * **WordPress Media Library Integration:** Seamlessly upload or choose logos and background images using the native WordPress Media Uploader.
 * **Ultra-Modern Glassmorphism UI:** Frosted glass effect with configurable backdrop blur, card background opacity, and border radius.
@@ -66,6 +66,13 @@ Yes. Loginflux follows WordPress internationalization standards and uses the `lo
 2. Animated fluid gradient background with a modern glassmorphism login form.
 
 == Changelog ==
+
+= 1.3.0 =
+* Added 4 new animated visual engines: Animation 5 (Cosmic Starfield & Stardust Flow), Animation 6 (Holographic Prism & Cyber Waves), Animation 7 (Retro Synthwave & Neon Horizon), and Animation 8 (Liquid Morphing Blobs).
+* Added dedicated color pickers, animation speed, blur controls, and visual overlay toggles for all new animation styles.
+* Added modern interactive card selector previews for all 8 animation engines in the admin dashboard.
+* Added accessibility support with `@media (prefers-reduced-motion)` for motion-sensitive users.
+* Updated default settings schema and sanitization callbacks for all new animation parameters.
 
 = 1.2.1 =
 * Fixed admin reset flash notice persistence on page reload and URL state cleanup.

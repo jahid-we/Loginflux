@@ -308,6 +308,110 @@ function jzlf_admin_page_content() {
                                             </div>
                                         </label>
 
+                                        <!-- Option 5: Cosmic Starfield & Stardust -->
+                                        <label class="loginflux-anim-card <?php echo ( '5' === (string) $settings['animation_type'] ) ? 'active' : ''; ?>">
+                                            <input
+                                                type="radio"
+                                                name="loginflux_settings[animation_type]"
+                                                value="5"
+                                                class="loginflux-anim-radio"
+                                                <?php checked( $settings['animation_type'], '5' ); ?>
+                                            >
+                                            <div class="loginflux-anim-card-header">
+                                                <span class="loginflux-anim-badge">Animation 5</span>
+                                                <span class="loginflux-anim-card-radio-mark dashicons dashicons-yes"></span>
+                                            </div>
+                                            <div class="loginflux-anim-preview-banner anim-5-preview">
+                                                <div class="anim-preview-starfield">
+                                                    <div class="anim-star star-1"></div>
+                                                    <div class="anim-star star-2"></div>
+                                                    <div class="anim-star star-3"></div>
+                                                    <div class="anim-star star-4"></div>
+                                                    <div class="anim-star star-5"></div>
+                                                </div>
+                                                <div class="anim-preview-nebula-dust"></div>
+                                            </div>
+                                            <div class="loginflux-anim-card-body">
+                                                <h4><?php esc_html_e( 'Cosmic Starfield', 'loginflux' ); ?></h4>
+                                                <p><?php esc_html_e( 'Deep space stardust drifting with glowing stars.', 'loginflux' ); ?></p>
+                                            </div>
+                                        </label>
+
+                                        <!-- Option 6: Holographic Prism & Cyber Waves -->
+                                        <label class="loginflux-anim-card <?php echo ( '6' === (string) $settings['animation_type'] ) ? 'active' : ''; ?>">
+                                            <input
+                                                type="radio"
+                                                name="loginflux_settings[animation_type]"
+                                                value="6"
+                                                class="loginflux-anim-radio"
+                                                <?php checked( $settings['animation_type'], '6' ); ?>
+                                            >
+                                            <div class="loginflux-anim-card-header">
+                                                <span class="loginflux-anim-badge">Animation 6</span>
+                                                <span class="loginflux-anim-card-radio-mark dashicons dashicons-yes"></span>
+                                            </div>
+                                            <div class="loginflux-anim-preview-banner anim-6-preview">
+                                                <div class="anim-preview-prism-wrap">
+                                                    <div class="anim-prism-wave wave-1"></div>
+                                                    <div class="anim-prism-wave wave-2"></div>
+                                                </div>
+                                                <div class="anim-preview-cyber-lines"></div>
+                                            </div>
+                                            <div class="loginflux-anim-card-body">
+                                                <h4><?php esc_html_e( 'Holographic Prism', 'loginflux' ); ?></h4>
+                                                <p><?php esc_html_e( 'Chromatic iridescent waves with sleek cyber accents.', 'loginflux' ); ?></p>
+                                            </div>
+                                        </label>
+
+                                        <!-- Option 7: Retro Synthwave & Neon Horizon -->
+                                        <label class="loginflux-anim-card <?php echo ( '7' === (string) $settings['animation_type'] ) ? 'active' : ''; ?>">
+                                            <input
+                                                type="radio"
+                                                name="loginflux_settings[animation_type]"
+                                                value="7"
+                                                class="loginflux-anim-radio"
+                                                <?php checked( $settings['animation_type'], '7' ); ?>
+                                            >
+                                            <div class="loginflux-anim-card-header">
+                                                <span class="loginflux-anim-badge">Animation 7</span>
+                                                <span class="loginflux-anim-card-radio-mark dashicons dashicons-yes"></span>
+                                            </div>
+                                            <div class="loginflux-anim-preview-banner anim-7-preview">
+                                                <div class="anim-preview-synth-sun"></div>
+                                                <div class="anim-preview-synth-grid"></div>
+                                            </div>
+                                            <div class="loginflux-anim-card-body">
+                                                <h4><?php esc_html_e( 'Retro Synthwave Grid', 'loginflux' ); ?></h4>
+                                                <p><?php esc_html_e( '80s neon horizon floor with radiant perspective glow.', 'loginflux' ); ?></p>
+                                            </div>
+                                        </label>
+
+                                        <!-- Option 8: Liquid Morphing Blobs -->
+                                        <label class="loginflux-anim-card <?php echo ( '8' === (string) $settings['animation_type'] ) ? 'active' : ''; ?>">
+                                            <input
+                                                type="radio"
+                                                name="loginflux_settings[animation_type]"
+                                                value="8"
+                                                class="loginflux-anim-radio"
+                                                <?php checked( $settings['animation_type'], '8' ); ?>
+                                            >
+                                            <div class="loginflux-anim-card-header">
+                                                <span class="loginflux-anim-badge">Animation 8</span>
+                                                <span class="loginflux-anim-card-radio-mark dashicons dashicons-yes"></span>
+                                            </div>
+                                            <div class="loginflux-anim-preview-banner anim-8-preview">
+                                                <div class="anim-preview-liquid-wrap">
+                                                    <div class="anim-liquid-blob blob-a"></div>
+                                                    <div class="anim-liquid-blob blob-b"></div>
+                                                    <div class="anim-liquid-blob blob-c"></div>
+                                                </div>
+                                            </div>
+                                            <div class="loginflux-anim-card-body">
+                                                <h4><?php esc_html_e( 'Liquid Morph Blobs', 'loginflux' ); ?></h4>
+                                                <p><?php esc_html_e( 'Organic fluid metaballs with smooth SaaS glow.', 'loginflux' ); ?></p>
+                                            </div>
+                                        </label>
+
                                     </div>
                                 </div>
 
@@ -582,6 +686,295 @@ function jzlf_admin_page_content() {
                                             style="max-width: 150px;"
                                         >
                                         <p class="description"><?php esc_html_e( 'Default: 20s. Duration of a complete 360-degree rotation.', 'loginflux' ); ?></p>
+                                    </div>
+                                </div>
+
+                                <!-- Panel 5: Animation 5 Controls -->
+                                <div class="loginflux-anim-panel" data-anim-panel="5" style="<?php echo ( '5' === (string) $settings['animation_type'] ) ? '' : 'display: none;'; ?>">
+                                    <div class="loginflux-section-header">
+                                        <h3><?php esc_html_e( 'Animation 5: Cosmic Starfield & Stardust Settings', 'loginflux' ); ?></h3>
+                                        <p><?php esc_html_e( 'Configure the space backdrop, particle hues, and stardust motion speed.', 'loginflux' ); ?></p>
+                                    </div>
+
+                                    <div class="loginflux-color-grid">
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim5_bg"><?php esc_html_e( 'Deep Space Background', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim5_bg"
+                                                name="loginflux_settings[anim5_bg]"
+                                                value="<?php echo esc_attr( $settings['anim5_bg'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim5_color_1"><?php esc_html_e( 'Cosmic Ambient Glow', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim5_color_1"
+                                                name="loginflux_settings[anim5_color_1]"
+                                                value="<?php echo esc_attr( $settings['anim5_color_1'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim5_color_2"><?php esc_html_e( 'Star & Stardust Particle Tone', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim5_color_2"
+                                                name="loginflux_settings[anim5_color_2]"
+                                                value="<?php echo esc_attr( $settings['anim5_color_2'] ); ?>"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="loginflux-form-row loginflux-inline-fields">
+                                        <div style="flex: 1;">
+                                            <label for="loginflux_anim5_speed"><?php esc_html_e( 'Stardust Drift Duration (seconds)', 'loginflux' ); ?></label>
+                                            <input
+                                                type="number"
+                                                id="loginflux_anim5_speed"
+                                                name="loginflux_settings[anim5_speed]"
+                                                value="<?php echo esc_attr( $settings['anim5_speed'] ); ?>"
+                                                min="3"
+                                                max="60"
+                                            >
+                                            <p class="description"><?php esc_html_e( 'Default: 18s. Lower values increase drifting speed.', 'loginflux' ); ?></p>
+                                        </div>
+                                        <div style="flex: 1; display: flex; align-items: flex-end; padding-bottom: 22px;">
+                                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                                <input
+                                                    type="checkbox"
+                                                    name="loginflux_settings[anim5_stars]"
+                                                    value="1"
+                                                    <?php checked( $settings['anim5_stars'], '1' ); ?>
+                                                >
+                                                <span><?php esc_html_e( 'Enable Glowing Stars & Particles', 'loginflux' ); ?></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Panel 6: Animation 6 Controls -->
+                                <div class="loginflux-anim-panel" data-anim-panel="6" style="<?php echo ( '6' === (string) $settings['animation_type'] ) ? '' : 'display: none;'; ?>">
+                                    <div class="loginflux-section-header">
+                                        <h3><?php esc_html_e( 'Animation 6: Holographic Prism & Cyber Waves Settings', 'loginflux' ); ?></h3>
+                                        <p><?php esc_html_e( 'Tune the iridescent prism colors, wave speed, and cyber lines overlay.', 'loginflux' ); ?></p>
+                                    </div>
+
+                                    <div class="loginflux-color-grid">
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim6_bg"><?php esc_html_e( 'Base Dark Background', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim6_bg"
+                                                name="loginflux_settings[anim6_bg]"
+                                                value="<?php echo esc_attr( $settings['anim6_bg'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim6_color_1"><?php esc_html_e( 'Prism Spectrum 1', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim6_color_1"
+                                                name="loginflux_settings[anim6_color_1]"
+                                                value="<?php echo esc_attr( $settings['anim6_color_1'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim6_color_2"><?php esc_html_e( 'Prism Spectrum 2', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim6_color_2"
+                                                name="loginflux_settings[anim6_color_2]"
+                                                value="<?php echo esc_attr( $settings['anim6_color_2'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim6_color_3"><?php esc_html_e( 'Prism Spectrum 3', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim6_color_3"
+                                                name="loginflux_settings[anim6_color_3]"
+                                                value="<?php echo esc_attr( $settings['anim6_color_3'] ); ?>"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="loginflux-form-row loginflux-inline-fields">
+                                        <div style="flex: 1;">
+                                            <label for="loginflux_anim6_speed"><?php esc_html_e( 'Wave Cycle Duration (seconds)', 'loginflux' ); ?></label>
+                                            <input
+                                                type="number"
+                                                id="loginflux_anim6_speed"
+                                                name="loginflux_settings[anim6_speed]"
+                                                value="<?php echo esc_attr( $settings['anim6_speed'] ); ?>"
+                                                min="3"
+                                                max="60"
+                                            >
+                                            <p class="description"><?php esc_html_e( 'Default: 14s. Lower values speed up the iridescent wave flow.', 'loginflux' ); ?></p>
+                                        </div>
+                                        <div style="flex: 1; display: flex; align-items: flex-end; padding-bottom: 22px;">
+                                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                                <input
+                                                    type="checkbox"
+                                                    name="loginflux_settings[anim6_lines]"
+                                                    value="1"
+                                                    <?php checked( $settings['anim6_lines'], '1' ); ?>
+                                                >
+                                                <span><?php esc_html_e( 'Enable Geometric Wave Accents', 'loginflux' ); ?></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Panel 7: Animation 7 Controls -->
+                                <div class="loginflux-anim-panel" data-anim-panel="7" style="<?php echo ( '7' === (string) $settings['animation_type'] ) ? '' : 'display: none;'; ?>">
+                                    <div class="loginflux-section-header">
+                                        <h3><?php esc_html_e( 'Animation 7: Retro Synthwave & Neon Horizon Settings', 'loginflux' ); ?></h3>
+                                        <p><?php esc_html_e( 'Customize the synth horizon sun, perspective neon grid lines, and speed.', 'loginflux' ); ?></p>
+                                    </div>
+
+                                    <div class="loginflux-color-grid">
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim7_bg"><?php esc_html_e( 'Deep Night Sky Base', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim7_bg"
+                                                name="loginflux_settings[anim7_bg]"
+                                                value="<?php echo esc_attr( $settings['anim7_bg'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim7_color_1"><?php esc_html_e( 'Horizon Sun / Sky Glow', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim7_color_1"
+                                                name="loginflux_settings[anim7_color_1]"
+                                                value="<?php echo esc_attr( $settings['anim7_color_1'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim7_color_2"><?php esc_html_e( 'Perspective Neon Grid Lines', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim7_color_2"
+                                                name="loginflux_settings[anim7_color_2]"
+                                                value="<?php echo esc_attr( $settings['anim7_color_2'] ); ?>"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="loginflux-form-row loginflux-inline-fields">
+                                        <div style="flex: 1;">
+                                            <label for="loginflux_anim7_speed"><?php esc_html_e( 'Grid Flow Cycle (seconds)', 'loginflux' ); ?></label>
+                                            <input
+                                                type="number"
+                                                id="loginflux_anim7_speed"
+                                                name="loginflux_settings[anim7_speed]"
+                                                value="<?php echo esc_attr( $settings['anim7_speed'] ); ?>"
+                                                min="3"
+                                                max="60"
+                                            >
+                                            <p class="description"><?php esc_html_e( 'Default: 12s. Lower values speed up the forward grid movement.', 'loginflux' ); ?></p>
+                                        </div>
+                                        <div style="flex: 1; display: flex; align-items: flex-end; padding-bottom: 22px;">
+                                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                                <input
+                                                    type="checkbox"
+                                                    name="loginflux_settings[anim7_sun]"
+                                                    value="1"
+                                                    <?php checked( $settings['anim7_sun'], '1' ); ?>
+                                                >
+                                                <span><?php esc_html_e( 'Enable Horizon Sun / Nebula Glow', 'loginflux' ); ?></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Panel 8: Animation 8 Controls -->
+                                <div class="loginflux-anim-panel" data-anim-panel="8" style="<?php echo ( '8' === (string) $settings['animation_type'] ) ? '' : 'display: none;'; ?>">
+                                    <div class="loginflux-section-header">
+                                        <h3><?php esc_html_e( 'Animation 8: Liquid Morphing Blobs Settings', 'loginflux' ); ?></h3>
+                                        <p><?php esc_html_e( 'Fine-tune the 3 organic fluid metaballs and smooth SaaS morph speed.', 'loginflux' ); ?></p>
+                                    </div>
+
+                                    <div class="loginflux-color-grid">
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim8_bg"><?php esc_html_e( 'Dark Base Background', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim8_bg"
+                                                name="loginflux_settings[anim8_bg]"
+                                                value="<?php echo esc_attr( $settings['anim8_bg'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim8_color_1"><?php esc_html_e( 'Fluid Blob 1', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim8_color_1"
+                                                name="loginflux_settings[anim8_color_1]"
+                                                value="<?php echo esc_attr( $settings['anim8_color_1'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim8_color_2"><?php esc_html_e( 'Fluid Blob 2', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim8_color_2"
+                                                name="loginflux_settings[anim8_color_2]"
+                                                value="<?php echo esc_attr( $settings['anim8_color_2'] ); ?>"
+                                            >
+                                        </div>
+                                        <div class="loginflux-color-item">
+                                            <label for="loginflux_anim8_color_3"><?php esc_html_e( 'Fluid Blob 3', 'loginflux' ); ?></label>
+                                            <input
+                                                type="text"
+                                                class="loginflux-color-picker"
+                                                id="loginflux_anim8_color_3"
+                                                name="loginflux_settings[anim8_color_3]"
+                                                value="<?php echo esc_attr( $settings['anim8_color_3'] ); ?>"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="loginflux-form-row loginflux-inline-fields">
+                                        <div style="flex: 1;">
+                                            <label for="loginflux_anim8_speed"><?php esc_html_e( 'Morph Cycle Duration (seconds)', 'loginflux' ); ?></label>
+                                            <input
+                                                type="number"
+                                                id="loginflux_anim8_speed"
+                                                name="loginflux_settings[anim8_speed]"
+                                                value="<?php echo esc_attr( $settings['anim8_speed'] ); ?>"
+                                                min="3"
+                                                max="60"
+                                            >
+                                            <p class="description"><?php esc_html_e( 'Default: 16s. Duration for one full organic shape-shifting cycle.', 'loginflux' ); ?></p>
+                                        </div>
+                                        <div style="flex: 1;">
+                                            <label for="loginflux_anim8_blur"><?php esc_html_e( 'Liquid Blur Radius (px)', 'loginflux' ); ?></label>
+                                            <input
+                                                type="number"
+                                                id="loginflux_anim8_blur"
+                                                name="loginflux_settings[anim8_blur]"
+                                                value="<?php echo esc_attr( $settings['anim8_blur'] ); ?>"
+                                                min="20"
+                                                max="120"
+                                            >
+                                            <p class="description"><?php esc_html_e( 'Default: 60px. Controls the softness of the fluid blobs.', 'loginflux' ); ?></p>
+                                        </div>
                                     </div>
                                 </div>
 

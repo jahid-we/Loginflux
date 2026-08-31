@@ -57,6 +57,36 @@ function jzlf_get_default_settings() {
         'anim4_color_3'    => '#38bdf8',
         'anim4_speed'      => '20',
 
+        // Animation 5: Cosmic Starfield & Stardust Flow
+        'anim5_bg'         => '#050814',
+        'anim5_color_1'    => '#6366f1',
+        'anim5_color_2'    => '#38bdf8',
+        'anim5_speed'      => '18',
+        'anim5_stars'      => '1',
+
+        // Animation 6: Holographic Prism & Cyber Waves
+        'anim6_bg'         => '#0a0618',
+        'anim6_color_1'    => '#f43f5e',
+        'anim6_color_2'    => '#8b5cf6',
+        'anim6_color_3'    => '#06b6d4',
+        'anim6_speed'      => '14',
+        'anim6_lines'      => '1',
+
+        // Animation 7: Retro Synthwave & Neon Horizon
+        'anim7_bg'         => '#090514',
+        'anim7_color_1'    => '#ff2a85',
+        'anim7_color_2'    => '#00f2fe',
+        'anim7_speed'      => '12',
+        'anim7_sun'        => '1',
+
+        // Animation 8: Liquid Morphing Blobs
+        'anim8_bg'         => '#030712',
+        'anim8_color_1'    => '#6366f1',
+        'anim8_color_2'    => '#ec4899',
+        'anim8_color_3'    => '#06b6d4',
+        'anim8_speed'      => '16',
+        'anim8_blur'       => '60',
+
         // Theme Colors & Styling
         'primary_color'    => '#6366f1',
         'hover_color'      => '#4f46e5',

@@ -41,6 +41,33 @@
     --loginflux-anim4-color3: #38bdf8;
     --loginflux-anim4-speed: 20s;
 
+    /* Animation 5 (Cosmic Starfield & Stardust) */
+    --loginflux-anim5-bg: #050814;
+    --loginflux-anim5-color1: #6366f1;
+    --loginflux-anim5-color2: #38bdf8;
+    --loginflux-anim5-speed: 18s;
+
+    /* Animation 6 (Holographic Prism & Cyber Waves) */
+    --loginflux-anim6-bg: #0a0618;
+    --loginflux-anim6-color1: #f43f5e;
+    --loginflux-anim6-color2: #8b5cf6;
+    --loginflux-anim6-color3: #06b6d4;
+    --loginflux-anim6-speed: 14s;
+
+    /* Animation 7 (Retro Synthwave & Neon Horizon) */
+    --loginflux-anim7-bg: #090514;
+    --loginflux-anim7-color1: #ff2a85;
+    --loginflux-anim7-color2: #00f2fe;
+    --loginflux-anim7-speed: 12s;
+
+    /* Animation 8 (Liquid Morphing Blobs) */
+    --loginflux-anim8-bg: #030712;
+    --loginflux-anim8-color1: #6366f1;
+    --loginflux-anim8-color2: #ec4899;
+    --loginflux-anim8-color3: #06b6d4;
+    --loginflux-anim8-speed: 16s;
+    --loginflux-anim8-blur: 60px;
+
     --loginflux-card-bg: rgba(255, 255, 255, 0.55);
     --loginflux-card-border: rgba(255, 255, 255, 0.65);
     --loginflux-card-blur: 28px;
@@ -221,6 +248,260 @@ body.login.loginflux-anim-4-active::before {
 @keyframes loginflux-ambient-spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   ANIMATION 5: Cosmic Starfield & Stardust Flow
+   ========================================================= */
+body.login.loginflux-anim-5-active {
+    background-color: var(--loginflux-anim5-bg);
+}
+
+body.login.loginflux-anim-5-active::before {
+    content: "";
+    position: fixed;
+    inset: -30%;
+    z-index: 0;
+    background:
+        radial-gradient(ellipse at 25% 25%, var(--loginflux-anim5-color1) 0%, transparent 45%),
+        radial-gradient(ellipse at 75% 75%, var(--loginflux-anim5-color2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, var(--loginflux-anim5-color1) 0%, transparent 40%);
+    opacity: 0.45;
+    filter: blur(90px);
+    animation: loginflux-stardust-pulse var(--loginflux-anim5-speed) ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+body.login.loginflux-anim-5-active:not(.loginflux-stars-disabled)::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, var(--loginflux-anim5-color2), rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 90px 40px, var(--loginflux-anim5-color2), rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2.5px 2.5px at 230px 190px, var(--loginflux-anim5-color2), rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 300px 80px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 370px 240px, var(--loginflux-anim5-color2), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 420px 160px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 490px 60px, var(--loginflux-anim5-color2), rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 550px 550px;
+    opacity: 0.85;
+    animation: loginflux-stars-drift calc(var(--loginflux-anim5-speed) * 2.5) linear infinite;
+}
+
+@keyframes loginflux-stardust-pulse {
+    0% {
+        transform: scale(0.95) translate(0, 0);
+        opacity: 0.35;
+    }
+    50% {
+        transform: scale(1.1) translate(-20px, 15px);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1) translate(15px, -20px);
+        opacity: 0.45;
+    }
+}
+
+@keyframes loginflux-stars-drift {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 550px 550px;
+    }
+}
+
+/* =========================================================
+   ANIMATION 6: Holographic Prism & Cyber Waves
+   ========================================================= */
+body.login.loginflux-anim-6-active {
+    background-color: var(--loginflux-anim6-bg);
+}
+
+body.login.loginflux-anim-6-active::before {
+    content: "";
+    position: fixed;
+    inset: -40%;
+    z-index: 0;
+    background: linear-gradient(
+        135deg,
+        var(--loginflux-anim6-color1) 0%,
+        var(--loginflux-anim6-color2) 35%,
+        var(--loginflux-anim6-color3) 70%,
+        var(--loginflux-anim6-color1) 100%
+    );
+    background-size: 300% 300%;
+    opacity: 0.55;
+    filter: blur(85px);
+    animation: loginflux-prism-wave var(--loginflux-anim6-speed) ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+body.login.loginflux-anim-6-active:not(.loginflux-lines-disabled)::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.04) 0px,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px,
+        transparent 32px
+    );
+    animation: loginflux-lines-shift calc(var(--loginflux-anim6-speed) * 1.5) linear infinite;
+}
+
+@keyframes loginflux-prism-wave {
+    0% {
+        background-position: 0% 0%;
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        background-position: 100% 50%;
+        transform: rotate(6deg) scale(1.1);
+    }
+    100% {
+        background-position: 50% 100%;
+        transform: rotate(-6deg) scale(1.05);
+    }
+}
+
+@keyframes loginflux-lines-shift {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 64px 64px;
+    }
+}
+
+/* =========================================================
+   ANIMATION 7: Retro Synthwave & Neon Horizon Grid
+   ========================================================= */
+body.login.loginflux-anim-7-active {
+    background-color: var(--loginflux-anim7-bg);
+    overflow: hidden;
+    perspective: 450px;
+}
+
+body.login.loginflux-anim-7-active:not(.loginflux-sun-disabled)::before {
+    content: "";
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(320px, 60vw);
+    height: min(320px, 60vw);
+    border-radius: 50%;
+    z-index: 0;
+    background: linear-gradient(
+        180deg,
+        var(--loginflux-anim7-color1) 0%,
+        #ff7a00 50%,
+        var(--loginflux-anim7-color2) 100%
+    );
+    box-shadow:
+        0 0 50px var(--loginflux-anim7-color1),
+        0 0 100px rgba(255, 42, 133, 0.45);
+    filter: blur(1px);
+    animation: loginflux-synth-sun-radiance var(--loginflux-anim7-speed) ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+body.login.loginflux-anim-7-active::after {
+    content: "";
+    position: fixed;
+    bottom: -15%;
+    left: -50%;
+    right: -50%;
+    height: 65%;
+    z-index: 1;
+    background-image:
+        linear-gradient(var(--loginflux-anim7-color2) 1.5px, transparent 1.5px),
+        linear-gradient(90deg, var(--loginflux-anim7-color2) 1.5px, transparent 1.5px);
+    background-size: 50px 35px;
+    transform: rotateX(72deg);
+    opacity: 0.65;
+    animation: loginflux-synth-grid-flow calc(var(--loginflux-anim7-speed) / 3) linear infinite;
+    pointer-events: none;
+    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 90%);
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 90%);
+}
+
+@keyframes loginflux-synth-sun-radiance {
+    0% {
+        transform: translateX(-50%) scale(0.96);
+        box-shadow: 0 0 40px var(--loginflux-anim7-color1), 0 0 80px rgba(255, 42, 133, 0.4);
+    }
+    100% {
+        transform: translateX(-50%) scale(1.06);
+        box-shadow: 0 0 70px var(--loginflux-anim7-color1), 0 0 130px rgba(0, 242, 254, 0.5);
+    }
+}
+
+@keyframes loginflux-synth-grid-flow {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 35px;
+    }
+}
+
+/* =========================================================
+   ANIMATION 8: Liquid Morphing Blobs
+   ========================================================= */
+body.login.loginflux-anim-8-active {
+    background-color: var(--loginflux-anim8-bg);
+}
+
+body.login.loginflux-anim-8-active::before {
+    content: "";
+    position: fixed;
+    inset: -20%;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 30% 30%, var(--loginflux-anim8-color1) 0%, transparent 45%),
+        radial-gradient(circle at 70% 70%, var(--loginflux-anim8-color2) 0%, transparent 45%),
+        radial-gradient(circle at 65% 25%, var(--loginflux-anim8-color3) 0%, transparent 40%);
+    opacity: 0.7;
+    filter: blur(var(--loginflux-anim8-blur));
+    animation: loginflux-liquid-morph var(--loginflux-anim8-speed) ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes loginflux-liquid-morph {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    33% {
+        transform: translate(35px, -45px) scale(1.12) rotate(45deg);
+    }
+    66% {
+        transform: translate(-30px, 40px) scale(0.92) rotate(-30deg);
+    }
+    100% {
+        transform: translate(25px, 20px) scale(1.08) rotate(15deg);
+    }
+}
+
+/* Accessibility: Support for Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    body.login::before,
+    body.login::after,
+    .loginflux-aurora-bg {
+        animation: none !important;
+        transition: none !important;
+    }
 }
 
 /* Background Image Mode (Overrides Animations when image is present) */

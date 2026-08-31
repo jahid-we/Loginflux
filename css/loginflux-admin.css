@@ -1005,6 +1005,219 @@
     100% { transform: rotate(360deg); }
 }
 
+/* Preview 5: Cosmic Starfield & Stardust */
+.anim-5-preview {
+    background: #050814;
+}
+
+.anim-5-preview .anim-preview-nebula-dust {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 60% 40%, rgba(99, 102, 241, 0.45) 0%, transparent 60%);
+    filter: blur(12px);
+    animation: preview-stardust-pulse 5s ease-in-out infinite alternate;
+}
+
+.anim-5-preview .anim-preview-starfield {
+    position: absolute;
+    inset: 0;
+}
+
+.anim-5-preview .anim-star {
+    position: absolute;
+    border-radius: 50%;
+    background: #38bdf8;
+    box-shadow: 0 0 6px #38bdf8, 0 0 10px #ffffff;
+}
+
+.anim-5-preview .star-1 {
+    width: 3px;
+    height: 3px;
+    top: 20%;
+    left: 25%;
+    animation: preview-star-twinkle 2.5s ease-in-out infinite alternate;
+}
+
+.anim-5-preview .star-2 {
+    width: 2px;
+    height: 2px;
+    top: 65%;
+    left: 15%;
+    animation: preview-star-twinkle 3.5s ease-in-out infinite 0.8s alternate;
+}
+
+.anim-5-preview .star-3 {
+    width: 4px;
+    height: 4px;
+    top: 30%;
+    right: 20%;
+    animation: preview-star-twinkle 2s ease-in-out infinite 0.4s alternate;
+}
+
+.anim-5-preview .star-4 {
+    width: 2.5px;
+    height: 2.5px;
+    bottom: 25%;
+    right: 35%;
+    animation: preview-star-twinkle 4s ease-in-out infinite 1.2s alternate;
+}
+
+.anim-5-preview .star-5 {
+    width: 2px;
+    height: 2px;
+    top: 75%;
+    right: 15%;
+    animation: preview-star-twinkle 3s ease-in-out infinite 0.2s alternate;
+}
+
+@keyframes preview-stardust-pulse {
+    0% { opacity: 0.5; transform: scale(0.95); }
+    100% { opacity: 0.9; transform: scale(1.1); }
+}
+
+@keyframes preview-star-twinkle {
+    0% { opacity: 0.3; transform: scale(0.7); }
+    100% { opacity: 1; transform: scale(1.4); }
+}
+
+/* Preview 6: Holographic Prism & Cyber Waves */
+.anim-6-preview {
+    background: #0a0618;
+}
+
+.anim-6-preview .anim-preview-prism-wrap {
+    position: absolute;
+    inset: -30%;
+    background: linear-gradient(
+        135deg,
+        rgba(244, 63, 94, 0.4) 0%,
+        rgba(139, 92, 246, 0.5) 40%,
+        rgba(6, 182, 212, 0.4) 80%,
+        rgba(244, 63, 94, 0.4) 100%
+    );
+    background-size: 250% 250%;
+    filter: blur(16px);
+    animation: preview-prism-wave 6s ease-in-out infinite alternate;
+}
+
+.anim-6-preview .anim-preview-cyber-lines {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.08) 0px,
+        rgba(255, 255, 255, 0.08) 1px,
+        transparent 1px,
+        transparent 14px
+    );
+}
+
+@keyframes preview-prism-wave {
+    0% { background-position: 0% 0%; transform: rotate(0deg); }
+    100% { background-position: 100% 100%; transform: rotate(8deg); }
+}
+
+/* Preview 7: Retro Synthwave & Neon Horizon */
+.anim-7-preview {
+    background: #090514;
+    perspective: 120px;
+}
+
+.anim-7-preview .anim-preview-synth-sun {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #ff2a85 0%, #ff7a00 100%);
+    top: 10px;
+    left: calc(50% - 22px);
+    box-shadow: 0 0 16px rgba(255, 42, 133, 0.7);
+    animation: preview-synth-sun-pulse 4s ease-in-out infinite alternate;
+}
+
+.anim-7-preview .anim-preview-synth-grid {
+    position: absolute;
+    bottom: -10px;
+    left: -20px;
+    right: -20px;
+    height: 55px;
+    background-image:
+        linear-gradient(rgba(0, 242, 254, 0.45) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 254, 0.45) 1px, transparent 1px);
+    background-size: 14px 10px;
+    transform: rotateX(60deg);
+    animation: preview-synth-grid-move 2s linear infinite;
+}
+
+@keyframes preview-synth-sun-pulse {
+    0% { transform: scale(0.95); opacity: 0.85; }
+    100% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 12px #ff2a85); }
+}
+
+@keyframes preview-synth-grid-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 10px; }
+}
+
+/* Preview 8: Liquid Morphing Blobs */
+.anim-8-preview {
+    background: #030712;
+}
+
+.anim-8-preview .anim-preview-liquid-wrap {
+    position: absolute;
+    inset: -20%;
+    filter: blur(12px);
+}
+
+.anim-8-preview .anim-liquid-blob {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.anim-8-preview .blob-a {
+    width: 50px;
+    height: 50px;
+    background: #6366f1;
+    top: 15%;
+    left: 20%;
+    animation: preview-blob-morph-a 5s ease-in-out infinite alternate;
+}
+
+.anim-8-preview .blob-b {
+    width: 45px;
+    height: 45px;
+    background: #ec4899;
+    bottom: 15%;
+    right: 25%;
+    animation: preview-blob-morph-b 6s ease-in-out infinite alternate-reverse;
+}
+
+.anim-8-preview .blob-c {
+    width: 40px;
+    height: 40px;
+    background: #06b6d4;
+    top: 30%;
+    right: 35%;
+    animation: preview-blob-morph-c 7s ease-in-out infinite alternate;
+}
+
+@keyframes preview-blob-morph-a {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(15px, 12px) scale(1.18); }
+}
+
+@keyframes preview-blob-morph-b {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-12px, -10px) scale(0.9); }
+}
+
+@keyframes preview-blob-morph-c {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(8px, -8px) scale(1.15); }
+}
+
 /* Card Body */
 .loginflux-anim-card-body {
     padding: 14px;

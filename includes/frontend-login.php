@@ -38,6 +38,27 @@ function jzlf_login_body_class( $classes ) {
             case '4':
                 $classes[] = 'loginflux-anim-4-active';
                 break;
+            case '5':
+                $classes[] = 'loginflux-anim-5-active';
+                if ( empty( $settings['anim5_stars'] ) || '1' !== (string) $settings['anim5_stars'] ) {
+                    $classes[] = 'loginflux-stars-disabled';
+                }
+                break;
+            case '6':
+                $classes[] = 'loginflux-anim-6-active';
+                if ( empty( $settings['anim6_lines'] ) || '1' !== (string) $settings['anim6_lines'] ) {
+                    $classes[] = 'loginflux-lines-disabled';
+                }
+                break;
+            case '7':
+                $classes[] = 'loginflux-anim-7-active';
+                if ( empty( $settings['anim7_sun'] ) || '1' !== (string) $settings['anim7_sun'] ) {
+                    $classes[] = 'loginflux-sun-disabled';
+                }
+                break;
+            case '8':
+                $classes[] = 'loginflux-anim-8-active';
+                break;
             case '3':
             default:
                 $classes[] = 'loginflux-anim-3-active';
@@ -102,6 +123,33 @@ function jzlf_login_enqueue_style() {
     $anim4_color3  = ! empty( $settings['anim4_color_3'] ) ? sanitize_hex_color( $settings['anim4_color_3'] ) : '#38bdf8';
     $anim4_speed   = ! empty( $settings['anim4_speed'] ) ? absint( $settings['anim4_speed'] ) . 's' : '20s';
 
+    // Animation 5 (Cosmic Starfield & Stardust)
+    $anim5_bg      = ! empty( $settings['anim5_bg'] ) ? sanitize_hex_color( $settings['anim5_bg'] ) : '#050814';
+    $anim5_color1  = ! empty( $settings['anim5_color_1'] ) ? sanitize_hex_color( $settings['anim5_color_1'] ) : '#6366f1';
+    $anim5_color2  = ! empty( $settings['anim5_color_2'] ) ? sanitize_hex_color( $settings['anim5_color_2'] ) : '#38bdf8';
+    $anim5_speed   = ! empty( $settings['anim5_speed'] ) ? absint( $settings['anim5_speed'] ) . 's' : '18s';
+
+    // Animation 6 (Holographic Prism & Cyber Waves)
+    $anim6_bg      = ! empty( $settings['anim6_bg'] ) ? sanitize_hex_color( $settings['anim6_bg'] ) : '#0a0618';
+    $anim6_color1  = ! empty( $settings['anim6_color_1'] ) ? sanitize_hex_color( $settings['anim6_color_1'] ) : '#f43f5e';
+    $anim6_color2  = ! empty( $settings['anim6_color_2'] ) ? sanitize_hex_color( $settings['anim6_color_2'] ) : '#8b5cf6';
+    $anim6_color3  = ! empty( $settings['anim6_color_3'] ) ? sanitize_hex_color( $settings['anim6_color_3'] ) : '#06b6d4';
+    $anim6_speed   = ! empty( $settings['anim6_speed'] ) ? absint( $settings['anim6_speed'] ) . 's' : '14s';
+
+    // Animation 7 (Retro Synthwave & Neon Horizon)
+    $anim7_bg      = ! empty( $settings['anim7_bg'] ) ? sanitize_hex_color( $settings['anim7_bg'] ) : '#090514';
+    $anim7_color1  = ! empty( $settings['anim7_color_1'] ) ? sanitize_hex_color( $settings['anim7_color_1'] ) : '#ff2a85';
+    $anim7_color2  = ! empty( $settings['anim7_color_2'] ) ? sanitize_hex_color( $settings['anim7_color_2'] ) : '#00f2fe';
+    $anim7_speed   = ! empty( $settings['anim7_speed'] ) ? absint( $settings['anim7_speed'] ) . 's' : '12s';
+
+    // Animation 8 (Liquid Morphing Blobs)
+    $anim8_bg      = ! empty( $settings['anim8_bg'] ) ? sanitize_hex_color( $settings['anim8_bg'] ) : '#030712';
+    $anim8_color1  = ! empty( $settings['anim8_color_1'] ) ? sanitize_hex_color( $settings['anim8_color_1'] ) : '#6366f1';
+    $anim8_color2  = ! empty( $settings['anim8_color_2'] ) ? sanitize_hex_color( $settings['anim8_color_2'] ) : '#ec4899';
+    $anim8_color3  = ! empty( $settings['anim8_color_3'] ) ? sanitize_hex_color( $settings['anim8_color_3'] ) : '#06b6d4';
+    $anim8_speed   = ! empty( $settings['anim8_speed'] ) ? absint( $settings['anim8_speed'] ) . 's' : '16s';
+    $anim8_blur    = ! empty( $settings['anim8_blur'] ) ? absint( $settings['anim8_blur'] ) . 'px' : '60px';
+
     $dynamic_css = "
         :root {
             --loginflux-primary: {$primary_color};
@@ -137,6 +185,29 @@ function jzlf_login_enqueue_style() {
             --loginflux-anim4-color2: {$anim4_color2};
             --loginflux-anim4-color3: {$anim4_color3};
             --loginflux-anim4-speed: {$anim4_speed};
+
+            --loginflux-anim5-bg: {$anim5_bg};
+            --loginflux-anim5-color1: {$anim5_color1};
+            --loginflux-anim5-color2: {$anim5_color2};
+            --loginflux-anim5-speed: {$anim5_speed};
+
+            --loginflux-anim6-bg: {$anim6_bg};
+            --loginflux-anim6-color1: {$anim6_color1};
+            --loginflux-anim6-color2: {$anim6_color2};
+            --loginflux-anim6-color3: {$anim6_color3};
+            --loginflux-anim6-speed: {$anim6_speed};
+
+            --loginflux-anim7-bg: {$anim7_bg};
+            --loginflux-anim7-color1: {$anim7_color1};
+            --loginflux-anim7-color2: {$anim7_color2};
+            --loginflux-anim7-speed: {$anim7_speed};
+
+            --loginflux-anim8-bg: {$anim8_bg};
+            --loginflux-anim8-color1: {$anim8_color1};
+            --loginflux-anim8-color2: {$anim8_color2};
+            --loginflux-anim8-color3: {$anim8_color3};
+            --loginflux-anim8-speed: {$anim8_speed};
+            --loginflux-anim8-blur: {$anim8_blur};
         }
     ";
 

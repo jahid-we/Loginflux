@@ -3,7 +3,7 @@
  * Plugin Name:       Loginflux
  * Plugin URI:        https://github.com/jahid-we/Loginflux
  * Description:       Transform your login page with animated visual effects, dynamic backgrounds, glassmorphism, custom branding, and modern color controls.
- * Version:           1.2.1
+ * Version:           1.3.0
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Jahid Hasan
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Plugin Constants
  */
-define( 'LOGINFLUX_VERSION', '1.2.1' );
+define( 'LOGINFLUX_VERSION', '1.3.0' );
 define( 'LOGINFLUX_FILE', __FILE__ );
 define( 'LOGINFLUX_URL', plugin_dir_url( __FILE__ ) );
 define( 'LOGINFLUX_PATH', plugin_dir_path( __FILE__ ) );
